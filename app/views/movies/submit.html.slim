@@ -1,0 +1,52 @@
+- breadcrumb :submit
+
+h1 Movie Submission
+p.lead TF2Movies.org relies on you! Tell us which great movie is missing by filling out the form below (YouTube videos only!) and we'll take care of the rest.
+
+
+h2 Checklist
+p Quality over quantity is our convention. Your movie should meet the following requirements to get added:
+.row
+  .col-md-5
+    h4
+      span.label.label-success = fa_icon 'plus', :text => 'Dos'
+    ul
+      li High production value
+      li Competetive gameplay footage
+      ul
+        li 6v6
+        li Highlander
+        li BBall
+        li Ultiduo
+      li Available on YouTube
+
+  .col-md-5
+    h4
+      span.label.label-danger = fa_icon 'minus', :text => 'Don\'ts'
+    ul
+      li Machinimas / Source Fimmaker only
+      li Low quality
+      li Frag clips
+      li Pub footage
+      li Not Available on YouTube
+
+h2 Submission form
+.row
+  .col-md-7
+    = form_tag('/movies', {:role => 'form'}) do
+      fieldset disabled=!policy(Movie).submit?
+        .input-group
+          span.input-group-addon
+            = fa_icon 'youtube'
+          = url_field_tag(:url, nil, :required => true, :placeholder => 'http://youtube.com/watch?v=uga_sPZRF70', :class => 'form-control')
+          label.sr-only for='url' YouTube URL
+          span.input-group-btn
+            = submit_tag('Submit', :class => 'btn btn-primary')
+        - unless current_user
+          span.help-block
+           => fa_icon 'exclamation-triangle'
+           | You need to be
+           =<> link_to('logged in', login_path)
+           | to submit a movie.
+        - if current_user && current_user.banned?
+          span.help-block = fa_icon 'exclamation-triangle', :text => 'You are banned and cannot submit movies anymore!'

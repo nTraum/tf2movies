@@ -1,0 +1,7 @@
+.form-group.nested-fields
+  .col-sm-2.col-sm-offset-1
+    = link_to_remove_association((fa_icon 'times'), f, :class => 'btn btn-sm btn-danger pull-right')
+  .col-sm-4.field
+    = f.text_field :artist, :class => 'form-control input-sm', :placeholder => 'Artist'
+  .col-sm-4.field
+    = f.text_field :title, :class => 'form-control input-sm', :placeholder => 'Title'

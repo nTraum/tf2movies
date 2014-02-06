@@ -1,0 +1,17 @@
+- if flash[:notice]
+  .alert.alert-info.alert-dismissable
+    = fa_icon 'info-sign'
+    ==< flash[:notice]
+    button.close data-dismiss='alert' href='#' aria-hidden='true' &times;
+
+- if flash[:warning]
+  .alert.alert-warning.alert-dismissable
+    = fa_icon 'warning-sign'
+    ==< flash[:warning]
+    button.close data-dismiss='alert' href='#' aria-hidden='true' &times;
+
+- if flash[:alert]
+  .alert.alert-danger.alert-dismissable
+    = fa_icon 'exclamation-sign'
+    ==< flash[:alert]
+    button.close data-dismiss='alert' href='#' aria-hidden='true' &times;

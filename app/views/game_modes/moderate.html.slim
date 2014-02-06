@@ -1,0 +1,25 @@
+h1 Manage Game Modes
+p.pull-right
+  = link_to(fa_icon('plus', :text => 'New'), new_game_mode_path, :class => 'btn btn-primary')
+table.table.table-hover.table-striped.table-responsive.table-condensed
+  thead
+    th #
+    th Name
+    th Movies
+    th Creation Date
+    th.text-right Actions
+
+  tbody
+    - @game_modes.each do |gm|
+      tr
+        td = gm.id
+        td = gm.name
+        td = gm.movies.count
+        td = gm.created_at.strftime('%D')
+        td.text-right
+          => link_to(fa_icon('edit', :text => 'Edit'), edit_game_mode_path(gm.id), :class => 'btn btn-warning')
+
+          = button_to(game_mode_path(gm.id), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
+              = fa_icon('trash-o', :text => 'Delete')
+p.pull-right
+  = link_to(fa_icon('plus', :text => 'New'), new_game_mode_path, :class => 'btn btn-primary')

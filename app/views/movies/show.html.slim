@@ -1,0 +1,89 @@
+- breadcrumb :movie, @movie
+
+h1
+  = @movie.title
+  - if @movie.featured?
+    span.label.label-info< Featured
+p.lead
+  = link_to(image_tag(@movie.author.avatar_url, :size => '35', :class => 'img-thumbnail img-responsive'), @movie.author)
+  =< link_to @movie.author.nickname, @movie.author
+
+
+a.btn.btn-large.btn-danger.pull-right href='#'
+  = fa_icon 'heart', :text => 'Love it'
+ul.list-inline
+  li
+    => fa_icon 'tags'
+  - if @movie.game_mode
+    li
+      a href=game_mode_path(@movie.game_mode)
+        span.badge =< @movie.game_mode.name
+  - if @movie.tf2_class
+    li
+      a href=tf2_class_path(@movie.tf2_class)
+        span.badge =< @movie.tf2_class.name
+
+ul.list-inline
+  li
+    = fa_icon 'heart', :text => pluralize(47, 'love')
+  li
+    = fa_icon 'youtube-play', :text => "#{number_with_delimiter @movie.views} views"
+  li
+    = fa_icon 'calendar', :text => "Added #{distance_of_time_in_words_to_now @movie.created_at} ago"
+  li
+    = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
+
+.flex-video.widescreen
+  iframe src="http://www.youtube.com/embed/#{@movie.youtube_id}?rel=0&modestbranding=1&html5=1" allowfullscreen=true frameborder=0 type='text/html' origin=request.original_url
+
+.panel-group#accordion
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-toggle='collapse' data-parent='#accordion' href='#collapseInfo'
+           = fa_icon 'info fw', :text => 'Info'
+    .panel-collapse.collapse.in#collapseInfo
+      .panel-body
+        = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-toggle='collapse' data-parent='#accordion' href='#collapseMusic'
+          = fa_icon 'music fw', :text => "Music (#{@movie.songs.count})"
+    .panel-collapse.collapse#collapseMusic
+      .panel-body
+        table.table.table-hover.table-condensed
+          thead
+            th #
+            th Artist
+            th Title
+            th G
+            th YT
+            th SC
+          tbody
+            - @movie.songs.each_with_index do |s, i|
+              tr
+                td = i+1
+                td = s.artist
+                td = s.title
+                td = link_to(fa_icon('external-link'), s.google_search, :target => '_blank')
+                td = link_to(fa_icon('external-link'), s.youtube_search, :target => '_blank')
+                td = link_to(fa_icon('external-link'), s.soundcloud_search, :target => '_blank')
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-toggle='collapse' data-parent='#accordion' href='#collapseDownloads'
+          = fa_icon 'download fw', :text => "Downloads (#{@movie.downloads.count})"
+    .panel-collapse.collapse#collapseDownloads
+      .panel-body
+        table.table.table-hover.table-condensed
+          thead
+            th #
+            th Hoster
+            th Link
+          tbody
+            - @movie.downloads.each_with_index do |d,i|
+              tr
+                td = i+1
+                td = d.host
+                td = link_to(fa_icon('external-link'), d.url, :target => '_blank')

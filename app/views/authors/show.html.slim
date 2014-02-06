@@ -1,0 +1,19 @@
+.well
+  .media
+    = image_tag @author.avatar_url, :class => 'img-thumbnail img-responsive media-object pull-left'
+    .media-body
+      h1.media-heading = @author.nickname
+      p.lead Author
+
+.well
+  ul.list-inline
+    li
+      = fa_icon 'film', :text => pluralize(@author.movies.count, 'movie')
+    li
+      = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @author.movies.sum(:duration)} of movie footage"
+    li
+      = fa_icon 'youtube-play', :text => "#{number_with_delimiter(@author.movies.sum(:views))} views in total"
+    li
+      = link_to(fa_icon('external-link', :text => 'YouTube Profile'), @author.profile_url, :target => '_blank')
+
+h2 Movies

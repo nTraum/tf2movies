@@ -1,0 +1,29 @@
+= form_for movie, :html => {:class => 'form-horizontal', :role => 'form'} do |f|
+  hr
+  h3 Misc
+  .form-group
+    = f.label :game_mode_id, 'Game Mode', :class => 'col-sm-2 col-sm-offset-1 control-label'
+    .col-sm-8
+      = f.collection_select :game_mode_id, GameMode.all(:order => :name), :id, :name, {:include_blank => true}, {:class => 'form-control'}
+  .form-group
+    = f.label :tf2_class_id, 'TF2 Class', :class => 'col-sm-2 col-sm-offset-1 control-label'
+    .col-sm-8
+      = f.collection_select :tf2_class_id, Tf2Class.all(:order => :name), :id, :name, {:include_blank => true}, {:class => 'form-control'}
+  hr
+  h3 Songs
+  #songs
+    = f.fields_for :songs do |song|
+      = render 'song_fields', :f => song
+    .links
+      = link_to_add_association fa_icon('plus fw', :text => 'New'), f, :songs, :class => 'btn btn-sm btn-default'
+  hr
+  h3 Downloads
+  #downloads
+    = f.fields_for :downloads do |download|
+      = render 'download_fields', :f => download
+    .links
+      = link_to_add_association fa_icon('plus fw', :text => 'New'), f, :downloads, :class => 'btn btn-sm btn-default'
+  hr
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit 'Save', :class => 'btn btn-primary'

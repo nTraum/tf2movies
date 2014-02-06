@@ -1,0 +1,25 @@
+h1 Manage TF2 Classes
+p.pull-right
+  = link_to(fa_icon('plus', :text => 'New'), new_tf2_class_path, :class => 'btn btn-primary')
+table.table.table-hover.table-striped.table-responsive.table-condensed
+  thead
+    th #
+    th Name
+    th Movies
+    th Creation Date
+    th.text-right Actions
+
+  tbody
+    - @tf2_classes.each do |tf2_class|
+      tr
+        td = tf2_class.id
+        td = tf2_class.name
+        td = tf2_class.movies.count
+        td = tf2_class.created_at.strftime('%D')
+        td.text-right
+          => link_to(fa_icon('edit', :text => 'Edit'), edit_tf2_class_path(tf2_class.id), :class => 'btn btn-warning')
+
+          = button_to(tf2_class_path(tf2_class.id), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
+              = fa_icon('trash-o', :text => 'Delete')
+p.pull-right
+  = link_to(fa_icon('plus', :text => 'New'), new_tf2_class_path, :class => 'btn btn-primary')
