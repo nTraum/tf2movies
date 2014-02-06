@@ -10,9 +10,13 @@ html
     .container
       header
         == render 'shared/navbar'
-      main
-        == render 'shared/flashes', :locals => {:flash => flash}
-        == breadcrumbs :style => :bootstrap
-        = yield
+      .row
+        .col-md-10
+          main
+            == render 'shared/flashes', :locals => {:flash => flash}
+            == breadcrumbs :style => :bootstrap
+            = yield
+        .col-md-2
+          aside
       footer
         == render 'shared/footer'
