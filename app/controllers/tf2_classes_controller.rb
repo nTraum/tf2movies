@@ -3,7 +3,7 @@ class Tf2ClassesController < ApplicationController
   end
 
   def moderate
-    @tf2_classes = Tf2Class.all
+    @tf2_classes = Tf2Class.all.page params[:page]
   end
 
   def new

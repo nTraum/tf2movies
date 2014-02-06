@@ -117,6 +117,9 @@ GEM
     json (1.8.1)
     jwt (0.1.11)
       multi_json (>= 1.5)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     libv8 (3.16.14.3)
     listen (2.4.0)
       celluloid (>= 0.15.2)
@@ -305,6 +308,7 @@ DEPENDENCIES
   guard-sidekiq
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   lol_dba
   meta_request
   minitest-rails

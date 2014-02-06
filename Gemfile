@@ -61,6 +61,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'cocoon'
 gem 'pundit'
 gem 'newrelic_rpm'
+gem 'kaminari'
 
 group :development do
   gem 'annotate'

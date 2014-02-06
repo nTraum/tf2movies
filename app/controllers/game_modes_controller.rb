@@ -3,7 +3,7 @@ class GameModesController < ApplicationController
   end
 
   def moderate
-    @game_modes = GameMode.all
+    @game_modes = GameMode.all.page params[:page]
   end
 
   def new

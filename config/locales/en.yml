@@ -24,3 +24,7 @@ en:
     attributes:
       movie:
         youtube_id: "Movie"
+  views:
+    pagination:
+      previous: "&laquo;"
+      next: "&raquo;"
