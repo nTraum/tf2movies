@@ -62,6 +62,7 @@ gem 'cocoon'
 gem 'pundit'
 gem 'newrelic_rpm'
 gem 'kaminari'
+gem 'faraday'
 
 group :development do
   gem 'annotate'
