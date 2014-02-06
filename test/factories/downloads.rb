@@ -7,6 +7,7 @@
 #  movie_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
+#  online     :boolean
 #
 # Indexes
 #
@@ -19,7 +20,7 @@ FactoryGirl.define do
   factory :download do
     url 'http://fakkelbrigade.eu/torden/7brothers_720pHi'
     movie
-
+    online true
     factory :no_prefix do
       url 'fakkelbrigade.eu/torden/7brothers_720pHi'
     end
