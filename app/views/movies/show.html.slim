@@ -57,18 +57,18 @@ ul.list-inline
             th #
             th Artist
             th Title
-            th G
-            th YT
-            th SC
+            th.text-right G
+            th.text-right YT
+            th.text-right SC
           tbody
             - @movie.songs.each_with_index do |s, i|
               tr
                 td = i+1
                 td = s.artist
                 td = s.title
-                td = link_to(fa_icon('external-link'), s.google_search, :target => '_blank')
-                td = link_to(fa_icon('external-link'), s.youtube_search, :target => '_blank')
-                td = link_to(fa_icon('external-link'), s.soundcloud_search, :target => '_blank')
+                td.text-right = link_to(fa_icon('external-link'), s.google_search, :target => '_blank')
+                td.text-right = link_to(fa_icon('external-link'), s.youtube_search, :target => '_blank')
+                td.text-right = link_to(fa_icon('external-link'), s.soundcloud_search, :target => '_blank')
   .panel.panel-default
     .panel-heading
       h4.panel-title
@@ -79,11 +79,18 @@ ul.list-inline
         table.table.table-hover.table-condensed
           thead
             th #
+            th Status
             th Hoster
-            th Link
           tbody
             - @movie.downloads.each_with_index do |d,i|
               tr
                 td = i+1
+                td
+                  - if d.online? == true
+                    span.label.label-success Online
+                  - elsif d.offline?
+                    span.label.label-danger Offline
+                  - else
+                    span.label.label-default Unknown
                 td = d.host
-                td = link_to(fa_icon('external-link'), d.url, :target => '_blank')
+                td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), d.url, :class => 'btn btn-primary btn-xs')
