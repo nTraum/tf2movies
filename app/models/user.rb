@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :nickname,          :presence => true
   validates :steam_profile_url, :presence => true,
                                 :uniqueness => true
-  validates :role,              :inclusion => {:in => ['banned', 'user', 'moderator', 'admin']},
+  validates :role,              :inclusion => { :in => ['banned', 'user', 'moderator', 'admin'] },
                                 :presence => true
 
   scope :admins,      -> { where(:role => 'admin') }
