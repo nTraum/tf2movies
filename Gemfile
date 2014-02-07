@@ -46,13 +46,11 @@ end
 
 gem 'minitest-rails'
 gem 'slim-rails'
-gem 'puma'
 gem 'omniauth-steam'
 gem 'anjlab-bootstrap-rails',     :require => 'bootstrap-rails',
                                   :github => 'anjlab/bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'youtube_it'
-gem 'lol_dba'
 gem 'factory_girl_rails'
 gem 'gretel'
 gem 'rails_autolink'
@@ -60,16 +58,20 @@ gem 'sidetiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'cocoon'
 gem 'pundit'
-gem 'newrelic_rpm'
 gem 'kaminari'
 gem 'curb'
 
+group :production do
+  gem 'puma'
+  gem 'newrelic_rpm'
+end
+
 group :development do
+  gem 'lol_dba'
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard'
-  # gem 'guard-annotate'
   gem 'guard-bundler'
   gem 'guard-livereload'
   gem 'guard-minitest'
