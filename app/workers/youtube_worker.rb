@@ -8,6 +8,7 @@ class YoutubeWorker
     movie = get_oldest_movie
     if movie
       movie.refresh_youtube_info
+    end
   end
 
   private

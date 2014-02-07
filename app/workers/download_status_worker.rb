@@ -8,6 +8,7 @@ class DownloadStatusWorker
     download = get_oldest_download
     if download
       download.refresh_status
+    end
   end
 
   private
