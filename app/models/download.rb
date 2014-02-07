@@ -36,14 +36,19 @@ class Download < ActiveRecord::Base
       end
       case resp.response_code
         when 200
-          update(:status => 'online')
+          self.status = 'online'
         when 404
-          update(:status => 'offline')
+          self.status = 'offline'
         else
-          update(:status => 'unknown')
+          self.status = 'unknown'
       end
+    rescue Curl::Err::CurlError
+      self.status = 'offline'
     rescue
-      update(:status => 'offline')
+      self.status = 'unknown'
+    ensure
+      self.status_refreshed_at = DateTime.now
+      save!
     end
   end
 
