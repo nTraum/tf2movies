@@ -76,6 +76,7 @@ group :development do
   gem 'guard-rails'
   gem 'guard-sidekiq'
   gem 'meta_request'
+  gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rails-footnotes'
 end
