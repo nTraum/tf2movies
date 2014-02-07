@@ -27,7 +27,7 @@ class Download < ActiveRecord::Base
     url.match(/(^http(s)?:\/\/)?(www\.)?(\w+\.)?(?<domain>\w+\.\w+)\//i)[:domain]
   end
 
-  def refresh_online
+  def refresh_status
     begin
       resp = Curl::Easy.http_head(url) do |c|
         c.follow_location = true
