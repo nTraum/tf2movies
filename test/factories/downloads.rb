@@ -2,12 +2,13 @@
 #
 # Table name: downloads
 #
-#  id         :integer          not null, primary key
-#  url        :string(255)
-#  movie_id   :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  status     :string(255)
+#  id                  :integer          not null, primary key
+#  url                 :string(255)
+#  movie_id            :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#  status              :string(255)
+#  status_refreshed_at :datetime
 #
 # Indexes
 #
@@ -21,12 +22,9 @@ FactoryGirl.define do
     url 'http://fakkelbrigade.eu/torden/7brothers_720pHi'
     movie
     status 'online'
+    status_refreshed_at { DateTime.now }
     factory :no_prefix do
       url 'fakkelbrigade.eu/torden/7brothers_720pHi'
-    end
-
-    factory :http do
-      url 'http://fakkelbrigade.eu/torden/7brothers_720pHi'
     end
 
     factory :https do
@@ -42,6 +40,11 @@ FactoryGirl.define do
     end
     factory :https_www do
       url 'https://www.fakkelbrigade.eu/torden/7brothers_720pHi'
+    end
+
+    factory :no_status_check do
+      status_refreshed_at nil
+      status 'unknown'
     end
   end
 end

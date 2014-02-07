@@ -14,6 +14,6 @@ class DownloadStatusWorker
   private
 
   def get_oldest_download
-    Download.order(:updated_at).first
+    Download.order(:status_refreshed_at).first
   end
 end

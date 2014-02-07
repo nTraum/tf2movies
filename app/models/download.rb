@@ -2,12 +2,13 @@
 #
 # Table name: downloads
 #
-#  id         :integer          not null, primary key
-#  url        :string(255)
-#  movie_id   :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  status     :string(255)
+#  id                  :integer          not null, primary key
+#  url                 :string(255)
+#  movie_id            :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#  status              :string(255)
+#  status_refreshed_at :datetime
 #
 # Indexes
 #

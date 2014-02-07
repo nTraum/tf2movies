@@ -3,7 +3,7 @@ require 'test_helper'
 describe Download do
   subject { [] <<
     FactoryGirl.build(:no_prefix) <<
-    FactoryGirl.build(:http) <<
+    FactoryGirl.build(:download) <<
     FactoryGirl.build(:https) <<
     FactoryGirl.build(:subdomain) <<
     FactoryGirl.build(:http_www) <<
