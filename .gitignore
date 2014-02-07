@@ -19,3 +19,6 @@
 /config/newrelic.yml
 /config/initializers/omniauth_steam.rb
 /config/initializers/youtube.rb
+
+# Ignore coverage results
+/coverage
