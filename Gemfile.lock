@@ -60,6 +60,7 @@ GEM
     connection_pool (1.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    curb (0.8.5)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     em-websocket (0.5.0)
@@ -296,9 +297,9 @@ DEPENDENCIES
   binding_of_caller
   cocoon
   coffee-rails (~> 4.0.0)
+  curb
   database_cleaner
   factory_girl_rails
-  faraday
   font-awesome-rails
   gretel
   guard
