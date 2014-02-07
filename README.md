@@ -1,5 +1,6 @@
 # tf2movies
 
+[![Build Status](https://travis-ci.org/nTraum/tf2movies.png)](https://travis-ci.org/nTraum/tf2movies)
 [![Coverage Status](https://coveralls.io/repos/nTraum/tf2movies/badge.png)](https://coveralls.io/r/nTraum/tf2movies)
 [![Code Climate](https://codeclimate.com/github/nTraum/tf2movies.png)](https://codeclimate.com/github/nTraum/tf2movies)
 [![Dependency Status](https://gemnasium.com/nTraum/tf2movies.png)](https://gemnasium.com/nTraum/tf2movies)
