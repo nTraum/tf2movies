@@ -3,7 +3,16 @@ class YoutubeWorker
   include Sidetiq::Schedulable
 
   recurrence { minutely 5 }
+
   def perform
-    Movie.refresh_youtube_info
+    movie = get_oldest_movie
+    if movie
+      movie.refresh_youtube_info
+  end
+
+  private
+
+  def get_oldest_movie
+    Movie.order(:updated_at).first
   end
 end
