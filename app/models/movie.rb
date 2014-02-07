@@ -51,10 +51,10 @@ class Movie < ActiveRecord::Base
   scope :featured, -> { where(:featured => true) }
 
   def refresh_youtube_info
-      movie_info = youtube_client.video_by(movie.youtube_id)
-      movie.update_attributes :title => movie_info.title,
-                              :description => movie_info.description,
-                              :views => movie_info.view_count
+    movie_info = youtube_client.video_by(youtube_id)
+    update_attributes :title => movie_info.title,
+                      :description => movie_info.description,
+                      :views => movie_info.view_count
   end
 
   def self.new_with_youtube_it(url, user)
