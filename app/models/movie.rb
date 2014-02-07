@@ -18,6 +18,7 @@
 #  tf2_class_id        :integer
 #  featured            :boolean
 #  featured_at         :datetime
+#  info_refreshed_at   :datetime
 #
 # Indexes
 #
@@ -50,11 +51,13 @@ class Movie < ActiveRecord::Base
 
   scope :featured, -> { where(:featured => true) }
 
-  def refresh_youtube_info
+  def refresh_info
     movie_info = youtube_client.video_by(youtube_id)
-    update_attributes :title => movie_info.title,
-                      :description => movie_info.description,
-                      :views => movie_info.view_count
+    self.title = movie_info.title
+    self.description = movie_info.description
+    self.views = movie_info.view_count
+    self.info_refreshed_at = DateTime.now
+    save!
   end
 
   def self.new_with_youtube_it(url, user)

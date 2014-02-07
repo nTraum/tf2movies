@@ -18,6 +18,7 @@
 #  tf2_class_id        :integer
 #  featured            :boolean
 #  featured_at         :datetime
+#  info_refreshed_at   :datetime
 #
 # Indexes
 #
@@ -42,5 +43,6 @@ FactoryGirl.define do
     uploaded_on_youtube { 10.minutes.ago }
     featured false
     featured_at nil
+    info_refreshed_at { DateTime.now }
   end
 end

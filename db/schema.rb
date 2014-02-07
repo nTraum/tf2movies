@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207181754) do
+ActiveRecord::Schema.define(version: 20140207234222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140207181754) do
     t.integer  "tf2_class_id"
     t.boolean  "featured"
     t.datetime "featured_at"
+    t.datetime "info_refreshed_at"
   end
 
   add_index "movies", ["author_id"], name: "index_movies_on_author_id", using: :btree

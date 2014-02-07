@@ -7,13 +7,13 @@ class YoutubeWorker
   def perform
     movie = get_oldest_movie
     if movie
-      movie.refresh_youtube_info
+      movie.refresh_info
     end
   end
 
   private
 
   def get_oldest_movie
-    Movie.order(:updated_at).first
+    Movie.order(:info_refreshed_at).first
   end
 end
