@@ -1,6 +1,7 @@
 # tf2movies
 
 [![Coverage Status](https://coveralls.io/repos/nTraum/tf2movies/badge.png)](https://coveralls.io/r/nTraum/tf2movies)
+[![Code Climate](https://codeclimate.com/github/nTraum/tf2movies.png)](https://codeclimate.com/github/nTraum/tf2movies)
 
 ## Requirements
 
