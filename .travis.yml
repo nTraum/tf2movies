@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.1.0
-bundler_args: --without production development
+bundler_args: --deployment --without production development
 before_script:
   - psql -c 'create database tf2movies_test;' -U postgres
   - export RAILS_ENV=test
