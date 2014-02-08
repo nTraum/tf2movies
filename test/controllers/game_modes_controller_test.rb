@@ -49,7 +49,7 @@ describe GameModesController do
     end
   end
 
-  it 'must redirect all pathes as moderator' do
+  it 'must redirect all moderation pages as moderator' do
     act_as_moderator
     game_mode = FactoryGirl.create :game_mode
     get :new
@@ -65,7 +65,7 @@ describe GameModesController do
     delete :destroy, :id => game_mode.id
     response.status.must_equal 302
   end
-  it 'must redirect all pathes as user' do
+  it 'must redirect all moderation pages as user' do
     act_as_user
     game_mode = FactoryGirl.create :game_mode
     get :new
@@ -81,7 +81,7 @@ describe GameModesController do
     delete :destroy, :id => game_mode.id
     response.status.must_equal 302
   end
-  it 'must redirect all pathes as banned user' do
+  it 'must redirect all moderation pages as banned user' do
     act_as_banned
     game_mode = FactoryGirl.create :game_mode
     get :new
