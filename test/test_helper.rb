@@ -1,13 +1,14 @@
 ENV['RAILS_ENV'] = 'test'
 
+require 'coveralls'
+Coveralls.wear_merged!('rails')
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/rails'
 require 'minitest/pride'
 require 'sidekiq/testing'
 
-require 'coveralls'
-Coveralls.wear!
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
 # require "minitest/rails/capybara"
