@@ -32,22 +32,26 @@ class MiniTest::Spec
   end
 end
 
-def act_as_user
+def as_logged_in_user
   user = FactoryGirl.create(:user)
   session[:user_id] = user.id
+  yield
 end
 
-def act_as_banned
+def as_logged_in_banned_user
   banned = FactoryGirl.create(:banned)
   session[:user_id] = banned.id
+  yield
 end
 
-def act_as_moderator
+def as_logged_in_moderator
   moderator = FactoryGirl.create(:moderator)
   session[:user_id] = moderator.id
+  yield
 end
 
-def act_as_admin
+def as_logged_in_admin
   admin = FactoryGirl.create(:admin)
   session[:user_id] = admin.id
+  yield
 end
