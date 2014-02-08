@@ -48,7 +48,7 @@ class Movie < ActiveRecord::Base
   validates     :uploaded_on_youtube, :presence => true
   validates     :proposer,            :presence => true
   validates     :author,              :presence => true
-
+  validates     :info_refreshed_at,   :presence => true
   scope :featured, -> { where(:featured => true) }
 
   def refresh_info
@@ -72,6 +72,7 @@ class Movie < ActiveRecord::Base
       movie.views = movie_info.view_count
       movie.duration = movie_info.duration
       movie.uploaded_on_youtube = movie_info.uploaded_at
+      movie.info_refreshed_at = DateTime.now
     end
   end
 
