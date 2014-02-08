@@ -30,3 +30,23 @@ class MiniTest::Spec
     DatabaseCleaner.clean
   end
 end
+
+def act_as_user
+  user = FactoryGirl.create(:user)
+  session[:user_id] = user.id
+end
+
+def act_as_banned
+  banned = FactoryGirl.create(:banned)
+  session[:user_id] = banned.id
+end
+
+def act_as_moderator
+  moderator = FactoryGirl.create(:moderator)
+  session[:user_id] = moderator.id
+end
+
+def act_as_admin
+  admin = FactoryGirl.create(:admin)
+  session[:user_id] = admin.id
+end
