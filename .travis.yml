@@ -1,6 +1,12 @@
 language: ruby
 rvm:
+  - 1.9.3
+  - 2.0.0
   - 2.1.0
+  - ruby-head
+matrix:
+  allow_failures:
+    - rvm: ruby-head
 bundler_args: --deployment --without production development
 before_script:
   - psql -c 'create database tf2movies_test;' -U postgres
