@@ -8,7 +8,7 @@
 ## Requirements
 
 * PostgreSQL
-* Ruby 2.1
+* Ruby 2.0 or newer
 * Redis
 * curl / curl dev libs
 
