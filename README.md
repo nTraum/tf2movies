@@ -7,10 +7,10 @@
 
 ## Requirements
 
-* PostgreSQL
-* Ruby 2.0 or newer
-* Redis
-* curl / curl dev libs
+* PostgreSQL (>= 9.1 should be fine)
+* Ruby (>= 2.0)
+* Redis (tested on 2.8.5)
+* curl / curl dev libs (tested on 7.35)
 
 ## Installation
 
