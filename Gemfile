@@ -46,9 +46,8 @@ end
 
 gem 'minitest-rails'
 gem 'slim-rails'
+gem 'bootstrap-sass'
 gem 'omniauth-steam'
-gem 'anjlab-bootstrap-rails',     :require => 'bootstrap-rails',
-                                  :github => 'anjlab/bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'youtube_it'
 gem 'factory_girl_rails'
