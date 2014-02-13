@@ -52,6 +52,7 @@ class Movie < ActiveRecord::Base
   scope :featured, -> { where(:featured => true) }
 
   def refresh_info
+    youtube_client = YouTubeIt::Client.new(:dev_key => YOUTUBE_API_KEY)
     movie_info = youtube_client.video_by(youtube_id)
     self.title = movie_info.title
     self.description = movie_info.description
@@ -61,6 +62,7 @@ class Movie < ActiveRecord::Base
   end
 
   def self.new_with_youtube_it(url, user)
+    youtube_client = YouTubeIt::Client.new(:dev_key => YOUTUBE_API_KEY)
     movie_info = youtube_client.video_by(url)
     author_info = youtube_client.profile movie_info.author.uri.split('/').last #YOLO
     new do |movie|
@@ -74,10 +76,5 @@ class Movie < ActiveRecord::Base
       movie.uploaded_on_youtube = movie_info.uploaded_at
       movie.info_refreshed_at = DateTime.now
     end
-  end
-
-  private
-  def youtube_client
-    @client ||= YouTubeIt::Client.new(:dev_key => YOUTUBE_API_KEY)
   end
 end
