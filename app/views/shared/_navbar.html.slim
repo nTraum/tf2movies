@@ -1,30 +1,32 @@
 nav.navbar.navbar-default role='navigation'
-  .navbar-header
-    = link_to 'TF2Movies', root_path, :class => 'navbar-brand'
-  .collapse.navbar-collapse.navbar-ex1-collapse
-    ul.nav.navbar-nav.navbar-right
-      li.active
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle type='button' data-toggle='collapse' data-target='#navbar-dropdown'
+        span.sr-only Toggle Navigation
+        span = fa_icon('bars')
+      = link_to 'TF2Movies', root_path, :class => 'navbar-brand'
 
-        = form_tag('/search', :class => 'navbar-form navbar-left', :role => 'search') do
-          .form-group
-            = search_field_tag(:query, nil, :placeholder => 'Search', :class => 'form-control', :id => 'search')
-
-      - if params[:controller] == 'movies' and params[:action] == 'submit'
-        li.active
-          = link_to(fa_icon('film', :text => 'Submit Movie'), submit_movies_path)
-      - else
-        li
-          = link_to(fa_icon('film', :text => 'Submit Movie'), submit_movies_path)
-
-      - if current_user
-        - if params[:controller] == 'users' and params[:action] == 'show' and params[:id] == current_user.id.to_s
+    .collapse.navbar-collapse#navbar-dropdown
+      = form_tag('/search', :class => 'navbar-form navbar-left', :role => 'search') do
+        .form-group
+          = search_field_tag(:query, nil, :placeholder => 'Search', :class => 'form-control', :id => 'search')
+      ul.nav.navbar-nav.navbar-right
+        - if params[:controller] == 'movies' and params[:action] == 'submit'
           li.active
-            = link_to(fa_icon('user', :text => current_user.nickname), user_path(current_user.id))
+            = link_to(fa_icon('film', :text => 'Submit Movie'), submit_movies_path)
         - else
           li
-            = link_to(fa_icon('user', :text => current_user.nickname), user_path(current_user.id))
-        li
-         = link_to(fa_icon('sign-out', :text => 'Sign out'), logout_path, :method => :post)
-      - else
-        li
-          = link_to(image_tag('steam_signin.png', :height => 23, :width => 154), login_path)
+            = link_to(fa_icon('film', :text => 'Submit Movie'), submit_movies_path)
+
+        - if current_user
+          - if params[:controller] == 'users' and params[:action] == 'show' and params[:id] == current_user.id.to_s
+            li.active
+              = link_to(fa_icon('user', :text => current_user.nickname), user_path(current_user.id))
+          - else
+            li
+              = link_to(fa_icon('user', :text => current_user.nickname), user_path(current_user.id))
+          li
+           = link_to(fa_icon('sign-out', :text => 'Sign out'), logout_path, :method => :post)
+        - else
+          li
+            = link_to(image_tag('steam_signin.png', :height => 23, :width => 154), login_path)
