@@ -29,7 +29,7 @@ ul.list-inline
   li
     = fa_icon 'youtube-play', :text => "#{number_with_delimiter @movie.views} views"
   li
-    = fa_icon 'calendar', :text => "Added #{distance_of_time_in_words_to_now @movie.created_at} ago"
+    = fa_icon 'calendar', :text => "Added #{time_ago_in_words @movie.created_at} ago"
   li
     = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
 
@@ -81,16 +81,20 @@ ul.list-inline
             th #
             th Status
             th Hoster
+            th
           tbody
             - @movie.downloads.each_with_index do |d,i|
               tr
                 td = i+1
                 td
                   - if d.online? == true
-                    span.label.label-success Online
+                    span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='right'
+                     | Online
                   - elsif d.offline?
-                    span.label.label-danger Offline
+                    span.label.label-danger.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='right'
+                      | Offline
                   - else
-                    span.label.label-default Unknown
+                    span.label.label-default data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='right'
+                      | Unknown
                 td = d.host
                 td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), d.url, :class => 'btn btn-primary btn-xs', :target => '_blank')
