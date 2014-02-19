@@ -340,7 +340,7 @@ DEPENDENCIES
   puma
   pundit
   quiet_assets
-  rails (~> 4.0)
+  rails (~> 4.0.3)
   rails-footnotes
   rails_autolink
   sass-rails (~> 4.0.0)
