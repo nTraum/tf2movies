@@ -5,9 +5,8 @@ gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
-gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
-gem 'jbuilder'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
