@@ -88,13 +88,13 @@ ul.list-inline
                 td = i+1
                 td
                   - if d.online? == true
-                    span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='right'
+                    span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
                      | Online
                   - elsif d.offline?
-                    span.label.label-danger.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='right'
+                    span.label.label-danger.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
                       | Offline
                   - else
-                    span.label.label-default data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='right'
+                    span.label.label-default data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
                       | Unknown
                 td = d.host
                 td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), d.url, :class => 'btn btn-primary btn-xs', :target => '_blank')
