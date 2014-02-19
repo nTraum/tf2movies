@@ -3,7 +3,7 @@ nav.navbar.navbar-default role='navigation'
     .navbar-header
       button.navbar-toggle type='button' data-toggle='collapse' data-target='#navbar-dropdown'
         span.sr-only Toggle Navigation
-        span = fa_icon('bars')
+        span = fa_icon('bars fw')
       = link_to 'TF2Movies', root_path, :class => 'navbar-brand'
 
     .collapse.navbar-collapse#navbar-dropdown
@@ -13,20 +13,20 @@ nav.navbar.navbar-default role='navigation'
       ul.nav.navbar-nav.navbar-right
         - if params[:controller] == 'movies' and params[:action] == 'submit'
           li.active
-            = link_to(fa_icon('film', :text => 'Submit Movie'), submit_movies_path)
+            = link_to(fa_icon('film fw', :text => 'Submit Movie'), submit_movies_path)
         - else
           li
-            = link_to(fa_icon('film', :text => 'Submit Movie'), submit_movies_path)
+            = link_to(fa_icon('film fw', :text => 'Submit Movie'), submit_movies_path)
 
         - if current_user
           - if params[:controller] == 'users' and params[:action] == 'show' and params[:id] == current_user.id.to_s
             li.active
-              = link_to(fa_icon('user', :text => current_user.nickname), user_path(current_user.id))
+              = link_to(fa_icon('user fw', :text => current_user.nickname), user_path(current_user.id))
           - else
             li
-              = link_to(fa_icon('user', :text => current_user.nickname), user_path(current_user.id))
+              = link_to(fa_icon('user fw', :text => current_user.nickname), user_path(current_user.id))
           li
-           = link_to(fa_icon('sign-out', :text => 'Sign out'), logout_path, :method => :post)
+           = link_to(fa_icon('sign-out fw', :text => 'Sign out'), logout_path, :method => :post)
         - else
           li
             = link_to(image_tag('steam_signin.png', :height => 23, :width => 154), login_path)
