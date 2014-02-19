@@ -54,7 +54,7 @@ ul.list-inline
       .panel-body
         table.table.table-hover.table-condensed
           thead
-            th #
+            th.hidden-xs #
             th Artist
             th Title
             th.text-right G
@@ -63,7 +63,7 @@ ul.list-inline
           tbody
             - @movie.songs.each_with_index do |s, i|
               tr
-                td = i+1
+                td.hidden-xs = i+1
                 td = s.artist
                 td = s.title
                 td.text-right = link_to(fa_icon('external-link'), s.google_search, :target => '_blank')
@@ -78,14 +78,14 @@ ul.list-inline
       .panel-body
         table.table.table-hover.table-condensed
           thead
-            th #
+            th.hidden-xs #
             th Status
             th Hoster
             th
           tbody
             - @movie.downloads.each_with_index do |d,i|
               tr
-                td = i+1
+                td.hidden-xs = i+1
                 td
                   - if d.online? == true
                     span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
