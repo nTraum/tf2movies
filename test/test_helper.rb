@@ -36,22 +36,26 @@ def as_logged_in_user
   user = FactoryGirl.create(:user)
   session[:user_id] = user.id
   yield
+  session.delete :user_id
 end
 
 def as_logged_in_banned_user
   banned = FactoryGirl.create(:banned)
   session[:user_id] = banned.id
   yield
+  session.delete :user_id
 end
 
 def as_logged_in_moderator
   moderator = FactoryGirl.create(:moderator)
   session[:user_id] = moderator.id
   yield
+  session.delete :user_id
 end
 
 def as_logged_in_admin
   admin = FactoryGirl.create(:admin)
   session[:user_id] = admin.id
   yield
+  session.delete :user_id
 end
