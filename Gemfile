@@ -28,9 +28,9 @@ gem 'cocoon'
 gem 'pundit'
 gem 'kaminari'
 gem 'curb'
+gem 'puma'
 
 group :production do
-  gem 'puma'
   gem 'newrelic_rpm'
 end
 
