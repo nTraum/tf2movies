@@ -40,6 +40,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard'
+  gem 'guard-annotate'
   gem 'guard-bundler'
   gem 'guard-livereload'
   gem 'guard-minitest'
