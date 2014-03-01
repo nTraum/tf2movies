@@ -30,6 +30,7 @@ gem 'pundit'
 gem 'kaminari'
 gem 'curb'
 gem 'puma'
+gem 'foreman'
 
 group :production do
   gem 'newrelic_rpm'
