@@ -22,3 +22,6 @@
 
 # Ignore coverage results
 /coverage
+
+# Environment config
+.env
