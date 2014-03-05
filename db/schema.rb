@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207234222) do
+ActiveRecord::Schema.define(version: 20140219050123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,11 +59,19 @@ ActiveRecord::Schema.define(version: 20140207234222) do
     t.boolean  "featured"
     t.datetime "featured_at"
     t.datetime "info_refreshed_at"
+    t.integer  "region_id"
   end
 
   add_index "movies", ["author_id"], name: "index_movies_on_author_id", using: :btree
   add_index "movies", ["game_mode_id"], name: "index_movies_on_game_mode_id", using: :btree
+  add_index "movies", ["region_id"], name: "index_movies_on_region_id", using: :btree
   add_index "movies", ["user_id"], name: "index_movies_on_user_id", using: :btree
+
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "songs", force: true do |t|
     t.string   "artist"

@@ -2,6 +2,10 @@
   hr
   h3 Misc
   .form-group
+    = f.label :region_id, 'Region', :class => 'col-sm-2 col-sm-offset-1 control-label'
+    .col-sm-8
+      = f.collection_select :region_id, Region.all(:order => :name), :id, :name, {:include_blank => true}, {:class => 'form-control'}
+  .form-group
     = f.label :game_mode_id, 'Game Mode', :class => 'col-sm-2 col-sm-offset-1 control-label'
     .col-sm-8
       = f.collection_select :game_mode_id, GameMode.all(:order => :name), :id, :name, {:include_blank => true}, {:class => 'form-control'}

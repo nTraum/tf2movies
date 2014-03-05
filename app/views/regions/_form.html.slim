@@ -1,0 +1,7 @@
+= form_for region do |f|
+      fieldset
+        .input-group
+          = f.text_field :name, :required => true, :class => 'form-control'
+          label.sr-only for='name' Name
+          span.input-group-btn
+            = f.submit 'Save', :class => 'btn btn-primary'

@@ -14,6 +14,10 @@ a.btn.btn-large.btn-danger.pull-right href='#'
 ul.list-inline
   li
     => fa_icon 'tags'
+  - if @movie.region
+    li
+      a href=region_path(@movie.region)
+        span.badge =< @movie.region.name
   - if @movie.game_mode
     li
       a href=game_mode_path(@movie.game_mode)

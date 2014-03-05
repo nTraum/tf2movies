@@ -9,11 +9,7 @@ Tf2movies::Application.routes.draw do
   post 'auth/steam/callback' => 'sessions#create'
   post '/logout' => 'sessions#destroy', :as => :logout
 
-  resources :game_modes do
-    get 'moderate', :on => :collection
-  end
-
-  resources :tf2_classes do
+  resources :regions, :game_modes, :tf2_classes do
     get 'moderate', :on => :collection
   end
 

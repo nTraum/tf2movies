@@ -1,0 +1,58 @@
+class RegionsController < ApplicationController
+  after_action :verify_authorized, :except => [:index, :show]
+
+  def index
+  end
+
+  def moderate
+    @regions = Region.all.page params[:page]
+    authorize @regions
+  end
+
+  def new
+    @region = Region.new
+    authorize @region
+  end
+
+  def create
+    @region = Region.new(region_params)
+    authorize @region
+    if @region.save
+      redirect_to moderate_regions_path, :notice => "Region '#{@region.name}' has been created successfully!"
+    else
+      redirect_to new_region_path, :alert => @region.errors.full_messages.join(', ')
+    end
+  end
+
+  def show
+  end
+
+  def edit
+    @region = Region.find(params[:id])
+    authorize @region
+  end
+
+  def update
+    @region = Region.find(params[:id])
+    authorize @region
+
+    if @region.update(region_params)
+      redirect_to moderate_regions_path, :notice => 'Region updated.'
+    else
+      redirect_to moderate_regions_path, :alert => @region.errors.full_messages.join(', ')
+    end
+  end
+
+  def destroy
+    @region = Region.find(params[:id])
+    authorize @region
+    @region.destroy
+    redirect_to moderate_regions_path, :notice => 'Region deleted.'
+  end
+
+  private
+
+  def region_params
+    params.require(:region).permit(:name)
+  end
+end
