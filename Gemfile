@@ -31,6 +31,7 @@ gem 'kaminari'
 gem 'curb'
 gem 'puma'
 gem 'foreman'
+gem 'colored'
 
 group :production do
   gem 'newrelic_rpm'
