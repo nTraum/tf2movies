@@ -1,8 +1,4 @@
-require 'sidekiq/web'
-require 'sidetiq/web'
-
 Tf2movies::Application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
   root 'users#index'
 
   get '/login', :to => redirect('/auth/steam'), :as => :login

@@ -1,5 +1,21 @@
 namespace :tf2movies do
 
+  desc 'Refreshs movie meta data'
+  task refresh_movies: :environment do
+    movie = Movie.order(:info_refreshed_at).first
+    if movie
+      movie.refresh_info
+    end
+  end
+
+  desc 'Checks and refreshs the availability of downloads'
+  task refresh_downloads: :environment do
+    download = Download.where(:status_refreshed_at => nil).first || Download.order(:status_refreshed_at).first
+    if download
+      download.refresh_status
+    end
+  end
+
   desc 'Let a user become an admin'
   task :adminify, [:nickname] => :environment do |t, args|
     if args.nickname

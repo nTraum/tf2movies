@@ -23,8 +23,6 @@ gem 'youtube_it'
 gem 'factory_girl_rails'
 gem 'gretel'
 gem 'rails_autolink'
-gem 'sidetiq'
-gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'cocoon'
 gem 'pundit'
 gem 'kaminari'
