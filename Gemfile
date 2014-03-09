@@ -7,6 +7,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
+gem 'rack-timeout'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
