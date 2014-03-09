@@ -8,7 +8,7 @@
 
 unless Tf2Class.any?
   puts 'Seeding TF2 classes...'
-  tf2_classes = %w[Scout Soldier Pyro Demoman Heavy Engineer Medic Sniper Spy]
+  tf2_classes = %w[Scout Soldier Pyro Demoman Heavy Engineer Medic Sniper Spy Mixed]
   tf2_classes.each do |tf2_class|
     Tf2Class.create(:name => tf2_class)
     puts "\t...#{tf2_class}"
@@ -18,7 +18,7 @@ end
 
 unless GameMode.any?
   puts 'Seeding game modes...'
-  game_modes = %w[6v6 Highlander Jump BBall]
+  game_modes = %w[6v6 Highlander Jump BBall Mixed]
   game_modes.each  do |game_mode|
     GameMode.create(:name => game_mode)
     puts "\t...#{game_mode}"
@@ -28,7 +28,7 @@ end
 
 unless Region.any?
   puts 'Seeding regions...'
-  regions = ['Europe', 'South America', 'North America', 'Asia', 'Africa', 'Oceania']
+  regions = ['Europe', 'South America', 'North America', 'Asia', 'Africa', 'Oceania', 'Global']
   regions.each do |region|
     Region.create(:name => region)
     puts "\t...#{region}"
