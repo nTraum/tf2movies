@@ -16,14 +16,14 @@ crumb :movie do |movie|
   parent :movies
 end
 
-crumb :moderate_movies do
-  link 'Moderate', moderate_movies_path
+crumb :manage_movies do
+  link 'Manage', manage_movies_path
   parent :movies
 end
 
 crumb :edit_movie do |movie|
   link 'Edit'
-  parent :moderate_movies
+  parent :manage_movies
 end
 
 crumb :users do
