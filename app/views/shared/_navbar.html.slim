@@ -7,9 +7,33 @@ nav.navbar.navbar-default role='navigation'
       = link_to 'TF2Movies', root_path, :class => 'navbar-brand'
 
     .collapse.navbar-collapse#navbar-dropdown
+      ul.nav.navbar-nav.navbar-left
+        li.dropdown
+          a.dropdown-toggle href='#' data-toggle='dropdown'
+            = fa_icon('bullseye fw', :text => 'Classes')
+            = fa_icon('caret-down fw')
+          ul.dropdown-menu
+            - tf2_classes.each do |tf2_class|
+              li = link_to tf2_class.name, tf2_class_path(tf2_class)
+        li.dropdown
+          a.dropdown-toggle href='#' data-toggle='dropdown'
+            = fa_icon('users fw', :text => 'Game modes')
+            = fa_icon('caret-down fw')
+          ul.dropdown-menu
+            - game_modes.each do |gm|
+              li = link_to gm.name, game_mode_path(gm)
+        li.dropdown
+          a.dropdown-toggle href='#' data-toggle='dropdown'
+            = fa_icon('globe fw', :text => 'Regions')
+            = fa_icon('caret-down fw')
+          ul.dropdown-menu
+            - regions.each do |region|
+              li = link_to region.name, region_path(region)
+
       = form_tag('/search', :class => 'navbar-form navbar-left', :role => 'search') do
         .form-group
           = search_field_tag(:query, nil, :placeholder => 'Search', :class => 'form-control', :id => 'search')
+
       ul.nav.navbar-nav.navbar-right
         - if params[:controller] == 'movies' and params[:action] == 'submit'
           li.active

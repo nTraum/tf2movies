@@ -5,10 +5,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-  before_action :user_refresh_last_online
+  before_action :user_refresh_last_online, :navbar_categories
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
+
+  def navbar_categories
+    @game_modes_navbar = GameMode.all
+    @tf2_classes_navbar = Tf2Class.all
+    @regions_navbar = Region.all
+  end
 
   def user_refresh_last_online
     if current_user and (Time.now - current_user.last_online > 5.minutes)

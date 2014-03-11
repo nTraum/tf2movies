@@ -9,11 +9,11 @@ html
   body
     .container
       header
-        == render 'shared/navbar'
+        == render :partial => 'shared/navbar', :locals => {:game_modes => @game_modes_navbar, :tf2_classes => @tf2_classes_navbar, :regions => @regions_navbar}
       .row
         .col-md-10
           main
-            == render 'shared/flashes', :locals => {:flash => flash}
+            == render :partial => 'shared/flashes', :locals => {:flash => flash}
             == breadcrumbs :style => :bootstrap
             = yield
         .col-md-2
