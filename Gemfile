@@ -51,6 +51,7 @@ end
 group :test do
   gem 'coveralls', require: false
   gem 'database_cleaner'
+  gem 'minitest-vcr'
   gem 'vcr'
   gem 'webmock'
 end

@@ -108,10 +108,17 @@ GEM
       railties
     method_source (0.8.2)
     mime-types (1.25.1)
+    minispec-metadata (2.0.0)
+      minitest
     minitest (4.7.5)
     minitest-rails (0.9.2)
       minitest (~> 4.7)
       rails (>= 3.0)
+    minitest-vcr (0.1.0)
+      database_cleaner (>= 1.0.1)
+      minispec-metadata (~> 2.0.0)
+      minitest (>= 4.7.5)
+      vcr (~> 2.8.0)
     multi_json (1.9.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -275,6 +282,7 @@ DEPENDENCIES
   lol_dba
   meta_request
   minitest-rails
+  minitest-vcr
   newrelic_rpm
   omniauth-steam
   pg
