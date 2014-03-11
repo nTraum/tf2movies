@@ -14,6 +14,11 @@
 
 ## Installation
 
-* [YouTube API](https://cloud.google.com/console/project) key in `/config/initializers/youtube.rb`
-* [Steam API](http://steamcommunity.com/dev) key in `config/initializers/omniauth_steam.rb`
-* [New Relic](http://newrelic.com/) License key in `config/newrelic.yml`
+Environment variables (`.env`):
+
+* [YouTube API](https://cloud.google.com/console/project)
+* [Steam API](http://steamcommunity.com/dev)
+* [New Relic](http://newrelic.com/)
+* Secret Token
+
+`rake tf2movies:check`
