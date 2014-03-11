@@ -46,5 +46,9 @@ FactoryGirl.define do
     featured false
     featured_at nil
     info_refreshed_at { DateTime.now }
+
+    factory :real_youtube_id do
+      youtube_id '0fCpAuxrQ_I'
+    end
   end
 end
