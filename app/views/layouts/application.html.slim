@@ -11,12 +11,10 @@ html
       header
         == render :partial => 'shared/navbar', :locals => {:game_modes => @game_modes_navbar, :tf2_classes => @tf2_classes_navbar, :regions => @regions_navbar}
       .row
-        .col-md-10
+        .col-md-12
           main
             == render :partial => 'shared/flashes', :locals => {:flash => flash}
             == breadcrumbs :style => :bootstrap
             = yield
-        .col-md-2
-          aside
       footer.hidden-xs
         == render 'shared/footer'

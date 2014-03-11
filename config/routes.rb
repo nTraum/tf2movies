@@ -1,5 +1,8 @@
 Tf2movies::Application.routes.draw do
-  root 'users#index'
+  root 'pages#welcome'
+
+  get '/about', :to => 'pages#about', :as => :about
+  get '/contact', :to => 'pages#contact', :as => :contact
 
   get '/login', :to => redirect('/auth/steam'), :as => :login
   post 'auth/steam/callback' => 'sessions#create'
