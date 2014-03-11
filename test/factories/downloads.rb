@@ -21,8 +21,8 @@ FactoryGirl.define do
   factory :download do
     url 'http://example.com/test.mp4'
     movie
-    status 'online'
-    status_refreshed_at { DateTime.now }
+    status 'unknown'
+    status_refreshed_at nil
     factory :no_prefix do
       url 'example.com/test.mp4'
     end
@@ -42,10 +42,20 @@ FactoryGirl.define do
       url 'https://www.example.com/test.mp4'
     end
 
-    factory :no_status_check do
+    factory :url_online_200 do
       url 'http://example.com'
-      status_refreshed_at nil
-      status 'unknown'
+    end
+
+    factory :url_offline_404 do
+      url 'http://example.com/test'
+    end
+
+    factory :url_offline_403 do
+      url 'http://etf2l.org/wp-config.php.swp'
+    end
+
+    factory :url_offline_host_unknown do
+      url 'vkfdgvdfslkghlkswlkvlkagqalkgwfq'
     end
   end
 end

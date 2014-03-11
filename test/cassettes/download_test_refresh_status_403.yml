@@ -1,0 +1,32 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://etf2l.org/wp-config.php.swp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 11 Mar 2014 15:58:29 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '162'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Tue, 11 Mar 2014 15:58:08 GMT
+recorded_with: VCR 2.8.0

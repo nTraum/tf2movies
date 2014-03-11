@@ -23,12 +23,37 @@ describe Download do
     end
   end
 
-  it 'must refresh the status' do
-    download = FactoryGirl.create :no_status_check
+  it 'must change the status to online when the web server answers 200' do
+    download = FactoryGirl.build :url_online_200
     VCR.use_cassette('download_test_refresh_status_200') do
       download.refresh_status
     end
     download.online?.must_equal true
+    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
+  end
+
+  it 'must change the status to offline when the web server answers 404' do
+    download = FactoryGirl.build :url_offline_404
+    VCR.use_cassette('download_test_refresh_status_404') do
+      download.refresh_status
+    end
+    download.offline?.must_equal true
+    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
+  end
+
+  it 'must change the status to unknown when the web server answers differently' do
+    download = FactoryGirl.build :url_offline_403
+    VCR.use_cassette('download_test_refresh_status_403') do
+      download.refresh_status
+    end
+    download.unknown?.must_equal true
+    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
+  end
+
+  it 'must change the status to unknown when the host is unknown' do
+    download = FactoryGirl.build :url_offline_host_unknown
+    download.refresh_status
+    download.unknown?.must_equal true
     download.status_refreshed_at.must_be_within_delta(Time.current, 3)
   end
 end
