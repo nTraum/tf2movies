@@ -19,30 +19,31 @@
 
 FactoryGirl.define do
   factory :download do
-    url 'http://fakkelbrigade.eu/torden/7brothers_720pHi'
+    url 'http://example.com/test.mp4'
     movie
     status 'online'
     status_refreshed_at { DateTime.now }
     factory :no_prefix do
-      url 'fakkelbrigade.eu/torden/7brothers_720pHi'
+      url 'example.com/test.mp4'
     end
 
     factory :https do
-      url 'https://fakkelbrigade.eu/torden/7brothers_720pHi'
+      url 'https://example.com/test.mp4'
     end
 
     factory :subdomain do
-      url 'files.fakkelbrigade.eu/torden/7brothers_720pHi'
+      url 'test.example.com/test.mp4'
     end
 
     factory :http_www do
-      url 'http://www.fakkelbrigade.eu/torden/7brothers_720pHi'
+      url 'http://www.example.com/test.mp4'
     end
     factory :https_www do
-      url 'https://www.fakkelbrigade.eu/torden/7brothers_720pHi'
+      url 'https://www.example.com/test.mp4'
     end
 
     factory :no_status_check do
+      url 'http://example.com'
       status_refreshed_at nil
       status 'unknown'
     end

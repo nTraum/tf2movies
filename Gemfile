@@ -50,8 +50,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
-  gem 'database_cleaner'
-  gem 'minitest-vcr'
-  gem 'vcr'
-  gem 'webmock'
+  gem 'database_cleaner', require: false
+  gem 'vcr', require: false
+  gem 'webmock', require: false
 end

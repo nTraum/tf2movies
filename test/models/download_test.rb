@@ -19,7 +19,16 @@ describe Download do
 
   it 'must derive the correct domain' do
     subject.each do |download|
-      download.host.must_equal 'fakkelbrigade.eu', "Wrong host for: '#{download.host}'"
+      download.host.must_equal 'example.com', "Wrong host for: '#{download.host}'"
     end
+  end
+
+  it 'must refresh the status' do
+    download = FactoryGirl.create :no_status_check
+    VCR.use_cassette('download_test_refresh_status_200') do
+      download.refresh_status
+    end
+    download.online?.must_equal true
+    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
   end
 end
