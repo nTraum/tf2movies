@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Tf2movies::Application.config.secret_key_base = 'aa8c367ae5a7c9a665e5067aec03cf55ce11b942a203e3091c68f09ab0ef57e8a14b748fdad74b52ae51fa9cc9157e705bca424ce0f753d948ff71c15347ad8d'
+
+if ENV['SECRET_TOKEN'].empty?
+  Tf2movies::Application.config.secret_key_base = 'ifyourehappyandyouknowitclapyourhands'
+else
+  Tf2movies::Application.config.secret_key_base = ENV['SECRET_TOKEN']
+end

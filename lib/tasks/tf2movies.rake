@@ -39,33 +39,44 @@ namespace :tf2movies do
     check_youtube_api_key
     check_steam_api_key
     check_newrelic_api_key
+    check_secret_token
     puts 'Finished running checks.'
   end
 
   def check_youtube_api_key
     print 'Environment variable YOUTUBE_API_KEY exists?... '
-    if ENV['YOUTUBE_API_KEY']
-      puts 'yes'.green
-    else
+    if ENV['YOUTUBE_API_KEY'].empty?
       puts 'no'.red
+    else
+      puts 'yes'.green
     end
   end
 
   def check_steam_api_key
     print 'Environment variable STEAM_API_KEY exists?... '
-    if ENV['STEAM_API_KEY']
-      puts 'yes'.green
-    else
+    if ENV['STEAM_API_KEY'].empty?
       puts 'no'.red
+    else
+      puts 'yes'.green
     end
   end
 
   def check_newrelic_api_key
   print 'Environment variable NEWRELIC_API_KEY exists?... '
-    if ENV['NEWRELIC_API_KEY']
-      puts 'yes'.green
-    else
+    if ENV['NEWRELIC_API_KEY'].empty?
       puts 'no'.red
+    else
+      puts 'yes'.green
+    end
+  end
+
+  def check_secret_token
+    puts ENV['SECRET_TOKEN']
+    print 'Environment variable SECRET_TOKEN exists?... '
+    if ENV['SECRET_TOKEN'].empty?
+      puts 'no'.red
+    else
+      puts 'yes'.green
     end
   end
 end
