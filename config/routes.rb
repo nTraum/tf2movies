@@ -6,7 +6,7 @@ Tf2movies::Application.routes.draw do
   post '/logout' => 'sessions#destroy', :as => :logout
 
   resources :regions, :game_modes, :tf2_classes do
-    get 'moderate', :on => :collection
+    get 'manage', :on => :collection
   end
 
   resources :authors, :only => [:show, :index]
@@ -14,7 +14,7 @@ Tf2movies::Application.routes.draw do
 
   resources :movies,  :only => [:show, :create, :index, :edit, :update] do
     get 'submit',   :on => :collection
-    get 'moderate', :on => :collection
+    get 'manage', :on => :collection
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -4,7 +4,7 @@ class Tf2ClassesController < ApplicationController
   def index
   end
 
-  def moderate
+  def manage
     @tf2_classes = Tf2Class.all.page params[:page]
     authorize @tf2_classes
   end
@@ -18,7 +18,7 @@ class Tf2ClassesController < ApplicationController
     @tf2_class = Tf2Class.new(tf2_class_params)
     authorize @tf2_class
     if @tf2_class.save
-      redirect_to moderate_tf2_classes_path, :notice => "TF2 Class '#{@tf2_class.name}' has been created successfully!"
+      redirect_to manage_tf2_classes_path, :notice => "TF2 Class '#{@tf2_class.name}' has been created successfully!"
     else
       redirect_to new_tf2_class_path, :alert => @tf2_class.errors.full_messages.join(', ')
     end
@@ -37,9 +37,9 @@ class Tf2ClassesController < ApplicationController
     authorize @tf2_class
 
     if @tf2_class.update(tf2_class_params)
-      redirect_to moderate_tf2_classes_path, :notice => 'TF2 class updated.'
+      redirect_to manage_tf2_classes_path, :notice => 'TF2 class updated.'
     else
-      redirect_to moderate_tf2_classes_path, :alert => @tf2_class.errors.full.join(', ')
+      redirect_to manage_tf2_classes_path, :alert => @tf2_class.errors.full.join(', ')
     end
   end
 
@@ -47,7 +47,7 @@ class Tf2ClassesController < ApplicationController
     @tf2_class = Tf2Class.find(params[:id])
     authorize @tf2_class
     @tf2_class.destroy
-    redirect_to moderate_tf2_classes_path, :notice => 'TF2 class deleted.'
+    redirect_to manage_tf2_classes_path, :notice => 'TF2 class deleted.'
   end
 
   def tf2_class_params

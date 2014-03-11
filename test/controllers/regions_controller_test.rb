@@ -9,10 +9,10 @@ describe RegionsController do
         response.status.must_equal 200
       end
     end
-    it 'must get moderate' do
+    it 'must get manage' do
       as_logged_in_admin do
         FactoryGirl.create(:region)
-        get :moderate
+        get :manage
         assigns(:regions).size.must_equal 1
         response.status.must_equal 200
       end
@@ -60,7 +60,7 @@ describe RegionsController do
       region = FactoryGirl.create :region
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :region => FactoryGirl.attributes_for(:region)
       response.status.must_equal 302
@@ -77,7 +77,7 @@ describe RegionsController do
       region = FactoryGirl.create :region
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :region => FactoryGirl.attributes_for(:region)
       response.status.must_equal 302
@@ -94,7 +94,7 @@ describe RegionsController do
       region = FactoryGirl.create :region
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :region => FactoryGirl.attributes_for(:region)
       response.status.must_equal 302

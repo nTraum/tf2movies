@@ -1,25 +1,25 @@
 Tf2ClassPolicy = Struct.new(:user, :tf2_class) do
-  def moderate?
+  def manage?
     user && user.admin?
   end
 
   def edit?
-    moderate?
+    manage?
   end
 
   def update?
-    moderate?
+    manage?
   end
 
   def destroy?
-    moderate?
+    manage?
   end
 
   def create?
-    moderate?
+    manage?
   end
 
   def new?
-    moderate?
+    manage?
   end
 end

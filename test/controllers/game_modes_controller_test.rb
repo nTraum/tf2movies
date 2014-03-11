@@ -9,10 +9,10 @@ describe GameModesController do
         response.status.must_equal 200
       end
     end
-    it 'must get moderate' do
+    it 'must get manage' do
       as_logged_in_admin do
         FactoryGirl.create(:game_mode)
-        get :moderate
+        get :manage
         assigns(:game_modes).size.must_equal 1
         response.status.must_equal 200
       end
@@ -60,7 +60,7 @@ describe GameModesController do
       game_mode = FactoryGirl.create :game_mode
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :game_mode => FactoryGirl.attributes_for(:game_mode)
       response.status.must_equal 302
@@ -77,7 +77,7 @@ describe GameModesController do
       game_mode = FactoryGirl.create :game_mode
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :game_mode => FactoryGirl.attributes_for(:game_mode)
       response.status.must_equal 302
@@ -94,7 +94,7 @@ describe GameModesController do
       game_mode = FactoryGirl.create :game_mode
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :game_mode => FactoryGirl.attributes_for(:game_mode)
       response.status.must_equal 302

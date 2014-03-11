@@ -4,7 +4,7 @@ class GameModesController < ApplicationController
   def index
   end
 
-  def moderate
+  def manage
     @game_modes = GameMode.all.page params[:page]
     authorize @game_modes
   end
@@ -18,7 +18,7 @@ class GameModesController < ApplicationController
     @game_mode = GameMode.new(game_mode_params)
     authorize @game_mode
     if @game_mode.save
-      redirect_to moderate_game_modes_path, :notice => "Game Mode '#{@game_mode.name}' has been created successfully!"
+      redirect_to manage_game_modes_path, :notice => "Game Mode '#{@game_mode.name}' has been created successfully!"
     else
       redirect_to new_game_mode_path, :alert => @game_mode.errors.full_messages.join(', ')
     end
@@ -37,9 +37,9 @@ class GameModesController < ApplicationController
     authorize @game_mode
 
     if @game_mode.update(game_mode_params)
-      redirect_to moderate_game_modes_path, :notice => 'Game Mode updated.'
+      redirect_to manage_game_modes_path, :notice => 'Game Mode updated.'
     else
-      redirect_to moderate_game_modes_path, :alert => @game_mode.errors.full_messages.join(', ')
+      redirect_to manage_game_modes_path, :alert => @game_mode.errors.full_messages.join(', ')
     end
   end
 
@@ -47,7 +47,7 @@ class GameModesController < ApplicationController
     @game_mode = GameMode.find(params[:id])
     authorize @game_mode
     @game_mode.destroy
-    redirect_to moderate_game_modes_path, :notice => 'Game Mode deleted.'
+    redirect_to manage_game_modes_path, :notice => 'Game Mode deleted.'
   end
 
   private

@@ -9,10 +9,10 @@ describe Tf2ClassesController do
         response.status.must_equal 200
       end
     end
-    it 'must get moderate' do
+    it 'must get manage' do
       as_logged_in_admin do
         FactoryGirl.create(:tf2_class)
-        get :moderate
+        get :manage
         assigns(:tf2_classes).size.must_equal 1
         response.status.must_equal 200
       end
@@ -60,7 +60,7 @@ describe Tf2ClassesController do
       tf2_class = FactoryGirl.create :tf2_class
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :tf2_class => FactoryGirl.attributes_for(:tf2_class)
       response.status.must_equal 302
@@ -77,7 +77,7 @@ describe Tf2ClassesController do
       tf2_class = FactoryGirl.create :tf2_class
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :tf2_class => FactoryGirl.attributes_for(:tf2_class)
       response.status.must_equal 302
@@ -94,7 +94,7 @@ describe Tf2ClassesController do
       tf2_class = FactoryGirl.create :tf2_class
       get :new
       response.status.must_equal 302
-      get :moderate
+      get :manage
       response.status.must_equal 302
       post :create, :tf2_class => FactoryGirl.attributes_for(:tf2_class)
       response.status.must_equal 302

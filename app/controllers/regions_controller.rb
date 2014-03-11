@@ -4,7 +4,7 @@ class RegionsController < ApplicationController
   def index
   end
 
-  def moderate
+  def manage
     @regions = Region.all.page params[:page]
     authorize @regions
   end
@@ -18,7 +18,7 @@ class RegionsController < ApplicationController
     @region = Region.new(region_params)
     authorize @region
     if @region.save
-      redirect_to moderate_regions_path, :notice => "Region '#{@region.name}' has been created successfully!"
+      redirect_to manage_regions_path, :notice => "Region '#{@region.name}' has been created successfully!"
     else
       redirect_to new_region_path, :alert => @region.errors.full_messages.join(', ')
     end
@@ -37,9 +37,9 @@ class RegionsController < ApplicationController
     authorize @region
 
     if @region.update(region_params)
-      redirect_to moderate_regions_path, :notice => 'Region updated.'
+      redirect_to manage_regions_path, :notice => 'Region updated.'
     else
-      redirect_to moderate_regions_path, :alert => @region.errors.full_messages.join(', ')
+      redirect_to manage_regions_path, :alert => @region.errors.full_messages.join(', ')
     end
   end
 
@@ -47,7 +47,7 @@ class RegionsController < ApplicationController
     @region = Region.find(params[:id])
     authorize @region
     @region.destroy
-    redirect_to moderate_regions_path, :notice => 'Region deleted.'
+    redirect_to manage_regions_path, :notice => 'Region deleted.'
   end
 
   private
