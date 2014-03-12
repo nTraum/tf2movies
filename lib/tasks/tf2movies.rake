@@ -71,7 +71,6 @@ namespace :tf2movies do
   end
 
   def check_secret_token
-    puts ENV['SECRET_TOKEN']
     print 'Environment variable SECRET_TOKEN exists?... '
     if ENV['SECRET_TOKEN'].empty?
       puts 'no'.red
