@@ -39,6 +39,10 @@ crumb :about do
   link 'About'
 end
 
+crumb :contact do
+  link 'Contact'
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
