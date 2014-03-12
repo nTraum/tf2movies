@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://gdata.youtube.com/feeds/api/videos/0fCpAuxrQ_I?key=***REMOVED***&v=2.1
+    uri: http://gdata.youtube.com/feeds/api/videos/0fCpAuxrQ_I?key=&v=2.1
     body:
       encoding: US-ASCII
       string: ''
@@ -23,9 +23,9 @@ http_interactions:
       Content-Type:
       - application/atom+xml; charset=UTF-8; type=entry
       Expires:
-      - Tue, 11 Mar 2014 16:36:21 GMT
+      - Wed, 12 Mar 2014 14:25:45 GMT
       Date:
-      - Tue, 11 Mar 2014 16:36:21 GMT
+      - Wed, 12 Mar 2014 14:25:45 GMT
       Cache-Control:
       - private, max-age=300, no-transform
       Vary:
@@ -56,7 +56,7 @@ http_interactions:
         scheme='http://schemas.google.com/g/2005#kind' term='http://gdata.youtube.com/schemas/2007#video'/><category
         scheme='http://gdata.youtube.com/schemas/2007/categories.cat' term='Games'
         label='Gaming'/><title>TF2 - 7 brothers (broder) frag movie</title><content
-        type='application/x-shockwave-flash' src='http://www.youtube.com/v/0fCpAuxrQ_I?version=3&amp;f=videos&amp;d=AUTYLRbKHSLFIKHNBG8IZwcO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata'/><link
+        type='application/x-shockwave-flash' src='http://www.youtube.com/v/0fCpAuxrQ_I?version=3&amp;f=videos&amp;d=AT74EMeg8ewDMtGqacg1CmEO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata'/><link
         rel='alternate' type='text/html' href='http://www.youtube.com/watch?v=0fCpAuxrQ_I&amp;feature=youtube_gdata'/><link
         rel='http://gdata.youtube.com/schemas/2007#video.ratings' type='application/atom+xml'
         href='http://gdata.youtube.com/feeds/api/videos/0fCpAuxrQ_I/ratings?v=2.1'/><link
@@ -77,11 +77,11 @@ http_interactions:
         href='http://gdata.youtube.com/feeds/api/videos/0fCpAuxrQ_I/comments?v=2.1'
         countHint='359'/></gd:comments><yt:hd/><media:group><media:category label='Gaming'
         scheme='http://gdata.youtube.com/schemas/2007/categories.cat'>Games</media:category><media:content
-        url='http://www.youtube.com/v/0fCpAuxrQ_I?version=3&amp;f=videos&amp;d=AUTYLRbKHSLFIKHNBG8IZwcO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata'
+        url='http://www.youtube.com/v/0fCpAuxrQ_I?version=3&amp;f=videos&amp;d=AT74EMeg8ewDMtGqacg1CmEO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata'
         type='application/x-shockwave-flash' medium='video' isDefault='true' expression='full'
-        duration='394' yt:format='5'/><media:content url='rtsp://r1---sn-4g57kue6.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYDSANFEgGUgZ2aWRlb3NyIQFE2C0Wyh0ixSChzQRvCGcHDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
+        duration='394' yt:format='5'/><media:content url='rtsp://r1---sn-4g57kue6.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYDSANFEgGUgZ2aWRlb3NyIQE--BDHoPHsAzLRqmnINQphDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
         type='video/3gpp' medium='video' expression='full' duration='394' yt:format='1'/><media:content
-        url='rtsp://r1---sn-4g57kue6.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYESARFEgGUgZ2aWRlb3NyIQFE2C0Wyh0ixSChzQRvCGcHDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
+        url='rtsp://r1---sn-4g57kue6.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYESARFEgGUgZ2aWRlb3NyIQE--BDHoPHsAzLRqmnINQphDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
         type='video/3gpp' medium='video' expression='full' duration='394' yt:format='6'/><media:credit
         role='uploader' scheme='urn:youtube' yt:display='Sivert Bakkeng'>tordenbotan</media:credit><media:description
         type='plain'>Description</media:description><media:keywords/><media:license
@@ -99,7 +99,7 @@ http_interactions:
         - 7 brothers (broder) frag movie</media:title><yt:aspectRatio>widescreen</yt:aspectRatio><yt:duration
         seconds='394'/><yt:uploaded>2010-02-19T22:33:36.000Z</yt:uploaded><yt:uploaderId>UCpXQ1QdZ6Rr8rTrnLMsT1lw</yt:uploaderId><yt:videoid>0fCpAuxrQ_I</yt:videoid></media:group><gd:rating
         average='4.845783' max='5' min='1' numRaters='1660' rel='http://schemas.google.com/g/2005#overall'/><yt:statistics
-        favoriteCount='0' viewCount='105293'/><yt:rating numDislikes='64' numLikes='1596'/></entry>"
+        favoriteCount='0' viewCount='105304'/><yt:rating numDislikes='64' numLikes='1596'/></entry>"
     http_version:
-  recorded_at: Tue, 11 Mar 2014 16:36:00 GMT
+  recorded_at: Wed, 12 Mar 2014 14:25:23 GMT
 recorded_with: VCR 2.8.0

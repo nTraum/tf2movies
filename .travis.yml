@@ -11,6 +11,3 @@ before_script:
   - psql -c 'create database tf2movies_test;' -U postgres
   - export RAILS_ENV=test
   - rake db:test:prepare
-
-# YOUTUBE_API_TOKEN
-secure: "QdIMaiCpTI2atmFDGhDrtPDANymraJfEf4adeNm5PkMq8Wgv0OYL6N3lNV4qjZUhUmHJAket59YOmbR3q4EfhqW8wdRSkd60UZkwYYsUHgGoeGCLtVA1fJy+pQzefDMA5OzVKL3tEcnIJS22plK6Ika4T+qTmCkL1rvXVcE0sT0="
