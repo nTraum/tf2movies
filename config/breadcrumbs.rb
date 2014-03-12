@@ -35,6 +35,10 @@ crumb :user do |user|
   parent :users
 end
 
+crumb :about do
+  link 'About'
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
