@@ -75,6 +75,42 @@ describe MoviesController do
     flash[:alert].wont_be_nil
   end
 
+  it 'must create movies for users' do
+    url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
+    as_logged_in_user do
+      VCR.use_cassette('movie_controller_test_create', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+        post :create, :url => url
+        response.status.must_equal 302
+        flash[:notice].wont_be_nil
+        Movie.count.must_equal 1
+      end
+    end
+  end
+
+  it 'must create movies for moderators' do
+    url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
+    as_logged_in_moderator do
+      VCR.use_cassette('movie_controller_test_create', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+        post :create, :url => url
+        response.status.must_equal 302
+        flash[:notice].wont_be_nil
+        Movie.count.must_equal 1
+      end
+    end
+  end
+
+  it 'must create movies for admins' do
+    url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
+    as_logged_in_admin do
+      VCR.use_cassette('movie_controller_test_create', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+        post :create, :url => url
+        response.status.must_equal 302
+        flash[:notice].wont_be_nil
+        Movie.count.must_equal 1
+      end
+    end
+  end
+
   it 'must redirect create movies for visitors and banned users' do
     url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
     as_logged_in_banned_user do

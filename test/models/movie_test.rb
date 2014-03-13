@@ -24,4 +24,14 @@ describe Movie do
     subject.thumbnail(:small).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/mqdefault.jpg'
     subject.thumbnail(:tiny).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/default.jpg'
   end
+
+  it 'must be created with the YouTube API' do
+    url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
+    user = FactoryGirl.create :user
+    movie = Movie.new
+    VCR.use_cassette('movie_test_create', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+      movie.new_with_youtube_it(url, user)
+    end
+    movie.valid?.must_equal true
+  end
 end
