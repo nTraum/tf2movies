@@ -8,6 +8,10 @@ MoviePolicy = Struct.new(:user, :movie) do
   end
 
   def submit?
-    user && user.banned? == false
+    user && (user.banned? == false)
+  end
+
+  def create?
+    submit?
   end
 end

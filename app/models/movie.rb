@@ -55,7 +55,6 @@ class Movie < ActiveRecord::Base
   scope :featured, -> { where(:featured => true) }
 
   def refresh_info
-    youtube_client = YouTubeIt::Client.new(:dev_key => ENV['YOUTUBE_API_KEY'])
     movie_info = youtube_client.video_by(youtube_id)
     self.title = movie_info.title
     self.description = movie_info.description
@@ -64,21 +63,18 @@ class Movie < ActiveRecord::Base
     save!
   end
 
-  def self.new_with_youtube_it(url, user)
-    youtube_client = YouTubeIt::Client.new(:dev_key => ENV['YOUTUBE_API_KEY'])
+  def new_with_youtube_it(url, user)
     movie_info = youtube_client.video_by(url)
     author_info = youtube_client.profile movie_info.author.uri.split('/').last #YOLO
-    new do |movie|
-      movie.author = Author.where(:youtube_id => author_info.user_id).first || Author.create_with_youtube_it(author_info)
-      movie.proposer = user
-      movie.youtube_id = movie_info.unique_id
-      movie.title = movie_info.title
-      movie.description = movie_info.description
-      movie.views = movie_info.view_count
-      movie.duration = movie_info.duration
-      movie.uploaded_on_youtube = movie_info.uploaded_at
-      movie.info_refreshed_at = DateTime.now
-    end
+    self.author = Author.where(:youtube_id => author_info.user_id).first || Author.create_with_youtube_it(author_info)
+    self.proposer = user
+    self.youtube_id = movie_info.unique_id
+    self.title = movie_info.title
+    self.description = movie_info.description
+    self.views = movie_info.view_count
+    self.duration = movie_info.duration
+    self.uploaded_on_youtube = movie_info.uploaded_at
+    self.info_refreshed_at = DateTime.now
   end
 
   def thumbnail(quality = :tiny)
@@ -99,5 +95,10 @@ class Movie < ActiveRecord::Base
         filename = 'default'
     end
     "http://img.youtube.com/vi/#{youtube_id}/#{filename}.jpg"
+  end
+
+  private
+  def youtube_client
+    @youtube_client ||= YouTubeIt::Client.new(:dev_key => ENV['YOUTUBE_API_KEY'])
   end
 end

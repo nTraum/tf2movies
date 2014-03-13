@@ -11,7 +11,10 @@ class MoviesController < ApplicationController
 
   def create
     begin
-      @movie = Movie.new_with_youtube_it(params[:url], current_user)
+      @movie = Movie.new
+      authorize @movie
+      @movie.new_with_youtube_it(params[:url], current_user)
+      authorize
       if @movie.save
         redirect_to :back, :notice => "'#{@movie.title}' has been successfully submitted. Thanks for telling us!"
       else
