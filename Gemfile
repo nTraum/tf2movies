@@ -36,6 +36,7 @@ gem 'friendly_id'
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
+  gem 'heroku-deflater'
 end
 
 group :development do
