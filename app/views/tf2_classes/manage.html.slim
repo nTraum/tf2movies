@@ -18,9 +18,9 @@ table.table.table-hover.table-striped.table-responsive
         td = tf2_class.movies.count
         td = tf2_class.created_at.strftime('%D')
         td.text-right
-          => link_to(fa_icon('edit', :text => 'Edit'), edit_tf2_class_path(tf2_class.id), :class => 'btn btn-warning')
+          => link_to(fa_icon('edit', :text => 'Edit'), edit_tf2_class_path(tf2_class), :class => 'btn btn-warning')
 
-          = button_to(tf2_class_path(tf2_class.id), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
+          = button_to(tf2_class_path(tf2_class), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
               = fa_icon('trash-o', :text => 'Delete')
 p = link_to(fa_icon('plus', :text => 'New'), new_tf2_class_path, :class => 'btn btn-primary')
 = paginate @tf2_classes

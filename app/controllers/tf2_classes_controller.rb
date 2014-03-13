@@ -28,12 +28,12 @@ class Tf2ClassesController < ApplicationController
   end
 
   def edit
-    @tf2_class = Tf2Class.find(params[:id])
+    @tf2_class = Tf2Class.friendly.find(params[:id])
     authorize @tf2_class
   end
 
   def update
-    @tf2_class = Tf2Class.find(params[:id])
+    @tf2_class = Tf2Class.friendly.find(params[:id])
     authorize @tf2_class
 
     if @tf2_class.update(tf2_class_params)
@@ -44,7 +44,7 @@ class Tf2ClassesController < ApplicationController
   end
 
   def destroy
-    @tf2_class = Tf2Class.find(params[:id])
+    @tf2_class = Tf2Class.friendly.find(params[:id])
     authorize @tf2_class
     @tf2_class.destroy
     redirect_to manage_tf2_classes_path, :notice => 'TF2 class deleted.'
