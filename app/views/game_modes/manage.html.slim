@@ -17,9 +17,9 @@ table.table.table-hover.table-striped.table-responsive
         td = gm.movies.count
         td = gm.created_at.strftime('%D')
         td.text-right
-          => link_to(fa_icon('edit', :text => 'Edit'), edit_game_mode_path(gm.id), :class => 'btn btn-warning')
+          => link_to(fa_icon('edit', :text => 'Edit'), edit_game_mode_path(gm), :class => 'btn btn-warning')
 
-          = button_to(game_mode_path(gm.id), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
+          = button_to(game_mode_path(gm), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
               = fa_icon('trash-o', :text => 'Delete')
 p = link_to(fa_icon('plus', :text => 'New'), new_game_mode_path, :class => 'btn btn-primary')
 = paginate @game_modes

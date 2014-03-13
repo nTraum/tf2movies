@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140313010432) do
+ActiveRecord::Schema.define(version: 20140313012946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,10 @@ ActiveRecord::Schema.define(version: 20140313010432) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "game_modes", ["slug"], name: "index_game_modes_on_slug", unique: true, using: :btree
 
   create_table "movies", force: true do |t|
     t.string   "youtube_id"

@@ -6,6 +6,11 @@
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  slug       :string(255)
+#
+# Indexes
+#
+#  index_game_modes_on_slug  (slug) UNIQUE
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

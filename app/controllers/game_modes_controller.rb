@@ -28,12 +28,12 @@ class GameModesController < ApplicationController
   end
 
   def edit
-    @game_mode = GameMode.find(params[:id])
+    @game_mode = GameMode.friendly.find(params[:id])
     authorize @game_mode
   end
 
   def update
-    @game_mode = GameMode.find(params[:id])
+    @game_mode = GameMode.friendly.find(params[:id])
     authorize @game_mode
 
     if @game_mode.update(game_mode_params)
@@ -44,7 +44,7 @@ class GameModesController < ApplicationController
   end
 
   def destroy
-    @game_mode = GameMode.find(params[:id])
+    @game_mode = GameMode.friendly.find(params[:id])
     authorize @game_mode
     @game_mode.destroy
     redirect_to manage_game_modes_path, :notice => 'Game Mode deleted.'
