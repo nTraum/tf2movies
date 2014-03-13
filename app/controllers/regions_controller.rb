@@ -28,12 +28,12 @@ class RegionsController < ApplicationController
   end
 
   def edit
-    @region = Region.find(params[:id])
+    @region = Region.friendly.find(params[:id])
     authorize @region
   end
 
   def update
-    @region = Region.find(params[:id])
+    @region = Region.friendly.find(params[:id])
     authorize @region
 
     if @region.update(region_params)
@@ -44,7 +44,7 @@ class RegionsController < ApplicationController
   end
 
   def destroy
-    @region = Region.find(params[:id])
+    @region = Region.friendly.find(params[:id])
     authorize @region
     @region.destroy
     redirect_to manage_regions_path, :notice => 'Region deleted.'

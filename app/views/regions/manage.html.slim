@@ -17,9 +17,9 @@ table.table.table-hover.table-striped.table-responsive
         td = region.movies.count
         td = region.created_at.strftime('%D')
         td.text-right
-          => link_to(fa_icon('edit', :text => 'Edit'), edit_region_path(region.id), :class => 'btn btn-warning')
+          => link_to(fa_icon('edit', :text => 'Edit'), edit_region_path(region), :class => 'btn btn-warning')
 
-          = button_to(region_path(region.id), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
+          = button_to(region_path(region), :method => :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger') do
               = fa_icon('trash-o', :text => 'Delete')
 p = link_to(fa_icon('plus', :text => 'New'), new_region_path, :class => 'btn btn-primary')
 = paginate @regions

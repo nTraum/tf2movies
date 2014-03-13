@@ -31,6 +31,7 @@ gem 'curb'
 gem 'puma'
 gem 'foreman'
 gem 'colored'
+gem 'friendly_id'
 
 group :production do
   gem 'newrelic_rpm'
