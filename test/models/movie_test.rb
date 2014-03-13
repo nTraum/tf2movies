@@ -16,4 +16,12 @@ describe Movie do
     subject.views.must_equal 105304
     subject.info_refreshed_at.must_be_within_delta(Time.current, 3)
   end
+
+  it 'must provide thumbnail URLs in 5 sizes' do
+    subject.thumbnail(:max).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/maxresdefault.jpg'
+    subject.thumbnail(:high).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/sddefault.jpg'
+    subject.thumbnail(:medium).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/hqdefault.jpg'
+    subject.thumbnail(:small).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/mqdefault.jpg'
+    subject.thumbnail(:tiny).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/default.jpg'
+  end
 end

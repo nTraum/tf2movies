@@ -80,4 +80,24 @@ class Movie < ActiveRecord::Base
       movie.info_refreshed_at = DateTime.now
     end
   end
+
+  def thumbnail(quality = :tiny)
+    unless [:max, :high, :medium, :low, :tiny]
+      raise ArgumentError, 'unknown quality'
+    end
+
+    case quality
+      when :max
+        filename = 'maxresdefault'
+      when :high
+        filename = 'sddefault'
+      when :medium
+        filename = 'hqdefault'
+      when :small
+        filename = 'mqdefault'
+      when :tiny
+        filename = 'default'
+    end
+    "http://img.youtube.com/vi/#{youtube_id}/#{filename}.jpg"
+  end
 end
