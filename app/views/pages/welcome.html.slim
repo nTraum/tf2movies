@@ -1,2 +1,29 @@
-h1 Pages#welcome
-p Find me in app/views/pages/welcome.html.slim
+.row
+  .col-md-8
+    .carousel.slide#carousel-featured data-ride='carousel'
+      ol.carousel-indicators
+        li.active data-target='#carousel-featured' data-slide-to='0' class='active'
+        li data-target='#carousel-featured' data-slide-to='1'
+        li data-target='#carousel-featured' data-slide-to='2'
+
+      .carousel-inner
+        .item.active
+          img.img-responsive src='http://i1.ytimg.com/vi/CxKrqpkxCBY/maxresdefault.jpg'
+          .carousel-caption
+            h3 BROTHER FROM ANOTHER MOTHER
+            span.label.label-info Featured
+        .item
+          img.img-responsive src='http://i1.ytimg.com/vi/wDwu4uNTZc4/maxresdefault.jpg'
+          .carousel-caption
+            h3 POP CULTURE - BY CLA
+            span.label.label-info Featured
+        .item
+          img.img-responsive src='http://i1.ytimg.com/vi/Asttyl-nk_s/maxresdefault.jpg'
+          .carousel-caption
+            h3 BLAME FAIL MOVIE
+            span.label.label-info Featured
+
+      a.carousel-control.left href='#carousel-featured' data-slide='prev'
+        span.icon-prev
+      a.carousel-control.right href='#carousel-featured' data-slide='next'
+        span.icon-next
