@@ -7,17 +7,21 @@
 
 ## Requirements
 
-* PostgreSQL (>= 9.1 should be fine)
+* PostgreSQL
 * Ruby (>= 2.0)
-* curl / curl dev libs (tested on 7.35)
+* curl / curl dev libs
 
 ## Installation
 
 Environment variables (`.env`):
 
-* [YouTube API](https://cloud.google.com/console/project)
-* [Steam API](http://steamcommunity.com/dev)
-* [New Relic](http://newrelic.com/)
+* [YouTube API] key(https://cloud.google.com/console/project)
+* [Steam API] key(http://steamcommunity.com/dev)
+* [New Relic] key(http://newrelic.com/)
 * Secret Token
 
 `rake tf2movies:check`
+
+## LICENSE
+
+MIT License.
