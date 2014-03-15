@@ -1,59 +1,84 @@
 require 'test_helper'
 
 describe Download do
-  subject { [] <<
-    FactoryGirl.build(:no_prefix) <<
-    FactoryGirl.build(:download) <<
-    FactoryGirl.build(:https) <<
-    FactoryGirl.build(:subdomain) <<
-    FactoryGirl.build(:http_www) <<
-    FactoryGirl.build(:https_www)
-  }
-
-  it 'must be valid' do
-    subject.each do |download|
-      download.must_be_instance_of Download
-      download.valid?.must_equal true
+  describe 'with HTTP URL' do
+    subject { FactoryGirl.build :http_download }
+    it 'must derive the correct host' do
+      subject.host.must_equal 'example.com'
+    end
+  end
+  describe 'with missing protocol in URL' do
+    subject { FactoryGirl.build :missing_protocol_download }
+    it 'must derive the correct host' do
+      subject.host.must_equal 'example.com'
+    end
+  end
+  describe 'with HTTPS URL' do
+    subject { FactoryGirl.build :https_download }
+    it 'must derive the correct host' do
+      subject.host.must_equal 'example.com'
+    end
+  end
+  describe 'with subdomain in URL' do
+    subject { FactoryGirl.build :subdomain_download }
+    it 'must derive the correct host' do
+      subject.host.must_equal 'example.com'
+    end
+  end
+  describe 'with HTTP www URL' do
+    subject { FactoryGirl.build :http_www_download }
+    it 'must derive the correct host' do
+      subject.host.must_equal 'example.com'
+    end
+  end
+  describe 'with HTTPS www URL' do
+    subject { FactoryGirl.build :https_www_download }
+    it 'must derive the correct host' do
+      subject.host.must_equal 'example.com'
     end
   end
 
-  it 'must derive the correct domain' do
-    subject.each do |download|
-      download.host.must_equal 'example.com', "Wrong host for: '#{download.host}'"
+  describe 'with URL pointing to 200 response' do
+    subject { FactoryGirl.build :url_200_download }
+    it 'must be online after refreshing the status' do
+      VCR.use_cassette(__name__) do
+        subject.refresh_status
+      end
+      subject.online?.must_equal true
+      subject.status_refreshed_at.must_be_within_delta(Time.current, 3)
     end
   end
 
-  it 'must change the status to online when the web server answers 200' do
-    download = FactoryGirl.build :url_online_200
-    VCR.use_cassette('download_test_refresh_status_200') do
-      download.refresh_status
+  describe 'with URL pointing to 404 response' do
+    subject { FactoryGirl.build :url_404_download }
+    it 'must be offline after refreshing the status' do
+      VCR.use_cassette(__name__) do
+        subject.refresh_status
+      end
+      subject.offline?.must_equal true
+      subject.status_refreshed_at.must_be_within_delta(Time.current, 3)
     end
-    download.online?.must_equal true
-    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
   end
 
-  it 'must change the status to offline when the web server answers 404' do
-    download = FactoryGirl.build :url_offline_404
-    VCR.use_cassette('download_test_refresh_status_404') do
-      download.refresh_status
+  describe 'with URL pointing to a response not being 200 or 404' do
+    subject { FactoryGirl.build :url_403_download }
+    it 'must be unknown after refreshing the status' do
+      VCR.use_cassette(__name__) do
+        subject.refresh_status
+      end
+      subject.unknown?.must_equal true
+      subject.status_refreshed_at.must_be_within_delta(Time.current, 3)
     end
-    download.offline?.must_equal true
-    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
   end
 
-  it 'must change the status to unknown when the web server answers differently' do
-    download = FactoryGirl.build :url_offline_403
-    VCR.use_cassette('download_test_refresh_status_403') do
-      download.refresh_status
+  describe 'with URL pointing to an unknown domain' do
+    subject { FactoryGirl.build :url_domain_unknown }
+    it 'must be unknown after refreshing the status' do
+      VCR.use_cassette(__name__) do
+        subject.refresh_status
+      end
+      subject.unknown?.must_equal true
+      subject.status_refreshed_at.must_be_within_delta(Time.current, 3)
     end
-    download.unknown?.must_equal true
-    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
-  end
-
-  it 'must change the status to unknown when the host is unknown' do
-    download = FactoryGirl.build :url_offline_host_unknown
-    download.refresh_status
-    download.unknown?.must_equal true
-    download.status_refreshed_at.must_be_within_delta(Time.current, 3)
   end
 end
