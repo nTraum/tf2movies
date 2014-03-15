@@ -1,3 +1,18 @@
+GIT
+  remote: git://github.com/kylejginavan/youtube_it.git
+  revision: fda6e9198aad67ce51bdb6cc5c4d298e3f8f834f
+  specs:
+    youtube_it (2.4.0)
+      builder
+      excon
+      faraday (~> 0.8)
+      json (~> 1.8)
+      nokogiri (~> 1.6.0)
+      oauth (~> 0.4.4)
+      oauth2 (~> 0.6)
+      simple_oauth (>= 0.1.5)
+      webmock
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -112,6 +127,7 @@ GEM
       railties
     method_source (0.8.2)
     mime-types (1.25.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     minitest-rails (0.9.2)
       minitest (~> 4.7)
@@ -120,7 +136,8 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     newrelic_rpm (3.7.3.204)
-    nokogiri (1.5.11)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     oauth (0.4.7)
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
@@ -238,23 +255,13 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.39)
-    uglifier (2.4.0)
+    uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     vcr (2.8.0)
     webmock (1.17.4)
       addressable (>= 2.2.7)
       crack (>= 0.3.2)
-    youtube_it (2.3.2)
-      builder
-      excon
-      faraday (~> 0.8)
-      json (~> 1.8.0)
-      nokogiri (~> 1.5.2)
-      oauth (~> 0.4.4)
-      oauth2 (~> 0.6)
-      simple_oauth (>= 0.1.5)
-      webmock
 
 PLATFORMS
   ruby
@@ -301,4 +308,4 @@ DEPENDENCIES
   uglifier
   vcr
   webmock
-  youtube_it
+  youtube_it!
