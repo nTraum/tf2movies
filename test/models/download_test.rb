@@ -75,8 +75,8 @@ describe Download do
 
   describe 'with URL pointing to an unknown domain' do
     subject { FactoryGirl.build :http_download }
-    it 'must be unknown after refreshing the status' do
-      stub_request(:head, subject.url).to_raise Resolv::ResolvError
+    it 'must be unknown after experiencing an error' do
+      stub_request(:head, subject.url).to_raise StandardError
       subject.refresh_status
       subject.unknown?.must_equal true
       subject.status_refreshed_at.must_be_within_delta(Time.current, 3)
