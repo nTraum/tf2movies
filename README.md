@@ -45,6 +45,11 @@ Start the web server:
 
 `bundle exec foreman start`
 
+Execute the following 2 commands with your chronical job service of choice (e.g. cron):
+
+`rake tf2movies:check_downloads`
+`rake tf2movies:check_movies`
+
 ## LICENSE
 
 MIT License.
