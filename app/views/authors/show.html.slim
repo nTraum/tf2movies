@@ -8,7 +8,7 @@
 .well
   ul.list-inline
     li
-      = fa_icon 'film', :text => pluralize(@author.movies.count, 'movie')
+      = fa_icon 'film', :text => pluralize(@author.movies.size, 'movie')
     li
       = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @author.movies.sum(:duration)} of movie footage"
     li

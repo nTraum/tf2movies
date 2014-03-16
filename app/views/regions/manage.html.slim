@@ -14,7 +14,7 @@ table.table.table-hover.table-striped.table-responsive
       tr
         td = region.id
         td = region.name
-        td = region.movies.count
+        td = region.movies.size
         td = region.created_at.strftime('%D')
         td.text-right
           => link_to(fa_icon('edit', :text => 'Edit'), edit_region_path(region), :class => 'btn btn-warning')

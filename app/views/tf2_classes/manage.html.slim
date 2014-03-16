@@ -15,7 +15,7 @@ table.table.table-hover.table-striped.table-responsive
       tr
         td = tf2_class.id
         td = tf2_class.name
-        td = tf2_class.movies.count
+        td = tf2_class.movies.size
         td = tf2_class.created_at.strftime('%D')
         td.text-right
           => link_to(fa_icon('edit', :text => 'Edit'), edit_tf2_class_path(tf2_class), :class => 'btn btn-warning')

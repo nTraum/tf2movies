@@ -53,7 +53,7 @@ ul.list-inline
     .panel-heading
       h4.panel-title
         a data-toggle='collapse' data-parent='#accordion' href='#collapseMusic'
-          = fa_icon 'music fw', :text => "Music (#{@movie.songs.count})"
+          = fa_icon 'music fw', :text => "Music (#{@movie.songs.size})"
     .panel-collapse.collapse#collapseMusic
       .panel-body
         table.table.table-hover.table-condensed
@@ -77,7 +77,7 @@ ul.list-inline
     .panel-heading
       h4.panel-title
         a data-toggle='collapse' data-parent='#accordion' href='#collapseDownloads'
-          = fa_icon 'download fw', :text => "Downloads (#{@movie.downloads.count})"
+          = fa_icon 'download fw', :text => "Downloads (#{@movie.downloads.size})"
     .panel-collapse.collapse#collapseDownloads
       .panel-body
         table.table.table-hover.table-condensed
