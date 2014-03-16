@@ -8,7 +8,7 @@ require 'rails/test_help'
 require 'minitest/rails'
 require 'minitest/pride'
 require 'database_cleaner'
-require 'webmock'
+require 'webmock/minitest'
 require 'vcr'
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`

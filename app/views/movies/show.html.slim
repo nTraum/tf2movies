@@ -85,13 +85,14 @@ ul.list-inline
             th.hidden-xs #
             th Status
             th Hoster
+            th Size
             th
           tbody
             - @movie.downloads.each_with_index do |d,i|
               tr
                 td.hidden-xs = i+1
                 td
-                  - if d.online? == true
+                  - if d.online?
                     span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
                      | Online
                   - elsif d.offline?
@@ -101,4 +102,7 @@ ul.list-inline
                     span.label.label-default
                       | Unknown
                 td = d.host
+                td
+                  - if d.filesize?
+                    = number_to_human_size(d.filesize)
                 td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), d.url, :class => 'btn btn-primary btn-xs', :target => '_blank')

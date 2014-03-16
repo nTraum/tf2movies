@@ -9,6 +9,7 @@
 #  updated_at          :datetime
 #  status              :string(255)
 #  status_refreshed_at :datetime
+#  filesize            :integer
 #
 # Indexes
 #
@@ -44,22 +45,6 @@ FactoryGirl.define do
 
     factory :https_www_download do
       url 'https://www.example.com/test.mp4'
-    end
-
-    factory :url_200_download do
-      url 'http://example.com'
-    end
-
-    factory :url_404_download do
-      url 'http://example.com/test'
-    end
-
-    factory :url_403_download do
-      url 'http://etf2l.org/wp-config.php.swp'
-    end
-
-    factory :url_domain_unknown do
-      url 'http://cvlkklbvdalglkadklglkaflkLKFVMHLSKHLAWQQ.com'
     end
   end
 end

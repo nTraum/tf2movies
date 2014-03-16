@@ -9,6 +9,7 @@
 #  updated_at          :datetime
 #  status              :string(255)
 #  status_refreshed_at :datetime
+#  filesize            :integer
 #
 # Indexes
 #
@@ -16,11 +17,11 @@
 #
 
 class Download < ActiveRecord::Base
-  belongs_to  :movie,   :touch => true
-  validates   :url,     :presence => true
-  validates   :movie,   :presence => true
-  validates   :status,  :inclusion => { :in => ['online', 'offline', 'unknown'] },
-                        :presence => true
+  belongs_to  :movie,     :touch => true
+  validates   :url,       :presence => true
+  validates   :movie,     :presence => true
+  validates   :status,    :inclusion => { :in => ['online', 'offline', 'unknown'] },
+                          :presence => true
 
   before_validation :default_attributes
 
@@ -37,13 +38,12 @@ class Download < ActiveRecord::Base
       case resp.response_code
         when 200
           self.status = 'online'
+          self.filesize = resp.downloaded_content_length.to_i
         when 404
           self.status = 'offline'
         else
           self.status = 'unknown'
       end
-    rescue Curl::Err::CurlError
-      self.status = 'offline'
     rescue
       self.status = 'unknown'
     ensure
