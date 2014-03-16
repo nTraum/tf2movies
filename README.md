@@ -8,19 +8,42 @@
 ## Requirements
 
 * PostgreSQL
-* Ruby (>= 2.0)
+* Ruby (>= 1.9.3)
 * curl / curl dev libs
 
 ## Installation
 
-Environment variables (`.env`):
+Clone the repository:
 
-* [YouTube API] key(https://cloud.google.com/console/project)
-* [Steam API] key(http://steamcommunity.com/dev)
-* [New Relic] key(http://newrelic.com/)
-* Secret Token
+`git clone https://github.com/nTraum/tf2movies.git; cd tf2movies`
+
+Make sure Ruby version is 1.9.3 or newer:
+
+`ruby -v`
+
+Install bundler and app dependencies:
+
+`gem install bundler; bundle`
+
+Edit production section of `config/database.yml`:
+
+`vim config/database.yml`
+
+Specify API keys and a random secret token in `.env` files:
+
+`vim .env`
+
+Check if all settings are set:
 
 `rake tf2movies:check`
+
+Create and setup the database
+
+`rake db:create db:migrate db:seed`
+
+Start the web server:
+
+`bundle exec foreman start`
 
 ## LICENSE
 
