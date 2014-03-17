@@ -17,7 +17,7 @@ describe MoviePolicy do
       subject.edit?.must_equal false
     end
     it 'does no allow to update' do
-      subject.edit?.must_equal false
+      subject.update?.must_equal false
     end
   end
 
@@ -35,7 +35,7 @@ describe MoviePolicy do
       subject.edit?.must_equal false
     end
     it 'does no allow to update' do
-      subject.edit?.must_equal false
+      subject.update?.must_equal false
     end
   end
 
@@ -53,7 +53,7 @@ describe MoviePolicy do
       subject.edit?.must_equal false
     end
     it 'does no allow to update' do
-      subject.edit?.must_equal false
+      subject.update?.must_equal false
     end
   end
 
@@ -71,7 +71,7 @@ describe MoviePolicy do
       subject.edit?.must_equal true
     end
     it 'allows to update' do
-      subject.edit?.must_equal true
+      subject.update?.must_equal true
     end
   end
 
@@ -89,7 +89,7 @@ describe MoviePolicy do
       subject.edit?.must_equal true
     end
     it 'allows to update' do
-      subject.edit?.must_equal true
+      subject.update?.must_equal true
     end
   end
 end
