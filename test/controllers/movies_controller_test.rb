@@ -15,7 +15,7 @@ describe MoviesController do
 
   it 'must get edit' do
     movie = FactoryGirl.create :movie
-    as_logged_in_admin do
+    as_logged_in_moderator do
       get :edit, :id => movie.id
       response.status.must_equal 200
       assigns(:movie).must_equal movie
@@ -24,7 +24,7 @@ describe MoviesController do
 
   it 'must update' do
     movie = FactoryGirl.create :movie
-    as_logged_in_admin do
+    as_logged_in_moderator do
       post :update, :id => movie.id, :movie => FactoryGirl.attributes_for(:movie)
       response.status.must_equal 302
       flash[:notice].wont_be_nil
