@@ -1,7 +1,10 @@
 ENV['RAILS_ENV'] = 'test'
 
+require 'simplecov'
 require 'coveralls'
-Coveralls.wear!('rails')
+SimpleCov.start('rails') do
+  add_group 'Policies', 'app/policies'
+end
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'

@@ -323,6 +323,7 @@ DEPENDENCIES
   rails_autolink
   sass-rails (~> 4.0.2)
   sdoc
+  simplecov
   slim-rails
   therubyracer
   uglifier

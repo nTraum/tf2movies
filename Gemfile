@@ -51,6 +51,7 @@ group :development do
 end
 
 group :test do
+  gem 'simplecov', require: false
   gem 'coveralls', require: false
   gem 'database_cleaner', require: false
   gem 'vcr', require: false
