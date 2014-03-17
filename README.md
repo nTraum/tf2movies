@@ -45,10 +45,9 @@ Start the web server:
 
 `bundle exec foreman start`
 
-Execute the following 2 commands with your chronical job service of choice (e.g. cron):
+Execute the following 2 commands with your chronical job service of choice (e.g. cron), which will refresh downloads and movie information:
 
-`rake tf2movies:check_downloads`
-`rake tf2movies:check_movies`
+`rake tf2movies:check_downloads`, `rake tf2movies:check_movies`
 
 ## LICENSE
 
