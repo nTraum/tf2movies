@@ -55,4 +55,5 @@ group :test do
   gem 'database_cleaner', require: false
   gem 'vcr', require: false
   gem 'webmock', require: false
+  gem 'minitest-rails-capybara', require: false
 end
