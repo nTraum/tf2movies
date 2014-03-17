@@ -71,4 +71,19 @@ describe User do
       user.steam_profile_url.must_equal steam_profile_url
     end
   end
+
+  describe 'staff' do
+    it 'must recognize admins as a staff member' do
+      FactoryGirl.build(:admin).staff?.must_equal true
+    end
+    it 'must recognize moderators as a staff member' do
+      FactoryGirl.build(:moderator).staff?.must_equal true
+    end
+    it 'must recognize banned users not being a staff member' do
+      FactoryGirl.build(:banned).staff?.must_equal false
+    end
+    it 'must recognize users not being a staff member' do
+      FactoryGirl.build(:user).staff?.must_equal false
+    end
+  end
 end

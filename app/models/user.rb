@@ -57,16 +57,16 @@ class User < ActiveRecord::Base
     (Time.current - last_online) < 10.minutes
   end
 
-  def moderator_or_admin?
-    ['admin', 'moderator'].include? role
-  end
-
   def moderator?
     role == 'moderator'
   end
 
   def admin?
     role == 'admin'
+  end
+
+  def staff?
+    admin? || moderator?
   end
 
   def user?
