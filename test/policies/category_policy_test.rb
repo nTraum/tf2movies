@@ -98,5 +98,4 @@ describe CategoryPolicy do
       subject.new?.must_equal true
     end
   end
-
 end
