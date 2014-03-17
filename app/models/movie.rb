@@ -78,7 +78,7 @@ class Movie < ActiveRecord::Base
   end
 
   def thumbnail(quality = :tiny)
-    unless [:max, :high, :medium, :low, :tiny]
+    unless [:max, :high, :medium, :small, :tiny].include? quality
       raise ArgumentError, 'unknown quality'
     end
 

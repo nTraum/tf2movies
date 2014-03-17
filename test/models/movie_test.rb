@@ -17,12 +17,26 @@ describe Movie do
     subject.info_refreshed_at.must_be_within_delta(Time.current, 3)
   end
 
-  it 'must provide thumbnail URLs in 5 sizes' do
-    subject.thumbnail(:max).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/maxresdefault.jpg'
-    subject.thumbnail(:high).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/sddefault.jpg'
-    subject.thumbnail(:medium).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/hqdefault.jpg'
-    subject.thumbnail(:small).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/mqdefault.jpg'
-    subject.thumbnail(:tiny).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/default.jpg'
+  describe 'thumbnails' do
+    it 'must provide a thumbnail in max quality' do
+      subject.thumbnail(:max).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/maxresdefault.jpg'
+    end
+    it 'must provide a thumbnail in high quality' do
+      subject.thumbnail(:high).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/sddefault.jpg'
+    end
+    it 'must provide a thumbnail in medium quality' do
+      subject.thumbnail(:medium).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/hqdefault.jpg'
+    end
+    it 'must provide a thumbnail in small quality' do
+      subject.thumbnail(:small).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/mqdefault.jpg'
+    end
+    it 'must provide a thumbnail in tiny quality' do
+      subject.thumbnail(:tiny).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/default.jpg'
+    end
+    it 'must raise an error when using an unknown size' do
+      proc { subject.thumbnail(:foobar) }.must_raise ArgumentError
+    end
+
   end
 
   it 'must be created with the YouTube API' do
