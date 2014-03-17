@@ -1,6 +1,6 @@
 MoviePolicy = Struct.new(:user, :movie) do
   def edit?
-    user && user.moderator_or_admin?
+    !!(user && user.moderator_or_admin?)
   end
 
   def update?
@@ -8,7 +8,7 @@ MoviePolicy = Struct.new(:user, :movie) do
   end
 
   def submit?
-    user && (user.banned? == false)
+    !!(user && (user.banned? == false))
   end
 
   def create?
