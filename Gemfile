@@ -32,6 +32,7 @@ gem 'puma'
 gem 'foreman'
 gem 'colored'
 gem 'friendly_id'
+gem 'simple_enum'
 
 group :production do
   gem 'newrelic_rpm'
