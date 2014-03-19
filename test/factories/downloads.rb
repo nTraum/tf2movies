@@ -7,9 +7,9 @@
 #  movie_id            :integer
 #  created_at          :datetime
 #  updated_at          :datetime
-#  status              :string(255)
 #  status_refreshed_at :datetime
 #  filesize            :integer
+#  status_cd           :integer
 #
 # Indexes
 #

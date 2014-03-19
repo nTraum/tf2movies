@@ -7,9 +7,9 @@
 #  movie_id            :integer
 #  created_at          :datetime
 #  updated_at          :datetime
-#  status              :string(255)
 #  status_refreshed_at :datetime
 #  filesize            :integer
+#  status_cd           :integer
 #
 # Indexes
 #
@@ -17,11 +17,11 @@
 #
 
 class Download < ActiveRecord::Base
+  as_enum     :status,    :unknown => 0, :online => 1, :offline => 2
   belongs_to  :movie,     :touch => true
   validates   :url,       :presence => true
   validates   :movie,     :presence => true
-  validates   :status,    :inclusion => { :in => ['online', 'offline', 'unknown'] },
-                          :presence => true
+  validates   :status,    :as_enum => true
 
   before_validation :default_attributes
 
@@ -37,38 +37,26 @@ class Download < ActiveRecord::Base
       end
       case resp.response_code
         when 200
-          self.status = 'online'
+          self.online!
           self.filesize = resp.downloaded_content_length.to_i
         when 404
-          self.status = 'offline'
+          self.offline!
         else
-          self.status = 'unknown'
+          self.unknown!
       end
     rescue
-      self.status = 'unknown'
+      self.unknown!
     ensure
       self.status_refreshed_at = DateTime.now
-      save!
+      self.save!
     end
-  end
-
-  def online?
-    status == 'online'
-  end
-
-  def offline?
-    status == 'offline'
-  end
-
-  def unknown?
-    status == 'unknown'
   end
 
   private
 
   def default_attributes
     unless self.status
-      self.status = 'unknown'
+      self.unknown!
     end
   end
 end

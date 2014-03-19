@@ -94,13 +94,13 @@ ul.list-inline
                 td
                   - if d.online?
                     span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
-                     | Online
+                      = d.status
                   - elsif d.offline?
                     span.label.label-danger.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
-                      | Offline
+                      = d.status
                   - else
                     span.label.label-default
-                      | Unknown
+                      = d.status
                 td = d.host
                 td
                   - if d.filesize?
