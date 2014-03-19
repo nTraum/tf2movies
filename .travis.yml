@@ -13,4 +13,4 @@ before_script:
   - psql -c 'create database tf2movies_test;' -U postgres
   - export RAILS_ENV=test
   - rake db:test:prepare
-script: time bundle exec rake
+script: time bundle exec rake minitest:all:quick
