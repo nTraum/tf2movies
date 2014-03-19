@@ -13,25 +13,25 @@
 
 ## Installation
 
-### Cloning repository
+##### Cloning repository
 
 `git clone https://github.com/nTraum/tf2movies.git; cd tf2movies`
 
-### Checking Ruby version
+##### Checking Ruby version
 Must be 1.9.3 or newer.
 
 `ruby -v`
 
-### Install bundler and app dependencies
+##### Install bundler and app dependencies
 
 `gem install bundler; bundle`
 
-### Database settings
+##### Database settings
 Edit production section of `config/database.yml` to fit your needs.
 
 `vim config/database.yml`
 
-### App settings
+##### App settings
 You need to configure the following environment variables to run tf2movies:
 
 * `YOUTUBE_API_KEY` - API key for [YouTube](https://cloud.google.com/console/project)
@@ -43,19 +43,19 @@ Use the `.env` file to set these environment variables. The command `rake secret
 
 `vim .env`
 
-### Check app settings
+##### Check app settings
 
 `rake tf2movies:check`
 
-### Create & setup database
+##### Create & setup database
 
 `rake db:create db:migrate db:seed`
 
-### Start the web server
+##### Start the web server
 
 `bundle exec foreman start`
 
-### Set up recurring jobs
+##### Set up recurring jobs
 
 Tf2movies will refresh movie meta data (views, title...) and the availability of downloads for you. Configure your favourite job scheduler (cron?) to execute the following commands periodically:
 
@@ -65,7 +65,7 @@ Tf2movies will refresh movie meta data (views, title...) and the availability of
 
 The execution of one command will refresh one entity. How often those jobs run is up to you and may depend on your amount of movies/downloads.
 
-### Become an admin
+##### Become an admin
 
 Login via Steam, then run:
 
