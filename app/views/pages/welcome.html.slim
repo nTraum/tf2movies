@@ -1,5 +1,5 @@
 .row
-  .col-md-8
+  .col-md-6
     .carousel.slide#carousel-featured data-ride='carousel'
       ol.carousel-indicators
         li.active data-target='#carousel-featured' data-slide-to='0' class='active'
@@ -30,3 +30,62 @@
         span.icon-prev
       a.carousel-control.right href='#carousel-featured' data-slide='next'
         span.icon-next
+  .col-md-6.hidden-xs
+    h1 TF2's Finest
+    h2
+      => @movies_count
+      small Movies
+    h2
+      => @authors_count
+      small Authors
+    h2
+      => @downloads_count
+      small Downloads
+    h2
+      => distance_of_time_in_words(@total_duration)
+      small of video footage
+hr
+
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h4 = fa_icon('fw angle-right', :text =>'Recently added')
+      .panel-body
+        - @most_recent_movies.each do |movie|
+          .media
+            = link_to movie, :class => 'pull-left'
+              = image_tag(movie.thumbnail(:tiny), :class => 'media-object', :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail')
+            .media-body
+              h4.media-heading = movie.title
+              p = "by #{movie.author.nickname}"
+              p.pull-right.text-muted = "#{time_ago_in_words(movie.created_at)} ago"
+              ul.list-inline
+                li = fa_icon('tags')
+                - if movie.region
+                  li = link_to(movie.region.name, movie.region, :class => 'text-muted')
+                - if movie.game_mode
+                  li = li = link_to(movie.game_mode.name, movie.game_mode, :class => 'text-muted')
+                - if movie.tf2_class
+                  li = li = link_to(movie.tf2_class.name, movie.tf2_class, :class => 'text-muted')
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        h4 = fa_icon('fw angle-right', :text =>'Most viewed')
+      .panel-body
+        - @most_viewed_movies.each do |movie|
+          .media
+            = link_to movie, :class => 'pull-left'
+              = image_tag(movie.thumbnail(:tiny), :class => 'media-object', :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail')
+            .media-body
+              h4.media-heading = movie.title
+              p = "by #{movie.author.nickname}"
+              p.pull-right.text-muted = "#{number_with_delimiter(movie.views)} views"
+              ul.list-inline
+                li = fa_icon('tags')
+                - if movie.region
+                  li = link_to(movie.region.name, movie.region, :class => 'text-muted')
+                - if movie.game_mode
+                  li = li = link_to(movie.game_mode.name, movie.game_mode, :class => 'text-muted')
+                - if movie.tf2_class
+                  li = li = link_to(movie.tf2_class.name, movie.tf2_class, :class => 'text-muted')
