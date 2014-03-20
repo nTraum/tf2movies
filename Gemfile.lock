@@ -149,7 +149,7 @@ GEM
       minitest-capybara (~> 0.4)
       minitest-metadata (~> 0.4)
       minitest-rails (~> 0.9.1)
-    multi_json (1.9.1)
+    multi_json (1.9.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     newrelic_rpm (3.7.3.204)
