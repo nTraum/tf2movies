@@ -14,7 +14,7 @@ nav.navbar.navbar-default role='navigation'
             = fa_icon('caret-down fw')
           ul.dropdown-menu
             - tf2_classes.each do |tf2_class|
-              li = link_to tf2_class.name, tf2_class_path(tf2_class)
+              li = link_to tf2_class.name, tf2_class
             - if policy(tf2_classes).manage?
               li.divider
               li = link_to(fa_icon('wrench fw', :text => 'Manage'), manage_tf2_classes_path)
@@ -24,7 +24,7 @@ nav.navbar.navbar-default role='navigation'
             = fa_icon('caret-down fw')
           ul.dropdown-menu
             - game_modes.each do |gm|
-              li = link_to gm.name, game_mode_path(gm)
+              li = link_to gm.name, gm
             - if policy(game_modes).manage?
               li.divider
               li = link_to(fa_icon('wrench fw', :text => 'Manage'), manage_game_modes_path)
@@ -34,7 +34,7 @@ nav.navbar.navbar-default role='navigation'
             = fa_icon('caret-down fw')
           ul.dropdown-menu
             - regions.each do |region|
-              li = link_to region.name, region_path(region)
+              li = link_to region.name, region
             - if policy(regions).manage?
               li.divider
               li = link_to(fa_icon('wrench fw', :text => 'Manage'), manage_regions_path)
