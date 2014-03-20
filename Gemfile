@@ -46,6 +46,10 @@ group :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rails-footnotes'
+
+  # deployment
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :test do
