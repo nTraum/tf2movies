@@ -13,7 +13,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails'
 gem 'minitest-rails'
 gem 'slim-rails'
 gem 'bootstrap-sass'
