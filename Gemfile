@@ -7,7 +7,6 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
-gem 'rack-timeout'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -36,8 +35,6 @@ gem 'simple_enum'
 
 group :production do
   gem 'newrelic_rpm'
-  gem 'rails_12factor'
-  gem 'heroku-deflater'
 end
 
 group :development do
