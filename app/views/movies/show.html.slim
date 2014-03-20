@@ -37,9 +37,9 @@ ul.list-inline
   li
     = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
 
-.flex-video.widescreen
+#embeded_movie
   iframe src="http://www.youtube.com/embed/#{@movie.youtube_id}?rel=0&modestbranding=1&html5=1" allowfullscreen=true frameborder=0 type='text/html' origin=request.original_url
-
+p
 .panel-group#accordion
   .panel.panel-default
     .panel-heading

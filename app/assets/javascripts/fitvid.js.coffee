@@ -1,0 +1,2 @@
+$ ->
+  $('#embeded_movie').fitVids();
