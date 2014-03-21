@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   def show
-    @author = Author.find(params[:id])
+    @author = Author.friendly.find(params[:id])
   end
 
   def index

@@ -9,6 +9,11 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  youtube_id  :string(255)
+#  slug        :string(255)
+#
+# Indexes
+#
+#  index_authors_on_slug  (slug) UNIQUE
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
