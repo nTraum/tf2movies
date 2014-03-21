@@ -65,14 +65,7 @@ p
             th.text-right YT
             th.text-right SC
           tbody
-            - @movie.songs.each_with_index do |s, i|
-              tr
-                td.hidden-xs = i+1
-                td = s.artist
-                td = s.title
-                td.text-right = link_to(fa_icon('external-link'), s.google_search, :target => '_blank')
-                td.text-right = link_to(fa_icon('external-link'), s.youtube_search, :target => '_blank')
-                td.text-right = link_to(fa_icon('external-link'), s.soundcloud_search, :target => '_blank')
+            == render @movie.songs
   .panel.panel-default
     .panel-heading
       h4.panel-title
@@ -88,21 +81,4 @@ p
             th Size
             th
           tbody
-            - @movie.downloads.each_with_index do |d,i|
-              tr
-                td.hidden-xs = i+1
-                td
-                  - if d.online?
-                    span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
-                      = d.status
-                  - elsif d.offline?
-                    span.label.label-danger.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words d.status_refreshed_at} ago" data-placement='bottom'
-                      = d.status
-                  - else
-                    span.label.label-default
-                      = d.status
-                td = d.host
-                td
-                  - if d.filesize?
-                    = number_to_human_size(d.filesize)
-                td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), d.url, :class => 'btn btn-primary btn-xs', :target => '_blank')
+            == render @movie.downloads
