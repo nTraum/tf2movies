@@ -8,6 +8,7 @@
 ## Requirements
 
 * PostgreSQL
+* Memcached
 * Ruby (>= 1.9.3)
 * curl / curl dev libs
 

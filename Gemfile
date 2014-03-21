@@ -35,6 +35,8 @@ gem 'simple_enum'
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'dalli'
+  gem 'connection_pool'
 end
 
 group :development do
