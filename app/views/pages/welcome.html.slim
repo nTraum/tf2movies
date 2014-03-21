@@ -57,8 +57,8 @@ hr
             = link_to movie, :class => 'pull-left'
               = image_tag(movie.thumbnail(:tiny), :class => 'media-object', :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail')
             .media-body
-              h4.media-heading = movie.title
-              p = "by #{movie.author.nickname}"
+              h4.media-heading = link_to(movie.title, movie)
+              p by #{link_to(movie.author.nickname, movie.author)}
               p.pull-right.text-muted = "#{time_ago_in_words(movie.created_at)} ago"
               ul.list-inline
                 li = fa_icon('tags')
@@ -78,8 +78,8 @@ hr
             = link_to movie, :class => 'pull-left'
               = image_tag(movie.thumbnail(:tiny), :class => 'media-object', :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail')
             .media-body
-              h4.media-heading = movie.title
-              p = "by #{movie.author.nickname}"
+              h4.media-heading = link_to(movie.title, movie)
+              p by #{link_to(movie.author.nickname, movie.author)}
               p.pull-right.text-muted = "#{number_with_delimiter(movie.views)} views"
               ul.list-inline
                 li = fa_icon('tags')
