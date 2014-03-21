@@ -32,6 +32,7 @@ gem 'foreman'
 gem 'colored'
 gem 'friendly_id'
 gem 'simple_enum'
+gem 'whenever', :require => false
 
 group :production do
   gem 'newrelic_rpm'
