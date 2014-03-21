@@ -78,23 +78,18 @@ class Movie < ActiveRecord::Base
   end
 
   def thumbnail(quality = :tiny)
-    unless [:max, :high, :medium, :small, :tiny].include? quality
-      raise ArgumentError, "unknown quality '#{quality}'"
-    end
+    sizes = {
+        :max    => 'maxresdefault',
+        :high   => 'sddefault',
+        :medium => 'hqdefault',
+        :small  => 'mqdefault',
+        :tiny   => 'default'
+      }
 
-    case quality
-      when :max
-        filename = 'maxresdefault'
-      when :high
-        filename = 'sddefault'
-      when :medium
-        filename = 'hqdefault'
-      when :small
-        filename = 'mqdefault'
-      when :tiny
-        filename = 'default'
-    end
-    "http://img.youtube.com/vi/#{youtube_id}/#{filename}.jpg"
+      unless sizes[quality]
+        raise ArgumentError, "unknown quality '#{quality}'"
+      end
+      "http://img.youtube.com/vi/#{youtube_id}/#{sizes[quality]}.jpg"
   end
 
   private
