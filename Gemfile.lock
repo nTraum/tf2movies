@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/kylejginavan/youtube_it.git
-  revision: fda6e9198aad67ce51bdb6cc5c4d298e3f8f834f
+  revision: 943a202fce2324d5122f80396e3bc473a61dc4c4
   specs:
     youtube_it (2.4.0)
       builder
