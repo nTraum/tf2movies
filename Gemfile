@@ -38,6 +38,7 @@ group :production do
   gem 'newrelic_rpm'
   gem 'dalli'
   gem 'connection_pool'
+  gem 'sentry-raven'
 end
 
 group :development do

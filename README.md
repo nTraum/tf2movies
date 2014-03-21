@@ -39,6 +39,7 @@ You need to configure the following environment variables to run tf2movies:
 * `STEAM_API_KEY` - API key for [Steam API/Omniauth](http://steamcommunity.com/dev)
 * `NEWRELIC_API_KEY` - API key for [New Relic](http://newrelic.com/) app monitoring (optional)
 * `SECRET_TOKEN` - Rails' [secret token](http://guides.rubyonrails.org/security.html#session-storage) for session storage
+* `SENTRY_DSN`
 
 Use the `.env` file to set these environment variables. The command `rake secret` can be used to generate a custom secret token for you.
 

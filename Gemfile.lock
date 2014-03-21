@@ -246,6 +246,10 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    sentry-raven (0.7.1)
+      faraday (>= 0.7.6)
+      hashie (>= 1.1.0)
+      uuidtools
     simple_enum (1.6.8)
       activesupport (>= 3.0.0)
     simple_oauth (0.2.0)
@@ -294,6 +298,7 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.4)
     vcr (2.8.0)
     webmock (1.17.4)
       addressable (>= 2.2.7)
@@ -347,6 +352,7 @@ DEPENDENCIES
   rails_autolink
   sass-rails (~> 4.0.2)
   sdoc
+  sentry-raven
   simple_enum
   simplecov
   slim-rails

@@ -40,6 +40,7 @@ namespace :tf2movies do
     check_steam_api_key
     check_newrelic_api_key
     check_secret_token
+    check_sentry_raven_api_key
     puts 'Finished running checks.'
   end
 
@@ -73,6 +74,15 @@ namespace :tf2movies do
   def check_secret_token
     print 'Environment variable SECRET_TOKEN exists?... '
     if ENV['SECRET_TOKEN'].empty?
+      puts 'no'.red
+    else
+      puts 'yes'.green
+    end
+  end
+
+  def check_sentry_raven_api_key
+    print 'Environment variable SENTRY_DSN exists?... '
+    if ENV['SENTRY_DSN'].empty?
       puts 'no'.red
     else
       puts 'yes'.green
