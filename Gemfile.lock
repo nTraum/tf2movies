@@ -62,6 +62,9 @@ GEM
     capistrano-bundler (1.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-newrelic (0.0.8)
+      capistrano (~> 3.0)
+      newrelic_rpm
     capistrano-rails (1.1.1)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -317,6 +320,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  capistrano-newrelic
   capistrano-rails
   capistrano-rbenv
   capistrano3-puma

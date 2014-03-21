@@ -55,6 +55,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-puma'
+  gem 'capistrano-newrelic'
 end
 
 group :test do
