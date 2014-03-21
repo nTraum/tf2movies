@@ -35,9 +35,10 @@ Edit production section of `config/database.yml` to fit your needs.
 ##### App settings
 You need to configure the following environment variables to run tf2movies:
 
+new_relic...
+
 * `YOUTUBE_API_KEY` - API key for [YouTube](https://cloud.google.com/console/project)
 * `STEAM_API_KEY` - API key for [Steam API/Omniauth](http://steamcommunity.com/dev)
-* `NEWRELIC_API_KEY` - API key for [New Relic](http://newrelic.com/) app monitoring (optional)
 * `SECRET_TOKEN` - Rails' [secret token](http://guides.rubyonrails.org/security.html#session-storage) for session storage
 * `SENTRY_DSN`
 

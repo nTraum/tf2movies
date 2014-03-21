@@ -38,7 +38,6 @@ namespace :tf2movies do
     puts 'Running tf2movies checks...'
     check_youtube_api_key
     check_steam_api_key
-    check_newrelic_api_key
     check_secret_token
     check_sentry_raven_api_key
     puts 'Finished running checks.'
@@ -56,15 +55,6 @@ namespace :tf2movies do
   def check_steam_api_key
     print 'Environment variable STEAM_API_KEY exists?... '
     if ENV['STEAM_API_KEY'].empty?
-      puts 'no'.red
-    else
-      puts 'yes'.green
-    end
-  end
-
-  def check_newrelic_api_key
-  print 'Environment variable NEWRELIC_API_KEY exists?... '
-    if ENV['NEWRELIC_API_KEY'].empty?
       puts 'no'.red
     else
       puts 'yes'.green

@@ -24,7 +24,7 @@ set :deploy_to, '/var/www/tf2movies'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml .env}
+set :linked_files, %w{config/database.yml config/newrelic.yml .env}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{tmp/pids tmp/sockets log}
