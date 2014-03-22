@@ -48,6 +48,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'quiet_assets'
   gem 'rails-footnotes'
 
