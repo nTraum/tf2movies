@@ -42,4 +42,16 @@ describe MoviesController do
       end
     end
   end
+
+  it 'must redirect duplicates' do
+    movie = FactoryGirl.create :real_youtube_id
+    as_logged_in_user do
+      VCR.use_cassette('movie_controller_test_create_duplicate', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+        post :create, :url => movie.youtube_id
+      end
+      response.status.must_equal 302
+      flash[:alert].wont_be_nil
+      Movie.count.must_equal 1
+    end
+  end
 end
