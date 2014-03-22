@@ -1,11 +1,11 @@
 ENV['RAILS_ENV'] = 'test'
 
+require 'codeclimate-test-reporter'
 require 'simplecov'
-require 'coveralls'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
+  CodeClimate::TestReporter::Formatter
 ]
 SimpleCov.start('rails') do
   add_group 'Policies', 'app/policies'
@@ -34,6 +34,7 @@ require 'vcr'
 VCR.configure do |c|
   c.cassette_library_dir = 'test/cassettes'
   c.hook_into :webmock
+  c.ignore_hosts 'codeclimate.com'
 end
 
 DatabaseCleaner.strategy = :transaction

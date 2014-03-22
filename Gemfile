@@ -59,10 +59,10 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov', require: false
-  gem 'coveralls', require: false
-  gem 'database_cleaner', require: false
-  gem 'vcr', require: false
-  gem 'webmock', require: false
-  gem 'minitest-rails-capybara', require: false
+  gem 'simplecov',                  require: false
+  gem 'codeclimate-test-reporter',  require: false
+  gem 'database_cleaner',           require: false
+  gem 'vcr',                        require: false
+  gem 'webmock',                    require: false
+  gem 'minitest-rails-capybara',    require: false
 end
