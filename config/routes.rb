@@ -1,6 +1,9 @@
 Tf2movies::Application.routes.draw do
   root 'pages#welcome'
 
+  get '/404', :to => 'pages#not_found'
+  get '/500', :to => 'pages#internal_error'
+
   get '/about', :to => 'pages#about', :as => :about
   get '/contact', :to => 'pages#contact', :as => :contact
 
@@ -19,6 +22,8 @@ Tf2movies::Application.routes.draw do
     get 'submit',   :on => :collection
     get 'manage', :on => :collection
   end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

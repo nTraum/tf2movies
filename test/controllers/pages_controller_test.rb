@@ -16,4 +16,12 @@ describe PagesController do
     response.status.must_equal 200
   end
 
+  it 'should get 404' do
+    get :not_found
+    response.status.must_equal 404
+  end
+  it 'should get 500' do
+    get :internal_error
+    response.status.must_equal 500
+  end
 end
