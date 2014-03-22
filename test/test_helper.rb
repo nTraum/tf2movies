@@ -3,10 +3,13 @@ ENV['RAILS_ENV'] = 'test'
 require 'codeclimate-test-reporter'
 require 'simplecov'
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+if ENV['CI'] == 'true'
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
   CodeClimate::TestReporter::Formatter
-]
+  ]
+end
+
 SimpleCov.start('rails') do
   add_group 'Policies', 'app/policies'
 end
