@@ -36,6 +36,7 @@ set :linked_dirs, %w{tmp/pids tmp/sockets log}
 # set :keep_releases, 5
 
 namespace :deploy do
+  before :finished, 'newrelic:notice_deployment'
 
   desc 'Restart application'
   task :restart do
