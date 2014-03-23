@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = 'You are not authorized to perform this action.'
-    if request['HTTP_REFERER']
+    if request.env['HTTP_REFERER']
       redirect_to :back
     else
       redirect_to root_path
