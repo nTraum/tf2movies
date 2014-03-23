@@ -54,4 +54,16 @@ describe MoviesController do
       Movie.count.must_equal 1
     end
   end
+
+  it 'must handle non-youtube submissions gracefully' do
+    url = 'http://example.com'
+    as_logged_in_user do
+      VCR.use_cassette('movie_controller_test_non_youtube_links', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+        post :create, :url => url
+      end
+    response.status.must_equal 302
+    flash[:warning].wont_be_nil
+    Movie.count.must_equal 0
+    end
+  end
 end
