@@ -51,7 +51,6 @@ group :development do
   gem 'pry-nav'
   gem 'quiet_assets'
   gem 'rails-footnotes'
-  gem 'minitest-libnotify'
 
   # deployment
   gem 'capistrano-rails'
