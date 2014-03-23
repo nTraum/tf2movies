@@ -1,6 +1,10 @@
 require 'test_helper'
 
 describe Download do
+
+  it 'must have an unknown status when created' do
+    FactoryGirl.create(:download).unknown?.must_equal true
+  end
   describe 'with HTTP URL' do
     subject { FactoryGirl.build :http_download }
     it 'must derive the correct host' do
