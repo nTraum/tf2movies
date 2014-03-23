@@ -17,6 +17,7 @@ describe GameModesController do
         response.status.must_equal 200
       end
     end
+
     it 'must create a game mode' do
       as_logged_in_admin do
         GameMode.count.must_equal 0
@@ -26,6 +27,16 @@ describe GameModesController do
         response.status.must_equal 302
       end
     end
+
+    it 'must not create invalid game modes' do
+      as_logged_in_admin do
+        post :create, :game_mode => FactoryGirl.attributes_for(:game_mode, :name => '')
+        flash[:alert].wont_be_nil
+        response.status.must_equal 302
+        GameMode.count.must_equal 0
+      end
+    end
+
     it 'must get edit' do
       as_logged_in_admin do
         game_mode = FactoryGirl.create :game_mode
@@ -34,11 +45,21 @@ describe GameModesController do
         response.status.must_equal 200
       end
     end
+
     it 'must update a game mode' do
       as_logged_in_admin do
         game_mode = FactoryGirl.create :game_mode
         post :update, :id => game_mode.id, :game_mode => FactoryGirl.attributes_for(:game_mode)
         flash[:notice].wont_be_nil
+        response.status.must_equal 302
+      end
+    end
+
+    it 'must not update invalid game modes' do
+      as_logged_in_admin do
+        game_mode = FactoryGirl.create :game_mode
+        post :update, :id => game_mode.id, :game_mode => FactoryGirl.attributes_for(:game_mode, :name => '')
+        flash[:alert].wont_be_nil
         response.status.must_equal 302
       end
     end

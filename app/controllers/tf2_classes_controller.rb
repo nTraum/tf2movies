@@ -39,7 +39,7 @@ class Tf2ClassesController < ApplicationController
     if @tf2_class.update(tf2_class_params)
       redirect_to manage_tf2_classes_path, :notice => 'TF2 class updated.'
     else
-      redirect_to manage_tf2_classes_path, :alert => @tf2_class.errors.full.join(', ')
+      redirect_to manage_tf2_classes_path, :alert => @tf2_class.errors.full_messages.join(', ')
     end
   end
 

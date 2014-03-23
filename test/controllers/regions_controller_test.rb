@@ -26,6 +26,16 @@ describe RegionsController do
         response.status.must_equal 302
       end
     end
+
+    it 'must not create invalid regions' do
+      as_logged_in_admin do
+        post :create, :region => FactoryGirl.attributes_for(:region, :name => '')
+        flash[:alert].wont_be_nil
+        response.status.must_equal 302
+        Region.count.must_equal 0
+      end
+    end
+
     it 'must get edit' do
       as_logged_in_admin do
         region = FactoryGirl.create :region
@@ -34,11 +44,21 @@ describe RegionsController do
         response.status.must_equal 200
       end
     end
+
     it 'must update a region' do
       as_logged_in_admin do
         region = FactoryGirl.create :region
         post :update, :id => region.id, :region => FactoryGirl.attributes_for(:region)
         flash[:notice].wont_be_nil
+        response.status.must_equal 302
+      end
+    end
+
+    it 'must not update invalid regions' do
+      as_logged_in_admin do
+        region = FactoryGirl.create :region
+        post :update, :id => region.id, :region => FactoryGirl.attributes_for(:region, :name => '')
+        flash[:alert].wont_be_nil
         response.status.must_equal 302
       end
     end

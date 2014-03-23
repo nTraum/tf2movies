@@ -9,6 +9,7 @@ describe Tf2ClassesController do
         response.status.must_equal 200
       end
     end
+
     it 'must get manage' do
       as_logged_in_admin do
         FactoryGirl.create(:tf2_class)
@@ -17,6 +18,7 @@ describe Tf2ClassesController do
         response.status.must_equal 200
       end
     end
+
     it 'must create a tf2 class' do
       as_logged_in_admin do
         Tf2Class.count.must_equal 0
@@ -26,6 +28,16 @@ describe Tf2ClassesController do
         response.status.must_equal 302
       end
     end
+
+    it 'must not create invalid tf2 classes' do
+      as_logged_in_admin do
+        post :create, :tf2_class => FactoryGirl.attributes_for(:tf2_class, :name => '')
+        flash[:alert].wont_be_nil
+        response.status.must_equal 302
+        Tf2Class.count.must_equal 0
+      end
+    end
+
     it 'must get edit' do
       as_logged_in_admin do
         tf2_class = FactoryGirl.create :tf2_class
@@ -34,11 +46,21 @@ describe Tf2ClassesController do
         response.status.must_equal 200
       end
     end
+
     it 'must update a tf2 class' do
       as_logged_in_admin do
         tf2_class = FactoryGirl.create :tf2_class
         post :update, :id => tf2_class.id, :tf2_class => FactoryGirl.attributes_for(:tf2_class)
         flash[:notice].wont_be_nil
+        response.status.must_equal 302
+      end
+    end
+
+    it 'must not update invalid tf2 classes' do
+      as_logged_in_admin do
+        tf2_class = FactoryGirl.create :tf2_class
+        post :update, :id => tf2_class.id, :tf2_class => FactoryGirl.attributes_for(:tf2_class, :name => '')
+        flash[:alert].wont_be_nil
         response.status.must_equal 302
       end
     end
