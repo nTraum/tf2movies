@@ -79,11 +79,11 @@ class Movie < ActiveRecord::Base
 
   def thumbnail(quality = :tiny)
     sizes = {
-        :max    => 'maxresdefault',
-        :high   => 'sddefault',
-        :medium => 'hqdefault',
-        :small  => 'mqdefault',
-        :tiny   => 'default'
+        :max    => 'maxresdefault', # 1280x720
+        :high   => 'sddefault',     # 640x480
+        :medium => 'hqdefault',     # 480x360
+        :small  => 'mqdefault',     # 320x180
+        :tiny   => 'default'        # 120x90
       }
 
       unless sizes[quality]
