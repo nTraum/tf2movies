@@ -2,5 +2,6 @@ $ ->
   $(".hisrc img").hisrc();
   $(".hisrc img+img").hisrc({
     useTransparentGif: true,
+    srcIsLowResolution: false,
     speedTestUri: "<%= asset_path('50K.jpg') %>"
   });
