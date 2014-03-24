@@ -4,7 +4,7 @@ h1 = @game_mode.name
 
 .row
   .col-md-12
-    h4
+    h4 Filter Regions
     .btn-group.btn-group-sm
       - Region.all.each do |region|
         button.btn.btn-default.filter type='button' data-filter=".region-#{region.name}" = region.name
@@ -17,10 +17,14 @@ h1 = @game_mode.name
 
     h4 Sort
     .btn-group.btn-group-sm
-      button.btn.btn-default.sort type='button' data-sort='views' Views
-      button.btn.btn-default.sort type='button' data-sort='date:asc' Date
+      button.btn.btn-default.sort type='button' data-sort='views:desc' Views
+      button.btn.btn-default.sort type='button' data-sort='date:desc' Date
+      button.btn.btn-default.sort type='button' data-sort='title' Title
 
 .row#movie-grid
-  - @game_mode.movies.each do |m|
-    div class=(['col-md-3', 'mix', ("tf2_class-#{m.tf2_class.name}" if m.tf2_class), ("region-#{m.region.name}" if m.region)].compact.join(' ')) data-views=m.views data-date=m.created_at
-      p = link_to(m.title, m)
+  - @game_mode.movies.each_slice(3) do |movies|
+    - movies.each do |m|
+      div class=(['col-md-4', 'mix', ("tf2_class-#{m.tf2_class.name}" if m.tf2_class), ("region-#{m.region.name}" if m.region)].compact.join(' ')) data-views=("%09d" % m.views) data-date=m.created_at data-title=m.title
+        img.img-responsive alt="#{m.title} thumbnail" src=m.thumbnail(:tiny)
+        p = m.title
+    .row
