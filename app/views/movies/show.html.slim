@@ -100,10 +100,5 @@ p
                 .form-group
                   = f.label(:text, {:class => 'sr-only'})
                   = f.text_area(:text, :required => true, :class => 'form-control', :rows => 3)
+                  span.help-block Minimal HTML formatting allowed.
                 .form-group = f.submit('Save', :class => 'btn btn-primary')
-
-                  /.input-group
-                  /  = f.text_area :text, :message => 'Comment', :required => true, :class => 'form-control'
-                  /  label.sr-only for='text' Text
-                  /  span.input-group-btn
-                  /    = f.submit 'Save', :class => 'btn btn-primary'
