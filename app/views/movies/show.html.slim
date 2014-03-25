@@ -82,3 +82,23 @@ p
             th
           tbody
             == render @movie.downloads
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-toggle='collapse' data-parent='#accordion' href='#collapseComments'
+          = fa_icon 'comments fw', :text => "Comments (#{@movie.comments.size})"
+    .panel-collapse.collapse#collapseComments
+      .panel-body
+        ul.media-list
+          == render @movie.comments
+          hr
+          li.media
+            span.pull-left = fa_icon('quote-left fw 2x')
+            .media-body
+              h4.media-heading Leave a comment
+              = form_for [@movie, @comment] do |f|
+                .form-group
+                  = f.label(:text, {:class => 'sr-only'})
+                  = f.text_area(:text, :required => true, :class => 'form-control', :rows => 3)
+                  span.help-block Minimal HTML formatting allowed.
+                .form-group = f.submit('Save', :class => 'btn btn-primary')

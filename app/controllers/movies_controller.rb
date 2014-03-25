@@ -1,7 +1,14 @@
 class MoviesController < ApplicationController
+  after_action :verify_authorized, :except => [:submit, :show]
+
+  def submit
+    @movie = Movie.new
+  end
 
   def show
-    @movie = Movie.includes(:author, :downloads, :songs).find(params[:id])
+    @movie = Movie.includes(:author, :downloads, :songs, :comments).find(params[:id])
+    @comment = Comment.new
+    @comment.movie = @movie
   end
 
   def edit

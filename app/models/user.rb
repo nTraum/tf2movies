@@ -15,6 +15,7 @@
 
 class User < ActiveRecord::Base
   has_many  :suggestions,       :class_name => 'Movie'
+  has_many  :comments
   validates :steam_id,          :presence => true,
                                 :uniqueness => true
   validates :nickname,          :presence => true
