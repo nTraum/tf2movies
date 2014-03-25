@@ -30,23 +30,15 @@ p Quality over quantity is our convention. Your movie should meet the following 
       li Pub footage
       li Not Available on YouTube
 
-h2 Submission form
 .row
   .col-md-7
-    = form_tag('/movies', {:role => 'form'}) do
-      fieldset disabled=!policy(Movie).submit?
-        .input-group
-          span.input-group-addon
-            = fa_icon 'youtube'
-          = url_field_tag(:url, nil, :required => true, :placeholder => 'http://youtube.com/watch?v=uga_sPZRF70', :class => 'form-control')
-          label.sr-only for='url' YouTube URL
-          span.input-group-btn
-            = submit_tag('Submit', :class => 'btn btn-primary')
-        - unless current_user
-          span.help-block
-           => fa_icon 'exclamation-triangle'
-           | You need to be
-           =<> link_to('logged in', login_path)
-           | to submit a movie.
-        - if current_user && current_user.banned?
-          span.help-block = fa_icon 'exclamation-triangle', :text => 'You are banned and cannot submit movies anymore!'
+    h2 Submission form
+    = form_for(@movie, :html => {:role => 'form'}) do |f|
+      fieldset disabled=!policy(@movie).submit?
+        .input-group.input-group-lg
+          span.input-group-addon = fa_icon('youtube')
+          = url_field(@movie, :url, :required => true, :placeholder => 'http://youtube.com/watch?v=uga_sPZRF70', :class => 'form-control')
+          = f.label(:url, :class => 'sr-only')
+          span.input-group-btn = f.submit('Submit', :class => 'btn btn-primary')
+        - unless policy(@movie).submit?
+          span.help-block #{fa_icon('exclamation-triangle')} You need to be #{link_to('logged in', login_path)} to submit a movie.

@@ -35,6 +35,7 @@ class Movie < ActiveRecord::Base
   belongs_to    :author,              :touch => true
   has_many      :downloads
   has_many      :songs
+  has_many      :comments
   belongs_to    :game_mode
   belongs_to    :tf2_class
   belongs_to    :region
