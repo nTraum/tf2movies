@@ -33,6 +33,7 @@ gem 'colored'
 gem 'friendly_id'
 gem 'simple_enum'
 gem 'whenever', :require => false
+gem 'sanitize'
 
 group :production do
   gem 'newrelic_rpm'

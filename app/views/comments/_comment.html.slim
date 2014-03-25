@@ -1,0 +1,7 @@
+li.media
+  span.pull-left = fa_icon('comment-o fw 2x')
+  .media-body
+    h4.media-heading
+      = link_to(comment.user.nickname, comment.user)
+      small< said #{time_ago_in_words(comment.updated_at)} ago:
+    p == Sanitize.clean(comment.text, Sanitize::Config::BASIC)
