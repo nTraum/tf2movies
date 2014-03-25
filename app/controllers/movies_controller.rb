@@ -1,5 +1,4 @@
 class MoviesController < ApplicationController
-  before_action :new_comment, :only => :show
   after_action :verify_authorized, :except => [:submit, :show]
 
   def submit
@@ -7,7 +6,9 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.includes(:author, :downloads, :songs).find(params[:id])
+    @movie = Movie.includes(:author, :downloads, :songs, :comments).find(params[:id])
+    @comment = Comment.new
+    @comment.movie = @movie
   end
 
   def edit
@@ -46,9 +47,5 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(:game_mode_id, :tf2_class_id, :region_id, :songs_attributes => [:id, :artist, :title, :_destroy], :downloads_attributes => [:id, :url, :_destroy])
-  end
-
-  def new_comment
-    @comment = Comment.new
   end
 end

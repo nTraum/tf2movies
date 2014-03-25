@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   after_action :verify_authorized
 
   def create
-    @comment = Comment.new(comments_params)
+    @movie = Movie.find(comments_params[:movie_id])
+    @comment = @movie.comments.build(comments_params[:comment])
     @comment.user = current_user
     authorize @comment
     if @comment.save
@@ -21,6 +22,6 @@ class CommentsController < ApplicationController
   private
 
   def comments_params
-    params.require(:comment).permit(:movie_id, :text)
+    params.permit(:movie_id, :comment => [:text])
   end
 end

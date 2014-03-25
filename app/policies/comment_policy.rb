@@ -1,6 +1,6 @@
 CommentPolicy = Struct.new(:user, :comment) do
   def new?
-    !!(user && (user.banned == false))
+    !!(user && (user.banned? == false))
   end
 
   def edit?
