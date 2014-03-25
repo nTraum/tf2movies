@@ -8,7 +8,6 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.includes(:author, :downloads, :songs, :comments).find(params[:id])
     @comment = Comment.new
-    @comment.movie = @movie
   end
 
   def edit

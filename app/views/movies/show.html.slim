@@ -97,8 +97,12 @@ p
             .media-body
               h4.media-heading Leave a comment
               = form_for [@movie, @comment] do |f|
-                .form-group
-                  = f.label(:text, {:class => 'sr-only'})
-                  = f.text_area(:text, :required => true, :class => 'form-control', :rows => 3)
-                  span.help-block Minimal HTML formatting allowed.
-                .form-group = f.submit('Save', :class => 'btn btn-primary')
+                  .form-group
+                    = f.label(:text, {:class => 'sr-only'})
+                    = f.text_area(:text, :required => true, :class => 'form-control', :rows => 3, :disabled=> !policy(@comment).new?)
+                    span.help-block
+                      - if policy(@comment).new?
+                        | Minimal HTML formatting allowed.
+                      - else
+                        #{fa_icon('exclamation-triangle')} #{link_to('Login', login_path)} to comment.
+                  .form-group = f.submit('Save', :class => 'btn btn-primary', :disabled=> !policy(@comment).new?)
