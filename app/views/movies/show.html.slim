@@ -37,25 +37,29 @@ ul.list-inline
   li
     = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
 
-#embeded_movie
-  iframe src="http://www.youtube.com/embed/#{@movie.youtube_id}?rel=0&modestbranding=1&html5=1" allowfullscreen=true frameborder=0 type='text/html' origin=request.original_url
-p
-.panel-group#accordion
-  .panel.panel-default
-    .panel-heading
-      h4.panel-title
-        a data-toggle='collapse' data-parent='#accordion' href='#collapseInfo'
-           = fa_icon 'info fw', :text => 'Info'
-    .panel-collapse.collapse.in#collapseInfo
-      .panel-body
-        = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
-  .panel.panel-default
-    .panel-heading
-      h4.panel-title
-        a data-toggle='collapse' data-parent='#accordion' href='#collapseMusic'
-          = fa_icon 'music fw', :text => "Music (#{@movie.songs.size})"
-    .panel-collapse.collapse#collapseMusic
-      .panel-body
+.row
+  .col-md-12
+    #embeded_movie
+      iframe src="http://www.youtube.com/embed/#{@movie.youtube_id}?rel=0&modestbranding=1&html5=1" allowfullscreen=true frameborder=0 type='text/html' origin=request.original_url
+
+.row
+  .col-md-12
+    h2 Info
+
+    ul.nav.nav-tabs
+      li.active
+        a href='#description' data-toggle='tab' = fa_icon('info', :text => "Description")
+      li
+        a href= '#music' data-toggle='tab' = fa_icon('music', :text => "Music (#{@movie.songs.size})")
+      li
+        a href= '#downloads' data-toggle='tab' = fa_icon('download', :text => "Downloads (#{@movie.downloads.size})")
+      li
+        a href= '#comments' data-toggle='tab' = fa_icon('comments', :text => "Comments (#{@movie.comments.size})")
+
+    .tab-content
+      .tab-pane.fade.in.active id='description'
+        p = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
+      .tab-pane.fade id='music'
         table.table.table-hover.table-condensed
           thead
             th.hidden-xs #
@@ -66,13 +70,7 @@ p
             th.text-right SC
           tbody
             == render @movie.songs
-  .panel.panel-default
-    .panel-heading
-      h4.panel-title
-        a data-toggle='collapse' data-parent='#accordion' href='#collapseDownloads'
-          = fa_icon 'download fw', :text => "Downloads (#{@movie.downloads.size})"
-    .panel-collapse.collapse#collapseDownloads
-      .panel-body
+      .tab-pane.fade id='downloads'
         table.table.table-hover.table-condensed
           thead
             th.hidden-xs #
@@ -82,27 +80,22 @@ p
             th
           tbody
             == render @movie.downloads
-  .panel.panel-default
-    .panel-heading
-      h4.panel-title
-        a data-toggle='collapse' data-parent='#accordion' href='#collapseComments'
-          = fa_icon 'comments fw', :text => "Comments (#{@movie.comments.size})"
-    .panel-collapse.collapse#collapseComments
-      .panel-body
-        ul.media-list
-          == render @movie.comments
-          hr
-          li.media
-            span.pull-left = fa_icon('quote-left fw 2x')
-            .media-body
-              h4.media-heading Leave a comment
-              = form_for [@movie, @comment] do |f|
-                  .form-group
-                    = f.label(:text, {:class => 'sr-only'})
-                    = f.text_area(:text, :required => true, :class => 'form-control', :rows => 3, :disabled=> !policy(@comment).new?)
-                    span.help-block
-                      - if policy(@comment).new?
-                        | Minimal HTML formatting allowed.
-                      - else
-                        #{fa_icon('exclamation-triangle')} #{link_to('Login', login_path)} to comment.
-                  .form-group = f.submit('Save', :class => 'btn btn-primary', :disabled=> !policy(@comment).new?)
+      .tab-pane.fade id='comments'
+        p
+          ul.media-list
+            == render @movie.comments
+            hr
+            li.media
+              span.pull-left = fa_icon('quote-left fw 2x')
+              .media-body
+                h4.media-heading Leave a comment
+                = form_for [@movie, @comment] do |f|
+                    .form-group
+                      = f.label(:text, {:class => 'sr-only'})
+                      = f.text_area(:text, :required => true, :class => 'form-control', :rows => 3, :disabled=> !policy(@comment).new?)
+                      span.help-block
+                        - if policy(@comment).new?
+                          | Minimal HTML formatting allowed.
+                        - else
+                          #{fa_icon('exclamation-triangle')} #{link_to('Login', login_path)} to comment.
+                    .form-group = f.submit('Save', :class => 'btn btn-primary', :disabled=> !policy(@comment).new?)
