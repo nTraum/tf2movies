@@ -25,6 +25,7 @@ class GameModesController < ApplicationController
   end
 
   def show
+    @game_mode = GameMode.friendly.find(params[:id])
   end
 
   def edit

@@ -2,6 +2,17 @@ crumb :root do
   link fa_icon('home'), root_path
 end
 
+# GameModes
+crumb :game_modes do
+  link 'Game Modes', game_modes_path
+end
+
+crumb :game_mode do |game_mode|
+  link game_mode.name, game_mode
+  parent :game_modes
+end
+
+# Movies
 crumb :movies do
   link 'Movies', movies_path
 end

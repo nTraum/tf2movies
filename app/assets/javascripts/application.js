@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require fitvid_lib
 //= require fitvid
+//= require mixitup_lib
+//= require mixitup
 //= require_tree .
 //= require bootstrap
 //= require cocoon
