@@ -60,7 +60,7 @@ ul.list-inline
       .tab-pane.fade.in.active id='description'
         p = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
       .tab-pane.fade id='music'
-        table.table.table-hover.table-condensed
+        table.table.table-hover
           thead
             th.hidden-xs #
             th Artist
@@ -71,7 +71,7 @@ ul.list-inline
           tbody
             == render @movie.songs
       .tab-pane.fade id='downloads'
-        table.table.table-hover.table-condensed
+        table.table.table-hover
           thead
             th.hidden-xs #
             th Status
