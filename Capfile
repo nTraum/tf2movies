@@ -13,7 +13,7 @@ require 'capistrano/newrelic'
 set :rbenv_type, :user
 set :rbenv_ruby, '2.1.1'
 
-set :puma_threads, [0, 16]
+set :puma_threads, [0, 8]
 set :puma_workers, 2
 set :puma_init_active_record, true
 set :puma_preload_app, true
