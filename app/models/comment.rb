@@ -17,8 +17,8 @@
 #
 
 class Comment < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :movie
+  belongs_to :user,   :touch => true
+  belongs_to :movie,  :touch => true
 
   validates   :text,  :presence => true
   validates   :movie, :presence => true
