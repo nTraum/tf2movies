@@ -52,6 +52,7 @@ group :development do
   gem 'pry-nav'
   gem 'quiet_assets'
   gem 'rails-footnotes'
+  gem 'spring'
 
   # deployment
   gem 'capistrano-rails'

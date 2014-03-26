@@ -268,6 +268,7 @@ GEM
       railties (>= 3.0, < 4.1)
       slim (~> 2.0)
     slop (3.5.0)
+    spring (1.1.2)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -360,6 +361,7 @@ DEPENDENCIES
   simple_enum
   simplecov
   slim-rails
+  spring
   therubyracer
   uglifier
   vcr
