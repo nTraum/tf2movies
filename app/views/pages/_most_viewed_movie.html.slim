@@ -1,0 +1,16 @@
+- cache ['most_viewed'] do
+  .media
+    = link_to movie, :class => 'pull-left'
+      = image_tag(movie.thumbnail(:small), :class => 'media-object', :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail')
+    .media-body
+      h4.media-heading = link_to(movie.title, movie)
+      p by #{link_to(movie.author.nickname, movie.author)}
+      p.pull-right.text-muted = "#{number_with_delimiter(movie.views)} views"
+      ul.list-inline
+        li = fa_icon('tags')
+        - if movie.region
+          li = link_to(movie.region.name, movie.region, :class => 'text-muted')
+        - if movie.game_mode
+          li = li = link_to(movie.game_mode.name, movie.game_mode, :class => 'text-muted')
+        - if movie.tf2_class
+          li = li = link_to(movie.tf2_class.name, movie.tf2_class, :class => 'text-muted')
