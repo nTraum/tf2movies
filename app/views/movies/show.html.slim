@@ -1,92 +1,93 @@
-- breadcrumb :movie, @movie
+- cache(@movie) do
+  - breadcrumb :movie, @movie
+  h1
+    = @movie.title
+    - if @movie.featured?
+      span.label.label-info< Featured
+  p.lead
+    = link_to(image_tag(@movie.author.avatar_url, :size => '35', :class => 'img-thumbnail img-responsive'), @movie.author)
+    =< link_to @movie.author.nickname, @movie.author
 
-h1
-  = @movie.title
-  - if @movie.featured?
-    span.label.label-info< Featured
-p.lead
-  = link_to(image_tag(@movie.author.avatar_url, :size => '35', :class => 'img-thumbnail img-responsive'), @movie.author)
-  =< link_to @movie.author.nickname, @movie.author
 
-
-a.btn.btn-large.btn-danger.pull-right href='#'
-  = fa_icon 'heart', :text => 'Love it'
-ul.list-inline
-  li
-    => fa_icon 'tags'
-  - if @movie.region
+  / Keep in mind the caching!
+  /a.btn.btn-large.btn-danger.pull-right href='#'
+  /  = fa_icon 'heart', :text => 'Love it'
+  ul.list-inline
     li
-      a href=region_path(@movie.region)
-        span.badge =< @movie.region.name
-  - if @movie.game_mode
+      => fa_icon 'tags'
+    - if @movie.region
+      li
+        a href=region_path(@movie.region)
+          span.badge =< @movie.region.name
+    - if @movie.game_mode
+      li
+        a href=game_mode_path(@movie.game_mode)
+          span.badge =< @movie.game_mode.name
+    - if @movie.tf2_class
+      li
+        a href=tf2_class_path(@movie.tf2_class)
+          span.badge =< @movie.tf2_class.name
+
+  ul.list-inline
     li
-      a href=game_mode_path(@movie.game_mode)
-        span.badge =< @movie.game_mode.name
-  - if @movie.tf2_class
+      = fa_icon 'heart', :text => pluralize(47, 'love')
     li
-      a href=tf2_class_path(@movie.tf2_class)
-        span.badge =< @movie.tf2_class.name
+      = fa_icon 'youtube-play', :text => "#{number_with_delimiter @movie.views} views"
+    li
+      = fa_icon 'calendar'
+      ==< "Added #{timeago_tag @movie.created_at}"
+    li
+      = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
 
-ul.list-inline
-  li
-    = fa_icon 'heart', :text => pluralize(47, 'love')
-  li
-    = fa_icon 'youtube-play', :text => "#{number_with_delimiter @movie.views} views"
-  li
-    = fa_icon 'calendar'
-    ==< "Added #{timeago_tag @movie.created_at}"
-  li
-    = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
+  .row
+    .col-md-12
+      == render :partial => 'embeded', :locals => {:movie => @movie}
 
-.row
-  .col-md-12
-    == render :partial => 'embeded', :locals => {:movie => @movie}
+  .row
+    .col-md-12
+      h2 Info
 
-.row
-  .col-md-12
-    h2 Info
+      ul.nav.nav-tabs
+        li.active
+          a href='#description' data-toggle='tab' = fa_icon('info', :text => "Description")
+        li
+          a href= '#music' data-toggle='tab' = fa_icon('music', :text => "Music (#{@movie.songs.size})")
+        li
+          a href= '#downloads' data-toggle='tab' = fa_icon('download', :text => "Downloads (#{@movie.downloads.size})")
+        li
+          a href= '#comments' data-toggle='tab' = fa_icon('comments', :text => "Comments (#{@movie.comments.size})")
 
-    ul.nav.nav-tabs
-      li.active
-        a href='#description' data-toggle='tab' = fa_icon('info', :text => "Description")
-      li
-        a href= '#music' data-toggle='tab' = fa_icon('music', :text => "Music (#{@movie.songs.size})")
-      li
-        a href= '#downloads' data-toggle='tab' = fa_icon('download', :text => "Downloads (#{@movie.downloads.size})")
-      li
-        a href= '#comments' data-toggle='tab' = fa_icon('comments', :text => "Comments (#{@movie.comments.size})")
-
-    .tab-content
-      .tab-pane.fade.in.active id='description'
-        p = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
-      .tab-pane.fade id='music'
-        table.table.table-hover
-          thead
-            th.hidden-xs #
-            th Artist
-            th Title
-            th.text-right G
-            th.text-right YT
-            th.text-right SC
-          tbody
-            == render @movie.songs
-      .tab-pane.fade id='downloads'
-        table.table.table-hover
-          thead
-            th.hidden-xs #
-            th Status
-            th Hoster
-            th Size
-            th
-          tbody
-            == render @movie.downloads
-      .tab-pane.fade id='comments'
-        p
-          ul.media-list
-            == render @movie.comments
-            hr
-            li.media
-              span.pull-left = fa_icon('quote-left fw 2x')
-              .media-body
-                h4.media-heading Leave a comment
-                == render :template => 'comments/_form.html.slim', :locals =>  {:movie => @movie, :comment => @comment}
+      .tab-content
+        .tab-pane.fade.in.active id='description'
+          p = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
+        .tab-pane.fade id='music'
+          table.table.table-hover
+            thead
+              th.hidden-xs #
+              th Artist
+              th Title
+              th.text-right G
+              th.text-right YT
+              th.text-right SC
+            tbody
+              == render @movie.songs
+        .tab-pane.fade id='downloads'
+          table.table.table-hover
+            thead
+              th.hidden-xs #
+              th Status
+              th Hoster
+              th Size
+              th
+            tbody
+              == render @movie.downloads
+        .tab-pane.fade id='comments'
+          p
+            ul.media-list
+              == render @movie.comments
+              hr
+              li.media
+                span.pull-left = fa_icon('quote-left fw 2x')
+                .media-body
+                  h4.media-heading Leave a comment
+                  == render :template => 'comments/_form.html.slim', :locals =>  {:movie => @movie, :comment => @comment}
