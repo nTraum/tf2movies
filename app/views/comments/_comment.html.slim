@@ -1,7 +1,8 @@
-li.media
-  span.pull-left = fa_icon('comment-o fw 2x')
-  .media-body
-    h4.media-heading
-      = link_to(comment.user.nickname, comment.user)
-      small< == "said #{timeago_tag(comment.updated_at)}:"
-    p == comment.text
+- cache(comment) do
+  li.media
+    span.pull-left = fa_icon('comment-o fw 2x')
+    .media-body
+      h4.media-heading
+        = link_to(comment.user.nickname, comment.user)
+        small< == "said #{timeago_tag(comment.updated_at)}:"
+      p == comment.text

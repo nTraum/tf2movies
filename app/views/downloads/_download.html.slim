@@ -1,14 +1,15 @@
-tr
-  td.hidden-xs = download_counter+1
-  td
-    - if download.online?
-      span.label.label-success = download.status
-    - elsif download.offline?
-      span.label.label-danger = download.status
-    - else
-      span.label.label-default = download.status
-  td = download.host
-  td
-    - if download.filesize? and (download.filesize > 10 * 10240)
-      = number_to_human_size(download.filesize)
-  td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), download.url, :class => 'btn btn-primary btn-xs', :target => '_blank')
+- cache(download) do
+  tr
+    td.hidden-xs = download_counter+1
+    td
+      - if download.online?
+        span.label.label-success = download.status
+      - elsif download.offline?
+        span.label.label-danger = download.status
+      - else
+        span.label.label-default = download.status
+    td = download.host
+    td
+      - if download.filesize? and (download.filesize > 10 * 10240)
+        = number_to_human_size(download.filesize)
+    td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), download.url, :class => 'btn btn-primary btn-xs', :target => '_blank')
