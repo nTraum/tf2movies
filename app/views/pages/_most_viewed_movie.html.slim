@@ -1,4 +1,4 @@
-- cache ['most_viewed'] do
+- cache ['most_viewed', movie] do
   .media
     = link_to movie, :class => 'pull-left'
       = image_tag(movie.thumbnail(:small), :class => 'media-object', :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail')
