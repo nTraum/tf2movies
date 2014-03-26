@@ -1,4 +1,5 @@
-h1 = "Edit Game Mode '#{@game_mode.name}'"
-.row
-  .col-md-5
-    = render 'form', :game_mode => @game_mode
+- cache(@game_mode) do
+  h1 = "Edit Game Mode '#{@game_mode.name}'"
+  .row
+    .col-md-5
+      = render 'form', :game_mode => @game_mode

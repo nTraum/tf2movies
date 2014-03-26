@@ -10,10 +10,11 @@ table.table.table-hover.table-striped.table-responsive.table-condensed
 
   tbody
     - @users.each do |u|
-      tr
-        td.text-right = u.id
-        td.text-right = u.nickname
-        td.text-right = u.steam_id
-        td.text-right = u.role
-        td.text-right = u.last_login.strftime('%D')
-        td.text-right = u.created_at.strftime('%D')
+      - cache(u) do
+        tr
+          td.text-right = u.id
+          td.text-right = u.nickname
+          td.text-right = u.steam_id
+          td.text-right = u.role
+          td.text-right = u.last_login.strftime('%D')
+          td.text-right = u.created_at.strftime('%D')

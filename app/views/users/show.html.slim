@@ -1,15 +1,16 @@
-.well
-  h1 = @user.nickname
-  p.lead = @user.role.capitalize
+- cache(@user) do
+  .well
+    h1 = @user.nickname
+    p.lead = @user.role.capitalize
 
-.well
-  ul.list-inline
-    li
-      - if @user.online?
-        span.label.label-success online
-      - else
-        span.label.label-danger offline
-    li
-      = fa_icon 'calendar', :text => "Joined #{distance_of_time_in_words_to_now @user.created_at} ago"
-    li
-      = link_to(fa_icon('external-link', :text => 'Steam Profile'), @user.steam_profile_url, :target => '_blank')
+  .well
+    ul.list-inline
+      li
+        - if @user.online?
+          span.label.label-success online
+        - else
+          span.label.label-danger offline
+      li
+        = fa_icon 'calendar', :text => "Joined #{distance_of_time_in_words_to_now @user.created_at} ago"
+      li
+        = link_to(fa_icon('external-link', :text => 'Steam Profile'), @user.steam_profile_url, :target => '_blank')
