@@ -3,5 +3,5 @@ li.media
   .media-body
     h4.media-heading
       = link_to(comment.user.nickname, comment.user)
-      small< said #{time_ago_in_words(comment.updated_at)} ago:
+      small< == "said #{timeago_tag(comment.updated_at)}:"
     p == comment.text

@@ -33,7 +33,8 @@ ul.list-inline
   li
     = fa_icon 'youtube-play', :text => "#{number_with_delimiter @movie.views} views"
   li
-    = fa_icon 'calendar', :text => "Added #{time_ago_in_words @movie.created_at} ago"
+    = fa_icon 'calendar'
+    ==< "Added #{timeago_tag @movie.created_at}"
   li
     = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
 

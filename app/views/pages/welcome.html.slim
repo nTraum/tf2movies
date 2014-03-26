@@ -30,7 +30,7 @@ hr
             .media-body
               h4.media-heading = link_to(movie.title, movie)
               p by #{link_to(movie.author.nickname, movie.author)}
-              p.pull-right.text-muted = "#{time_ago_in_words(movie.created_at)} ago"
+              p.pull-right.text-muted == timeago_tag(movie.created_at)
               ul.list-inline
                 li = fa_icon('tags')
                 - if movie.region

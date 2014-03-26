@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require rails-timeago
 //= require fitvid_lib
 //= require fitvid
 //= require mixitup_lib

@@ -2,14 +2,11 @@ tr
   td.hidden-xs = download_counter+1
   td
     - if download.online?
-      span.label.label-success.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words download.status_refreshed_at} ago" data-placement='bottom'
-        = download.status
+      span.label.label-success = download.status
     - elsif download.offline?
-      span.label.label-danger.tooltipped data-toggle='tooltip' title="checked #{time_ago_in_words download.status_refreshed_at} ago" data-placement='bottom'
-        = download.status
+      span.label.label-danger = download.status
     - else
-      span.label.label-default
-        = download.status
+      span.label.label-default = download.status
   td = download.host
   td
     - if download.filesize? and (download.filesize > 10 * 10240)

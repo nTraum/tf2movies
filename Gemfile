@@ -34,6 +34,7 @@ gem 'friendly_id'
 gem 'simple_enum'
 gem 'whenever', :require => false
 gem 'sanitize'
+gem 'rails-timeago'
 
 group :production do
   gem 'newrelic_rpm'
