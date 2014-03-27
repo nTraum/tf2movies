@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def about
+    @admins     = User.where(:role_cd => User.admin)
+    @moderators = User.where(:role_cd => User.moderator)
   end
 
   def welcome
