@@ -1,6 +1,6 @@
 # tf2movies
 
-[![Build Status](https://travis-ci.org/nTraum/tf2movies.png)](https://travis-ci.org/nTraum/tf2movies)
+[![Build Status](https://travis-ci.org/nTraum/tf2movies.svg?branch=master)](https://travis-ci.org/nTraum/tf2movies)
 [![Coverage Status](https://codeclimate.com/github/nTraum/tf2movies/coverage.png)](https://codeclimate.com/github/nTraum/tf2movies)
 [![Code Climate](https://codeclimate.com/github/nTraum/tf2movies.png)](https://codeclimate.com/github/nTraum/tf2movies)
 [![Dependency Status](https://gemnasium.com/nTraum/tf2movies.png)](https://gemnasium.com/nTraum/tf2movies)
