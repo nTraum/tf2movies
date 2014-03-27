@@ -30,9 +30,6 @@ describe User do
     it 'must have the correct steam id' do
       subject.steam_id.must_equal uid
     end
-    it 'must have the correct role' do
-      subject.role.must_equal 'user'
-    end
     it 'must be a user' do
       subject.user?.must_equal true
     end

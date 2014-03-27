@@ -10,10 +10,11 @@
 #  updated_at        :datetime
 #  last_online       :datetime
 #  steam_id          :integer
-#  role              :string(255)
+#  role_cd           :integer
 #
 
 class User < ActiveRecord::Base
+  as_enum   :role,              :banned => 0, :user => 1, :moderator => 2, :admin => 3
   has_many  :suggestions,       :class_name => 'Movie'
   has_many  :comments
   validates :steam_id,          :presence => true,
@@ -21,20 +22,14 @@ class User < ActiveRecord::Base
   validates :nickname,          :presence => true
   validates :steam_profile_url, :presence => true,
                                 :uniqueness => true
-  validates :role,              :inclusion => { :in => ['banned', 'user', 'moderator', 'admin'] },
-                                :presence => true
-
-  scope :admins,      -> { where(:role => 'admin') }
-  scope :moderators,  -> { where(:role => 'moderator') }
-  scope :users,       -> { where(:role => 'user') }
-  scope :banned,      -> { where(:role => 'banned') }
+  validates :role,            :as_enum => true
 
   def self.create_with_omniauth(auth)
     create! do |user|
       user.nickname = auth['info']['nickname']
       user.steam_id = auth['uid'].to_i
       user.steam_profile_url = auth['info']['urls']['Profile']
-      user.role = 'user'
+      user.user!
       user.last_login = DateTime.current
       user.last_online = DateTime.current
     end
@@ -58,24 +53,8 @@ class User < ActiveRecord::Base
     (Time.current - last_online) < 10.minutes
   end
 
-  def moderator?
-    role == 'moderator'
-  end
-
-  def admin?
-    role == 'admin'
-  end
-
   def staff?
     admin? || moderator?
-  end
-
-  def user?
-    role == 'user'
-  end
-
-  def banned?
-    role == 'banned'
   end
 
   def refresh_last_login

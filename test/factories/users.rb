@@ -10,7 +10,7 @@
 #  updated_at        :datetime
 #  last_online       :datetime
 #  steam_id          :integer
-#  role              :string(255)
+#  role_cd           :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -29,24 +29,23 @@ FactoryGirl.define do
     steam_id
     steam_profile_url
     last_login { 10.minutes.ago }
-    role 'user'
     last_online { 2.minutes.ago }
-
+    role_cd 1
     factory :offline do
       last_login { 60.minutes.ago }
       last_online { 20.minutes.ago }
     end
 
     factory :moderator do
-      role 'moderator'
+      role_cd 2
     end
 
     factory :admin do
-      role 'admin'
+      role_cd 3
     end
 
     factory :banned do
-      role 'banned'
+      role_cd 0
     end
   end
 end
