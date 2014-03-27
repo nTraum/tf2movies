@@ -1,29 +1,17 @@
 .carousel.slide#carousel-featured data-ride='carousel'
   ol.carousel-indicators
-    li.active data-target='#carousel-featured' data-slide-to='0' class='active'
-    li data-target='#carousel-featured' data-slide-to='1'
-    li data-target='#carousel-featured' data-slide-to='2'
+    - movies.size.times do |i|
+      li data-target='#carousel-featured' data-slide-to=i class=('active' if 0==i)
 
   .carousel-inner
-    .item.active
-      a href='#'
-        img.img-responsive src='http://i1.ytimg.com/vi/CxKrqpkxCBY/maxresdefault.jpg'
-      .carousel-caption
-        h3 BROTHER FROM ANOTHER MOTHER
-        span.label.label-info Featured
-    .item
-      a href='#'
-        img.img-responsive src='http://i1.ytimg.com/vi/wDwu4uNTZc4/maxresdefault.jpg'
-      .carousel-caption
-        h3 POP CULTURE - BY CLA
-        span.label.label-info Featured
-    .item
-      a href='#'
-        img.img-responsive src='http://i1.ytimg.com/vi/Asttyl-nk_s/maxresdefault.jpg'
-      .carousel-caption
-        h3 BLAME FAIL MOVIE
-        span.label.label-info Featured
-
+    - movies.each_with_index do |movie, i|
+      div class=(['item', ('active' if 0==i)].compact.join(' '))
+        - cache(['carousel', movie]) do
+          = link_to(movie) do
+            = image_tag(movie.thumbnail(:high), :class => 'img-responsive', :alt => "Thumbnail #{movie.title}")
+          .carousel-caption
+            h4 = movie.title.upcase
+            span.label.label-info Featured
   a.carousel-control.left href='#carousel-featured' data-slide='prev'
     span.icon-prev
   a.carousel-control.right href='#carousel-featured' data-slide='next'
