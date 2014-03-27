@@ -4,11 +4,12 @@ h1 Manage game modes
 p = link_to(fa_icon('plus', :text => 'New'), new_game_mode_path, :class => 'btn btn-primary')
 table.table.table-hover.table-striped.table-responsive
   thead
-    th #
-    th Name
-    th Movies
-    th Creation Date
-    th.text-right Actions
+    tr
+      th #
+      th Name
+      th Movies
+      th Creation Date
+      th.text-right Actions
 
   tbody
     - @game_modes.each do |gm|
