@@ -37,8 +37,8 @@ p Quality over quantity is our convention. Your movie should meet the following 
       fieldset disabled=!policy(@movie).submit?
         .input-group.input-group-lg
           span.input-group-addon = fa_icon('youtube')
-          = url_field(@movie, :url, :required => true, :placeholder => 'http://youtube.com/watch?v=uga_sPZRF70', :class => 'form-control')
-          = f.label(:url, :class => 'sr-only')
+          = url_field(@movie, :url, :required => true, :placeholder => 'http://youtube.com/watch?v=uga_sPZRF70', :class => 'form-control', :id => 'url')
+          = label_tag(:url, 'URL', :class => 'sr-only')
           span.input-group-btn = f.submit('Submit', :class => 'btn btn-primary')
         - unless policy(@movie).submit?
           span.help-block #{fa_icon('exclamation-triangle')} You need to be #{link_to('logged in', login_path)} to submit a movie.
