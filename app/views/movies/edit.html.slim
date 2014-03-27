@@ -2,4 +2,9 @@
   - content_for :title, "Edit #{@movie.title}"
   - breadcrumb :edit_movie, @movie
   h1 = "Edit Movie '#{@movie.title}'"
-  == render 'form', :movie => @movie
+  .row
+  .col-md-7
+    == render 'form', :movie => @movie
+  .col-md-5
+    h2 Description
+    = auto_link(simple_format(@movie.description, :class => 'text-muted small'), :html => { :target => '_blank' })

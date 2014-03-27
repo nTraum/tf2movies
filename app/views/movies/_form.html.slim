@@ -1,6 +1,14 @@
 = form_for movie, :html => {:class => 'form-horizontal', :role => 'form'} do |f|
-  hr
-  h3 Misc
+  h2 Foo
+  .form-group
+    = f.label :status, 'Status', :class => 'col-sm-2 col-sm-offset-1 control-label'
+    .col-sm-8
+      = f.select(:status, Movie.statuses_for_select, {}, :class => 'form-control')
+  .form-group
+    = f.label :featured, 'Featured?', :class => 'col-sm-2 col-sm-offset-1 control-label'
+    .col-sm-8
+      = f.check_box(:featured)
+  h2 Categories
   .form-group
     = f.label :region_id, 'Region', :class => 'col-sm-2 col-sm-offset-1 control-label'
     .col-sm-8
@@ -13,21 +21,18 @@
     = f.label :tf2_class_id, 'TF2 Class', :class => 'col-sm-2 col-sm-offset-1 control-label'
     .col-sm-8
       = f.collection_select :tf2_class_id, Tf2Class.all(:order => :name), :id, :name, {:include_blank => true}, {:class => 'form-control'}
-  hr
-  h3 Songs
+  h2 Songs
   #songs
     = f.fields_for :songs do |song|
       = render 'song_fields', :f => song
     .links
       = link_to_add_association fa_icon('plus fw', :text => 'New'), f, :songs, :class => 'btn btn-sm btn-default'
-  hr
-  h3 Downloads
+  h2 Downloads
   #downloads
     = f.fields_for :downloads do |download|
       = render 'download_fields', :f => download
     .links
       = link_to_add_association fa_icon('plus fw', :text => 'New'), f, :downloads, :class => 'btn btn-sm btn-default'
-  hr
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit 'Save', :class => 'btn btn-primary'
