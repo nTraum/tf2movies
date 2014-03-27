@@ -13,13 +13,14 @@
 #  created_at          :datetime
 #  updated_at          :datetime
 #  uploaded_on_youtube :datetime
-#  status              :string(255)
 #  game_mode_id        :integer
 #  tf2_class_id        :integer
 #  featured            :boolean
 #  featured_at         :datetime
 #  info_refreshed_at   :datetime
 #  region_id           :integer
+#  status_cd           :integer
+#  status_changed_at   :datetime
 #
 # Indexes
 #
@@ -46,6 +47,7 @@ FactoryGirl.define do
     featured false
     featured_at nil
     info_refreshed_at { DateTime.now }
+    status_cd Movie.pending
 
     factory :real_youtube_id do
       youtube_id '0fCpAuxrQ_I'
