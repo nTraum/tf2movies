@@ -1,4 +1,5 @@
 - cache(@movie) do
+  - content_for :title, @movie.title
   - breadcrumb :movie, @movie
   h1
     = @movie.title

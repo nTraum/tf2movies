@@ -1,4 +1,5 @@
-h1 Manage Regions
+- content_for :title, 'Manage regions'
+h1 Manage regions
 = paginate @regions
 p = link_to(fa_icon('plus', :text => 'New'), new_region_path, :class => 'btn btn-primary')
 table.table.table-hover.table-striped.table-responsive

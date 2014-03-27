@@ -1,4 +1,5 @@
 - cache(@user) do
+  - content_for :title, @user.nickname
   .well
     h1 = @user.nickname
     p.lead = @user.role.capitalize

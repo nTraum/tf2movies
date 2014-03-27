@@ -1,4 +1,5 @@
-h1 Manage Game Modes
+- content_for :title, 'Manage game modes'
+h1 Manage game modes
 = paginate @game_modes
 p = link_to(fa_icon('plus', :text => 'New'), new_game_mode_path, :class => 'btn btn-primary')
 table.table.table-hover.table-striped.table-responsive

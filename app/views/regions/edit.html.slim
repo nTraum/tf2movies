@@ -1,4 +1,5 @@
 - cache(@region) do
+  - content_for :title, "Edit #{@region.name}"
   h1 = "Edit Region '#{@region.name}'"
   .row
     .col-md-5

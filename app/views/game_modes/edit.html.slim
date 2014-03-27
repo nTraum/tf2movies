@@ -1,4 +1,5 @@
 - cache(@game_mode) do
+  - content_for :title, "Edit #{@game_mode.name}"
   h1 = "Edit Game Mode '#{@game_mode.name}'"
   .row
     .col-md-5

@@ -1,5 +1,6 @@
 - cache(@tf2_class) do
-  h1 = "Edit Game Mode '#{@tf2_class.name}'"
+  - content_for :title, 'Edit TF2 class'
+  h1 = "Edit TF2 class '#{@tf2_class.name}'"
   .row
     .col-md-5
       = render 'form', :tf2_class => @tf2_class

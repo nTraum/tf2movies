@@ -1,4 +1,5 @@
 - cache(@movie) do
+  - content_for :title, "Edit #{@movie.title}"
   - breadcrumb :edit_movie, @movie
   h1 = "Edit Movie '#{@movie.title}'"
   == render 'form', :movie => @movie
