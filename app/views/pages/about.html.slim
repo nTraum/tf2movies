@@ -9,12 +9,14 @@ h2 Staff
     h4 Moderators
     ul.list-unstyled
       - @moderators.each do |moderator|
-        li = link_to(moderator.nickname, moderator)
+        - cache(['moderator_list', moderator]) do
+          li = link_to(moderator.nickname, moderator)
   .col-md-6
     h4 Admins
     ul.list-unstyled
       - @admins.each do |admin|
-        li = link_to(admin.nickname, admin)
+        - cache(['admin_list', admin]) do
+          li = link_to(admin.nickname, admin)
 
 h2 Technology
 p TF2Movies is written in #{link_to('Ruby on Rails', 'http://rubyonrails.org', :target => '_blank')}.
