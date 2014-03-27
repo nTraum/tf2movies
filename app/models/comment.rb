@@ -17,12 +17,13 @@
 #
 
 class Comment < ActiveRecord::Base
-  belongs_to :user,   :touch => true
-  belongs_to :movie,  :touch => true
+  belongs_to  :user,    :touch => true
+  belongs_to  :movie,   :touch => true
 
-  validates   :text,  :presence => true
-  validates   :movie, :presence => true
-  validates   :user,  :presence => true
+  validates   :hidden,  :inclusion => [true, false]
+  validates   :text,    :presence => true
+  validates   :movie,   :presence => true
+  validates   :user,    :presence => true
 
   before_validation :sanitize_text
 
