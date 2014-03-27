@@ -30,22 +30,22 @@ FactoryGirl.define do
     steam_profile_url
     last_login { 10.minutes.ago }
     last_online { 2.minutes.ago }
-    role_cd 1
+    role_cd User.roles.user
     factory :offline do
       last_login { 60.minutes.ago }
       last_online { 20.minutes.ago }
     end
 
     factory :moderator do
-      role_cd 2
+      role_cd User.roles.moderator
     end
 
     factory :admin do
-      role_cd 3
+      role_cd User.roles.admin
     end
 
     factory :banned do
-      role_cd 0
+      role_cd User.roles.banned
     end
   end
 end
