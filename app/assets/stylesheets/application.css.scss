@@ -14,6 +14,10 @@
 @import "bootstrap_yeti";
 @import "font-awesome";
 
+iframe {
+  border:none;
+}
+
 .flex-video {
   position: relative;
   padding-top: 25px;
