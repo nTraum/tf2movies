@@ -63,22 +63,24 @@
         .tab-pane.fade id='music'
           table.table.table-hover
             thead
-              th.hidden-xs #
-              th Artist
-              th Title
-              th.text-right G
-              th.text-right YT
-              th.text-right SC
+              tr
+                th.hidden-xs #
+                th Artist
+                th Title
+                th.text-right G
+                th.text-right YT
+                th.text-right SC
             tbody
               == render @movie.songs
         .tab-pane.fade id='downloads'
           table.table.table-hover
             thead
-              th.hidden-xs #
-              th Status
-              th Hoster
-              th Size
-              th
+              tr
+                th.hidden-xs #
+                th Status
+                th Hoster
+                th Size
+                th
             tbody
               == render @movie.downloads
         .tab-pane.fade id='comments'
