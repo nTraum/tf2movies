@@ -29,29 +29,6 @@ class Download < ActiveRecord::Base
     url.match(/(^http(s)?:\/\/)?(www\.)?(\w+\.)?(?<domain>\w+\.\w+)\//i)[:domain]
   end
 
-  def refresh_status
-    begin
-      resp = Curl::Easy.http_head(url) do |c|
-        c.follow_location = true
-        c.max_redirects = 10
-      end
-      case resp.response_code
-        when 200
-          self.online!
-          self.filesize = resp.downloaded_content_length.to_i
-        when 404
-          self.offline!
-        else
-          self.unknown!
-      end
-    rescue
-      self.unknown!
-    ensure
-      self.status_refreshed_at = DateTime.now
-      self.save!
-    end
-  end
-
   private
 
   def default_attributes
