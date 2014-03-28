@@ -10,15 +10,13 @@ class DownloadChecker
 
     if response[:status_code] == 200
       @download.online!
-      @download.filesize = response[:filesize]
     elsif response[:status_code] == 404
       @download.offline!
-      @download.filesize = nil
     else
       @download.unknown!
-      @download.filesize = nil
     end
 
+    @download.filesize = response[:filesize]
     @download.status_refreshed_at = DateTime.now
     @download.save!
   end
