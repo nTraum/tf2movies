@@ -4,7 +4,7 @@ namespace :tf2movies do
   task refresh_movies: :environment do
     movie = Movie.order(:info_refreshed_at).first
     if movie
-      movie.refresh_info
+      YoutubeInfoProvider.update_movie!(movie)
     end
   end
 
@@ -12,7 +12,7 @@ namespace :tf2movies do
   task refresh_downloads: :environment do
     download = Download.where(:status_refreshed_at => nil).first || Download.order(:status_refreshed_at).first
     if download
-      DownloadChecker.new(download).check_status
+      DownloadChecker.new(download).check_status!
     end
   end
 

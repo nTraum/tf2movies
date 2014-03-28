@@ -21,18 +21,12 @@ class MoviesController < ApplicationController
   end
 
   def create
-    begin
-      @movie = Movie.new
-      authorize @movie
-      @movie.new_with_youtube_it(params[:url], current_user)
-      if @movie.save
-        redirect_to submit_movies_path, :notice => "'#{@movie.title}' has been successfully submitted. Thanks for telling us!"
-      else
-        redirect_to submit_movies_path, :alert => @movie.errors.full_messages.join(', ')
-      end
-    rescue OpenURI::HTTPError => e
-      flash[:warning] = "Unable to find YouTube video at <a href=\"#{params[:url]}\">#{params[:url]}</a>. Typo?"
-      redirect_to submit_movies_path
+    @movie = Movie.new_with_url(params[:url], current_user)
+    authorize @movie
+    if @movie.save
+      redirect_to submit_movies_path, :notice => "'#{@movie.title}' has been successfully submitted. Thanks for telling us!"
+    else
+      redirect_to submit_movies_path, :alert => @movie.errors.full_messages.join(', ')
     end
   end
 

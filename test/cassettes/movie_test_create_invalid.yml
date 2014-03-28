@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://gdata.youtube.com/feeds/api/videos/http://example.com?key=&v=2.1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Gdata-User-Country:
+      - DE
+      Content-Type:
+      - application/vnd.google.gdata.error+xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Fri, 28 Mar 2014 23:24:45 GMT
+      Expires:
+      - Fri, 28 Mar 2014 23:24:45 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 80:quic
+    body:
+      encoding: UTF-8
+      string: "<errors xmlns='http://schemas.google.com/g/2005'><error><domain>GData</domain><code>invalidRequestUri</code><internalReason>Invalid
+        request URI</internalReason></error></errors>"
+    http_version: 
+  recorded_at: Fri, 28 Mar 2014 23:24:15 GMT
+recorded_with: VCR 2.9.0

@@ -5,7 +5,7 @@ class DownloadChecker
     @download = download
   end
 
-  def check_status
+  def check_status!
     response = http_response(@download.url)
 
     if response[:status_code] == 200

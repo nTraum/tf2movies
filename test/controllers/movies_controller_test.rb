@@ -62,7 +62,7 @@ describe MoviesController do
         post :create, :url => url
       end
     response.status.must_equal 302
-    flash[:warning].wont_be_nil
+    flash[:alert].wont_be_nil
     Movie.count.must_equal 0
     end
   end

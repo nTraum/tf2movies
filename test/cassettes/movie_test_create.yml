@@ -23,9 +23,9 @@ http_interactions:
       Content-Type:
       - application/atom+xml; charset=UTF-8; type=entry
       Expires:
-      - Thu, 13 Mar 2014 21:19:04 GMT
+      - Fri, 28 Mar 2014 23:13:18 GMT
       Date:
-      - Thu, 13 Mar 2014 21:19:04 GMT
+      - Fri, 28 Mar 2014 23:13:18 GMT
       Cache-Control:
       - private, max-age=300, no-transform
       Vary:
@@ -33,9 +33,9 @@ http_interactions:
       Gdata-Version:
       - '2.1'
       Etag:
-      - W/"CkQFQn47eCp7I2A9Wh9XE0Q."
+      - W/"C0MFSX47eCp7I2A9Wh9WGUw."
       Last-Modified:
-      - Sun, 09 Mar 2014 18:38:33 GMT
+      - Thu, 27 Mar 2014 09:10:18 GMT
       Transfer-Encoding:
       - chunked
       X-Content-Type-Options:
@@ -52,7 +52,7 @@ http_interactions:
       encoding: UTF-8
       string: "<?xml version='1.0' encoding='UTF-8'?><entry xmlns='http://www.w3.org/2005/Atom'
         xmlns:media='http://search.yahoo.com/mrss/' xmlns:gd='http://schemas.google.com/g/2005'
-        xmlns:yt='http://gdata.youtube.com/schemas/2007' gd:etag='W/&quot;CkQFQn47eCp7I2A9Wh9XE0Q.&quot;'><id>tag:youtube.com,2008:video:0fCpAuxrQ_I</id><published>2010-02-19T22:33:36.000Z</published><updated>2014-03-09T18:38:33.000Z</updated><category
+        xmlns:yt='http://gdata.youtube.com/schemas/2007' gd:etag='W/&quot;C0MFSX47eCp7I2A9Wh9WGUw.&quot;'><id>tag:youtube.com,2008:video:0fCpAuxrQ_I</id><published>2010-02-19T22:33:36.000Z</published><updated>2014-03-27T09:10:18.000Z</updated><category
         scheme='http://schemas.google.com/g/2005#kind' term='http://gdata.youtube.com/schemas/2007#video'/><category
         scheme='http://gdata.youtube.com/schemas/2007/categories.cat' term='Games'
         label='Gaming'/><title>TF2 - 7 brothers (broder) frag movie</title><content
@@ -79,9 +79,9 @@ http_interactions:
         scheme='http://gdata.youtube.com/schemas/2007/categories.cat'>Games</media:category><media:content
         url='http://www.youtube.com/v/0fCpAuxrQ_I?version=3&amp;f=videos&amp;d=AT74EMeg8ewDMtGqacg1CmEO88HsQjpE1a8d1GxQnGDm&amp;app=youtube_gdata'
         type='application/x-shockwave-flash' medium='video' isDefault='true' expression='full'
-        duration='394' yt:format='5'/><media:content url='rtsp://r1---sn-p5qlsu76.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYDSANFEgGUgZ2aWRlb3NyIQE--BDHoPHsAzLRqmnINQphDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
+        duration='394' yt:format='5'/><media:content url='rtsp://r1---sn-4g57kue6.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYDSANFEgGUgZ2aWRlb3NyIQE--BDHoPHsAzLRqmnINQphDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
         type='video/3gpp' medium='video' expression='full' duration='394' yt:format='1'/><media:content
-        url='rtsp://r1---sn-p5qlsu76.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYESARFEgGUgZ2aWRlb3NyIQE--BDHoPHsAzLRqmnINQphDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
+        url='rtsp://r1---sn-4g57kue6.c.youtube.com/CkULENy73wIaPAnyQ2vsAqnw0RMYESARFEgGUgZ2aWRlb3NyIQE--BDHoPHsAzLRqmnINQphDvPB7EI6RNWvHdRsUJxg5gw=/0/0/0/video.3gp'
         type='video/3gpp' medium='video' expression='full' duration='394' yt:format='6'/><media:credit
         role='uploader' scheme='urn:youtube' yt:display='Sivert Bakkeng'>tordenbotan</media:credit><media:description
         type='plain'>This is a fragvid for my TF2 Team, 7 Brothers who aren't brothers
@@ -116,10 +116,10 @@ http_interactions:
         height='90' width='120' time='00:04:55.500' yt:name='end'/><media:title type='plain'>TF2
         - 7 brothers (broder) frag movie</media:title><yt:aspectRatio>widescreen</yt:aspectRatio><yt:duration
         seconds='394'/><yt:uploaded>2010-02-19T22:33:36.000Z</yt:uploaded><yt:uploaderId>UCpXQ1QdZ6Rr8rTrnLMsT1lw</yt:uploaderId><yt:videoid>0fCpAuxrQ_I</yt:videoid></media:group><gd:rating
-        average='4.845783' max='5' min='1' numRaters='1660' rel='http://schemas.google.com/g/2005#overall'/><yt:statistics
-        favoriteCount='0' viewCount='105322'/><yt:rating numDislikes='64' numLikes='1596'/></entry>"
+        average='4.8467064' max='5' min='1' numRaters='1670' rel='http://schemas.google.com/g/2005#overall'/><yt:statistics
+        favoriteCount='0' viewCount='105527'/><yt:rating numDislikes='64' numLikes='1606'/></entry>"
     http_version: 
-  recorded_at: Thu, 13 Mar 2014 21:18:43 GMT
+  recorded_at: Fri, 28 Mar 2014 23:12:48 GMT
 - request:
     method: get
     uri: http://gdata.youtube.com/feeds/api/users/tordenbotan?v=2.1
@@ -153,9 +153,9 @@ http_interactions:
       Content-Type:
       - application/atom+xml; charset=UTF-8; type=entry
       Expires:
-      - Thu, 13 Mar 2014 21:19:05 GMT
+      - Fri, 28 Mar 2014 23:13:18 GMT
       Date:
-      - Thu, 13 Mar 2014 21:19:05 GMT
+      - Fri, 28 Mar 2014 23:13:18 GMT
       Cache-Control:
       - private, max-age=300, no-transform
       Vary:
@@ -204,9 +204,9 @@ http_interactions:
         countHint='16'/><gd:feedLink rel='http://gdata.youtube.com/schemas/2007#user.newsubscriptionvideos'
         href='http://gdata.youtube.com/feeds/api/users/tordenbotan/newsubscriptionvideos?client=youtube_it'/><gd:feedLink
         rel='http://gdata.youtube.com/schemas/2007#user.recentactivity' href='http://gdata.youtube.com/feeds/api/users/tordenbotan/events?client=youtube_it'/><yt:firstName>Sivert</yt:firstName><yt:googlePlusUserId>118279021340013310379</yt:googlePlusUserId><yt:lastName>Bakkeng</yt:lastName><yt:location>NO</yt:location><yt:statistics
-        lastWebAccess='1970-01-01T00:00:00.000Z' subscriberCount='328' videoWatchCount='0'
-        viewCount='0' totalUploadViews='119426'/><media:thumbnail url='http://yt3.ggpht.com/-1oAGcT3MynU/AAAAAAAAAAI/AAAAAAAAAAA/x4F6AoofmFo/s88-c-k-no/photo.jpg'/><yt:userId>pXQ1QdZ6Rr8rTrnLMsT1lw</yt:userId><yt:username
+        lastWebAccess='1970-01-01T00:00:00.000Z' subscriberCount='329' videoWatchCount='0'
+        viewCount='0' totalUploadViews='119761'/><media:thumbnail url='http://yt3.ggpht.com/-1oAGcT3MynU/AAAAAAAAAAI/AAAAAAAAAAA/x4F6AoofmFo/s88-c-k-no/photo.jpg'/><yt:userId>pXQ1QdZ6Rr8rTrnLMsT1lw</yt:userId><yt:username
         display='Sivert Bakkeng'>tordenbotan</yt:username></entry>"
     http_version: 
-  recorded_at: Thu, 13 Mar 2014 21:18:43 GMT
-recorded_with: VCR 2.8.0
+  recorded_at: Fri, 28 Mar 2014 23:12:48 GMT
+recorded_with: VCR 2.9.0

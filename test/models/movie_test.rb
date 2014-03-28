@@ -7,16 +7,6 @@ describe Movie do
     subject.valid?.must_equal true
   end
 
-  it 'must update meta data when being refreshed' do
-    VCR.use_cassette('movie_test_refresh_info', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
-      subject.refresh_info
-    end
-    subject.title.must_equal 'TF2 - 7 brothers (broder) frag movie'
-    subject.description.must_equal 'Description'
-    subject.views.must_equal 105304
-    subject.info_refreshed_at.must_be_within_delta(Time.current, 3)
-  end
-
   describe 'thumbnails' do
     it 'must provide a thumbnail in max quality' do
       subject.thumbnail(:max).must_equal 'http://img.youtube.com/vi/0fCpAuxrQ_I/maxresdefault.jpg'
@@ -36,16 +26,24 @@ describe Movie do
     it 'must raise an error when using an unknown size' do
       proc { subject.thumbnail(:foobar) }.must_raise ArgumentError
     end
-
   end
 
-  it 'must be created with the YouTube API' do
-    url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
-    user = FactoryGirl.create :user
-    movie = Movie.new
-    VCR.use_cassette('movie_test_create', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
-      movie.new_with_youtube_it(url, user)
+  describe 'new_with_url' do
+      let (:user) { FactoryGirl.create :user }
+    it 'must be created with an URL pointing to a YouTube movie' do
+      url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
+      VCR.use_cassette('movie_test_create', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+        movie = Movie.new_with_url(url, user)
+        movie.valid?.must_equal true
+      end
     end
-    movie.valid?.must_equal true
+
+    it 'must be invalid with an URL not pointing to a YouTube movie' do
+      url = 'http://example.com'
+      VCR.use_cassette('movie_test_create_invalid', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
+        movie = Movie.new_with_url(url, user)
+        movie.valid?.must_equal false
+      end
+    end
   end
 end
