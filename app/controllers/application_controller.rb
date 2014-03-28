@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-  before_action :user_refresh_last_online, :navbar_categories
+  before_action :user_refresh_last_online, :categories_navbar, :pending_movies_count_navbar
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
 
-  def navbar_categories
+  def categories_navbar
     @game_modes_navbar = GameMode.all
     @tf2_classes_navbar = Tf2Class.all
     @regions_navbar = Region.all
@@ -36,6 +36,12 @@ class ApplicationController < ActionController::Base
       redirect_to :back
     else
       redirect_to root_path
+    end
+  end
+
+  def pending_movies_count_navbar
+    if policy(Movie).manage?
+      @pending_movies_count_navbar = Movie.where(:status_cd => Movie.pending).size
     end
   end
 end

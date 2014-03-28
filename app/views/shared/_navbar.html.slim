@@ -44,22 +44,22 @@ nav.navbar.navbar-default role='navigation'
           = search_field_tag(:query, nil, :placeholder => 'Search', :class => 'form-control', :id => 'search')
 
       ul.nav.navbar-nav.navbar-right
-        - if params[:controller] == 'movies' and params[:action] == 'submit'
-          li.active
-            = link_to(fa_icon('film fw', :text => 'Submit Movie'), submit_movies_path)
-        - else
+        - if policy(Movie).manage?
           li
-            = link_to(fa_icon('film fw', :text => 'Submit Movie'), submit_movies_path)
-
+            = link_to(manage_movies_path) do
+              = fa_icon('inbox fw', :text => 'Review')
+              span.badge< = pending_movies_count
+        li class=('active' if (params[:controller] == 'movies' and params[:action] == 'submit'))
+            = link_to(fa_icon('film fw', :text => 'Submit movie'), submit_movies_path)
         - if current_user
-          - if params[:controller] == 'users' and params[:action] == 'show' and params[:id] == current_user.id.to_s
-            li.active
-              = link_to(fa_icon('user fw', :text => current_user.nickname), user_path(current_user.id))
-          - else
-            li
-              = link_to(fa_icon('user fw', :text => current_user.nickname), user_path(current_user.id))
-          li
-           = link_to(fa_icon('sign-out fw', :text => 'Sign out'), logout_path, :method => :post)
+          li.dropdown
+            a.dropdown-toggle href='#' data-toggle='dropdown'
+              = fa_icon('male fw', :text => current_user.nickname)
+              = fa_icon('caret-down fw')
+            ul.dropdown-menu
+              li = link_to(fa_icon('picture-o fw', :text => 'Your profile'), current_user)
+              li.divider
+              li = link_to(fa_icon('sign-out fw', :text => 'Sign out'), logout_path, :method => :post)
         - else
           li
             = link_to(image_tag('steam_signin.png', :height => 23, :width => 154), login_path)

@@ -11,7 +11,7 @@ html
   body
     .container
       header
-        == render :partial => 'shared/navbar', :locals => {:game_modes => @game_modes_navbar, :tf2_classes => @tf2_classes_navbar, :regions => @regions_navbar}
+        == render :partial => 'shared/navbar', :locals => {:game_modes => @game_modes_navbar, :tf2_classes => @tf2_classes_navbar, :regions => @regions_navbar, :pending_movies_count => @pending_movies_count_navbar}
       .row
         .col-md-12
           main

@@ -5,6 +5,11 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
+  def manage
+    @pending_movies = Movie.where(:status_cd => Movie.pending)
+    authorize @pending_movies
+  end
+
   def show
     @movie = Movie.includes(:author, :downloads, :songs, :comments).find(params[:id])
     @comment = Comment.new
