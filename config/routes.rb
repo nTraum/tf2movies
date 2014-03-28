@@ -4,7 +4,7 @@ Tf2movies::Application.routes.draw do
   get '/404', :to => 'pages#not_found'
   get '/500', :to => 'pages#internal_error'
 
-  get '/about', :to => 'pages#about', :as => :about
+  get '/about',   :to => 'pages#about', :as => :about
   get '/contact', :to => 'pages#contact', :as => :contact
 
   get '/login', :to => redirect('/auth/steam'), :as => :login
@@ -19,8 +19,10 @@ Tf2movies::Application.routes.draw do
   resources :users,   :only => [:show, :index]
 
   resources :movies,  :only => [:show, :create, :index, :edit, :update] do
-    get 'submit',   :on => :collection
-    get 'manage', :on => :collection
+    collection do
+      get 'submit'
+      get 'manage'
+    end
     resources :comments, :only => [:edit, :update, :create]
   end
 
