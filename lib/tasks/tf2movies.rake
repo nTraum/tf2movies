@@ -12,7 +12,7 @@ namespace :tf2movies do
   task refresh_downloads: :environment do
     download = Download.where(:status_refreshed_at => nil).first || Download.order(:status_refreshed_at).first
     if download
-      DownloadChecker.new(download).check_status!
+      DownloadChecker.check_status!(download)
     end
   end
 

@@ -1,29 +1,24 @@
 class DownloadChecker
-  attr_reader :download
 
-  def initialize(download)
-    @download = download
-  end
-
-  def check_status!
-    response = http_response(@download.url)
+  def self.check_status!(download)
+    response = http_response(download.url)
 
     if response[:status_code] == 200
-      @download.online!
+      download.online!
     elsif response[:status_code] == 404
-      @download.offline!
+      download.offline!
     else
-      @download.unknown!
+      download.unknown!
     end
 
-    @download.filesize = response[:filesize]
-    @download.status_refreshed_at = DateTime.now
-    @download.save!
+    download.filesize = response[:filesize]
+    download.status_refreshed_at = DateTime.now
+    download.save!
   end
 
   private
 
-  def http_response(url)
+  def self.http_response(url)
     begin
       response = Curl::Easy.http_head(url) do |c|
         c.follow_location = true
