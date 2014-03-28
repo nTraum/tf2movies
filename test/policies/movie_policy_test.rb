@@ -7,6 +7,9 @@ describe MoviePolicy do
     let(:user)  { nil }
     subject     { MoviePolicy.new(user, movie) }
 
+    it 'does not allow to manage' do
+      subject.manage?.must_equal false
+    end
     it 'does not allow to submit' do
       subject.submit?.must_equal false
     end
@@ -25,6 +28,9 @@ describe MoviePolicy do
     let(:user)  { FactoryGirl.build(:user) }
     subject     { MoviePolicy.new(user, movie) }
 
+    it 'does not allow to manage' do
+      subject.manage?.must_equal false
+    end
     it 'allows to submit' do
       subject.submit?.must_equal true
     end
@@ -43,6 +49,9 @@ describe MoviePolicy do
     let(:user)  { FactoryGirl.build(:banned) }
     subject     { MoviePolicy.new(user, movie) }
 
+    it 'does not allow to manage' do
+      subject.manage?.must_equal false
+    end
     it 'does no allow to submit' do
       subject.submit?.must_equal false
     end
@@ -61,6 +70,9 @@ describe MoviePolicy do
     let(:user)  { FactoryGirl.build(:moderator) }
     subject     { MoviePolicy.new(user, movie) }
 
+    it 'allows to manage' do
+      subject.manage?.must_equal true
+    end
     it 'allows to submit' do
       subject.submit?.must_equal true
     end
@@ -79,6 +91,9 @@ describe MoviePolicy do
     let(:user)  { FactoryGirl.build(:admin) }
     subject     { MoviePolicy.new(user, movie) }
 
+    it 'allows to manage' do
+      subject.manage?.must_equal true
+    end
     it 'allows to submit' do
       subject.submit?.must_equal true
     end
