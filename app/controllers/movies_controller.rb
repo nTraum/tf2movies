@@ -2,7 +2,6 @@ class MoviesController < ApplicationController
   after_action :verify_authorized, :except => [:submit, :show]
 
   def submit
-    @movie = Movie.new
   end
 
   def manage
@@ -21,12 +20,12 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new_with_url(params[:url], current_user)
+    @movie = Movie.new_with_url(params[:movie][:url], current_user)
     authorize @movie
     if @movie.save
       redirect_to submit_movies_path, :notice => "'#{@movie.title}' has been successfully submitted. Thanks for telling us!"
     else
-      redirect_to submit_movies_path, :alert => @movie.errors.full_messages.join(', ')
+      redirect_to submit_movies_path, :alert => [@movie.errors[:base], @movie.errors[:youtube_id]].compact.join
     end
   end
 

@@ -35,12 +35,12 @@ p Quality over quantity is our convention. Your movie should meet the following 
 .row
   .col-md-7
     h2 Submission form
-    = form_for(@movie, :html => {:role => 'form'}) do |f|
-      fieldset disabled=!policy(@movie).submit?
+    = form_for(:movie,:url => movies_path, :html => {:role => 'form'}) do |f|
+      fieldset disabled=!policy(Movie).submit?
         .input-group.input-group-lg
           span.input-group-addon = fa_icon('youtube')
-          = url_field(@movie, :url, :required => true, :placeholder => 'http://youtube.com/watch?v=uga_sPZRF70', :class => 'form-control', :id => 'url')
+          = url_field(:movie, :url, :required => true, :placeholder => 'http://youtube.com/watch?v=uga_sPZRF70', :class => 'form-control', :id => 'url')
           = label_tag(:url, 'URL', :class => 'sr-only')
           span.input-group-btn = f.submit('Submit', :class => 'btn btn-primary')
-        - unless policy(@movie).submit?
+        - unless policy(Movie).submit?
           span.help-block #{fa_icon('exclamation-triangle')} You need to be #{link_to('logged in', login_path)} to submit a movie.

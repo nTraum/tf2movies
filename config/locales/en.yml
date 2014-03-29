@@ -20,10 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  activerecord:
-    attributes:
-      movie:
-        youtube_id: "Movie"
   views:
     pagination:
       previous: "&laquo;"

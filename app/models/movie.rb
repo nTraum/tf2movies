@@ -45,8 +45,8 @@ class Movie < ActiveRecord::Base
   accepts_nested_attributes_for                 :songs, :downloads, :reject_if => :all_blank, :allow_destroy => true
 
   validates         :status,                    :as_enum      => true
-  validates         :youtube_id,                :presence     => true,
-                                                :uniqueness   => { :message => 'has already been submitted.' }
+  validates         :youtube_id,                :presence     => { :message => 'No movie found.' },
+                                                :uniqueness   => { :message => 'Movie has already been submitted.' }
   validates         :title,                     :presence     => true
   validates         :views,                     :numericality => { :greater_than_or_equal_to => 0 },
                                                 :presence     => true
