@@ -35,7 +35,7 @@ describe MoviesController do
     url = 'https://www.youtube.com/watch?v=0fCpAuxrQ_I'
     as_logged_in_user do
       VCR.use_cassette('movie_controller_test_create', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
-        post :create, :url => url
+        post :create, { :movie => {:url => url} }
         response.status.must_equal 302
         flash[:notice].wont_be_nil
         Movie.count.must_equal 1
@@ -47,7 +47,7 @@ describe MoviesController do
     movie = FactoryGirl.create :real_youtube_id
     as_logged_in_user do
       VCR.use_cassette('movie_controller_test_create_duplicate', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
-        post :create, :url => movie.youtube_id
+        post :create, { :movie => {:url => movie.youtube_id} }
       end
       response.status.must_equal 302
       flash[:alert].wont_be_nil
@@ -59,7 +59,7 @@ describe MoviesController do
     url = 'http://example.com'
     as_logged_in_user do
       VCR.use_cassette('movie_controller_test_non_youtube_links', :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:key)]) do
-        post :create, :url => url
+        post :create, { :movie => {:url => url} }
       end
     response.status.must_equal 302
     flash[:alert].wont_be_nil
