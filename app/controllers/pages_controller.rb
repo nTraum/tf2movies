@@ -14,22 +14,22 @@ class PagesController < ApplicationController
   private
 
   def featured
-    @featured_movies = Movie.featured.limit(5)
+    @featured_movies = Movie.where(:status_cd => Movie.published).featured.limit(5)
   end
 
   def recent
-    @most_recent_movies = Movie.order(:created_at => :desc).limit(5)
+    @most_recent_movies = Movie.where(:status_cd => Movie.published).order(:created_at => :desc).limit(5)
   end
 
   def popular
-    @most_viewed_movies = Movie.order(:created_at => :desc).limit(5)
+    @most_viewed_movies = Movie.where(:status_cd => Movie.published).order(:created_at => :desc).limit(5)
   end
 
   def stats
-    @movies_count     = Movie.count
-    @downloads_count  = Download.count
-    @authors_count    = Author.count
-    @total_duration   = Movie.sum(:duration)
+    @movies_count     = Movie.where(:status_cd => Movie.published).size
+    @downloads_count  = Download.joins(:movie).where(:movies => { :status_cd => Movie.published }).size
+    @authors_count    = Author.joins(:movies).where(:movies => {:status_cd => Movie.published}).uniq.size
+    @total_duration   = Movie.where(:status_cd => Movie.published).sum(:duration)
   end
 
   def staff_members
