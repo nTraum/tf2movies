@@ -28,11 +28,10 @@ gem 'pundit'
 gem 'kaminari'
 gem 'curb'
 gem 'puma'
-gem 'foreman'
 gem 'colored'
 gem 'friendly_id'
 gem 'simple_enum'
-gem 'whenever', :require => false
+gem 'whenever',                     require: false
 gem 'sanitize'
 gem 'rails-timeago'
 
@@ -56,10 +55,10 @@ group :development do
   gem 'spring'
 
   # deployment
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano3-puma'
-  gem 'capistrano-newrelic'
+  gem 'capistrano-rails',           require: false
+  gem 'capistrano-rbenv',           require: false
+  gem 'capistrano3-puma',           require: false
+  gem 'capistrano-newrelic',        require: false
 end
 
 group :test do
