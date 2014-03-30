@@ -23,5 +23,9 @@ FactoryGirl.define do
     text 'foo bar foo bar'
     user
     movie
+
+    factory :naughty_comment do
+      text'<img src="http://example.com" />haha did you see this image?'
+    end
   end
 end
