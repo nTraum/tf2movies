@@ -1,7 +1,7 @@
 class NewsFeedController < ApplicationController
   def feed
     @title = 'TF2Movies'
-    @movies = Movie.where(:status_cd => Movie.published).order(:created_at => :desc)
+    @movies = Movie.where(:status_cd => Movie.published).includes(:author).order(:created_at => :desc)
     @updated = @movies.first.created_at if @movies.any?
 
     respond_to do |format|
