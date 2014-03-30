@@ -7,6 +7,6 @@ describe Comment do
 
   it 'must strip naughty HTML tags from comments' do
     comment = FactoryGirl.create(:naughty_comment)
-    comment.text.must_equal ' haha did you see this image?'
+    comment.text.must_equal 'haha did you see this image?'
   end
 end
