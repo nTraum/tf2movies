@@ -7,6 +7,8 @@ Tf2movies::Application.routes.draw do
   get '/about',   :to => 'pages#about', :as => :about
   get '/contact', :to => 'pages#contact', :as => :contact
 
+  get '/feed',    :to => 'news_feed#feed', :as => :feed, :defaults => { :format => 'atom' }
+
   get '/login', :to => redirect('/auth/steam'), :as => :login
   post 'auth/steam/callback' => 'sessions#create'
   post '/logout' => 'sessions#destroy', :as => :logout
