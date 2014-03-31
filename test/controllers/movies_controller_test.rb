@@ -13,6 +13,15 @@ describe MoviesController do
     assigns(:movie).must_equal movie
   end
 
+  it 'must get manage' do
+    FactoryGirl.create(:movie, :status_cd => Movie.pending)
+    as_logged_in_moderator do
+      get :manage
+      response.status.must_equal 200
+      assigns[:pending_movies].wont_be_nil
+    end
+  end
+
   it 'must get edit' do
     movie = FactoryGirl.create :movie
     as_logged_in_moderator do
