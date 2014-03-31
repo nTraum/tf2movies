@@ -18,10 +18,10 @@ namespace :tf2movies do
 
   desc 'Let a user become an admin'
   task :adminify, [:nickname] => :environment do |t, args|
-    if args.nickname
+    if args.nickname && args.nickname.present?
       admin_to_be = User.find_by(:nickname => args.nickname)
       if admin_to_be
-        admin_to_be.role = 'admin'
+        admin_to_be.admin!
         admin_to_be.save!
         puts "User #{args.nickname} is now an admin.".green
       else
