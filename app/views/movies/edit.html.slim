@@ -6,5 +6,7 @@
   .col-md-7
     == render 'form', :movie => @movie
   .col-md-5
-    h2 Description
+    h2 Info
+    == render :partial => 'shared/embedded_html5', :locals => {:movie => @movie}
+
     = auto_link(simple_format(@movie.description, :class => 'text-muted small'), :html => { :target => '_blank' })
