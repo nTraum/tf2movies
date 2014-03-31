@@ -40,12 +40,13 @@ namespace :tf2movies do
     check_steam_api_key
     check_secret_token
     check_sentry_raven_api_key
+    check_google_analytics_id
     puts 'Finished running checks.'
   end
 
   def check_youtube_api_key
-    print 'Environment variable YOUTUBE_API_KEY exists?... '
-    if ENV['YOUTUBE_API_KEY'].empty?
+    print 'Environment variable YOUTUBE_API_KEY set?... '
+    if ENV['YOUTUBE_API_KEY'].nil? || ENV['YOUTUBE_API_KEY'].empty?
       puts 'no'.red
     else
       puts 'yes'.green
@@ -53,8 +54,8 @@ namespace :tf2movies do
   end
 
   def check_steam_api_key
-    print 'Environment variable STEAM_API_KEY exists?... '
-    if ENV['STEAM_API_KEY'].empty?
+    print 'Environment variable STEAM_API_KEY set?... '
+    if ENV['STEAM_API_KEY'].nil? || ENV['STEAM_API_KEY'].empty?
       puts 'no'.red
     else
       puts 'yes'.green
@@ -62,8 +63,8 @@ namespace :tf2movies do
   end
 
   def check_secret_token
-    print 'Environment variable SECRET_TOKEN exists?... '
-    if ENV['SECRET_TOKEN'].empty?
+    print 'Environment variable SECRET_TOKEN set?... '
+    if ENV['SECRET_TOKEN'].nil? || ENV['SECRET_TOKEN'].empty?
       puts 'no'.red
     else
       puts 'yes'.green
@@ -71,8 +72,17 @@ namespace :tf2movies do
   end
 
   def check_sentry_raven_api_key
-    print 'Environment variable SENTRY_DSN exists?... '
-    if ENV['SENTRY_DSN'].empty?
+    print 'Environment variable SENTRY_DSN set?... '
+    if ENV['SENTRY_DSN'].nil? || ENV['SENTRY_DSN'].empty?
+      puts 'no'.red
+    else
+      puts 'yes'.green
+    end
+  end
+
+  def check_google_analytics_id
+    print 'Environment variable GOOGLE_ANALYTICS_ID set?... '
+    if ENV['GOOGLE_ANALYTICS_ID'].nil? || ENV['GOOGLE_ANALYTICS_ID'].empty?
       puts 'no'.red
     else
       puts 'yes'.green

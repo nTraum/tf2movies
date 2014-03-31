@@ -35,12 +35,11 @@ Edit production section of `config/database.yml` to fit your needs.
 ##### App settings
 You need to configure the following environment variables to run tf2movies:
 
-new_relic...
-
 * `YOUTUBE_API_KEY` - API key for [YouTube](https://cloud.google.com/console/project)
 * `STEAM_API_KEY` - API key for [Steam API/Omniauth](http://steamcommunity.com/dev)
-* `SECRET_TOKEN` - Rails' [secret token](http://guides.rubyonrails.org/security.html#session-storage) for session storage
+* `SECRET_TOKEN` - Rails' [secret token](http://guides.rubyonrails.org/security.html#session-storage) for secure session storage
 * `SENTRY_DSN`
+* `GOOGLE_ANALYTICS_ID` - Google's Analytics [Tracking ID](http://www.google.com/analytics/)
 
 Use the `.env` file to set these environment variables. The command `rake secret` can be used to generate a custom secret token for you.
 

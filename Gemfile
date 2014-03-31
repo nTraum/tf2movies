@@ -34,9 +34,9 @@ gem 'simple_enum'
 gem 'whenever',                     require: false
 gem 'sanitize'
 gem 'rails-timeago'
+gem 'rack-google-analytics'
 
 group :production do
-  gem 'newrelic_rpm'
   gem 'dalli'
   gem 'connection_pool'
   gem 'sentry-raven'
@@ -58,7 +58,6 @@ group :development do
   gem 'capistrano-rails',           require: false
   gem 'capistrano-rbenv',           require: false
   gem 'capistrano3-puma',           require: false
-  gem 'capistrano-newrelic',        require: false
 end
 
 group :test do

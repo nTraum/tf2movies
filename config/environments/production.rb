@@ -78,4 +78,7 @@ Tf2movies::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Google Analytics
+  config.middleware.use Rack::GoogleAnalytics, :tracker => ENV['GOOGLE_ANALYTICS_ID'], :enhanced_link_attribution => true
 end

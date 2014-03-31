@@ -8,7 +8,6 @@ require 'capistrano/rbenv'
 require 'capistrano/rails'
 require 'capistrano/puma'
 require 'whenever/capistrano'
-require 'capistrano/newrelic'
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.1.1'
