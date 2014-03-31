@@ -1,7 +1,12 @@
-require "test_helper"
+require 'test_helper'
 
 describe CommentsController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  it 'must create movie comments' do
+    as_logged_in_user do
+      movie = FactoryGirl.create :movie
+      post :create, { :movie_id => movie.id, :comment => FactoryGirl.attributes_for(:comment) }
+      flash[:notice].wont_be_nil
+      movie.comments.size.must_equal 1
+    end
+  end
 end
