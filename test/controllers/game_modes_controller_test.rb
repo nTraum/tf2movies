@@ -2,6 +2,15 @@ require 'test_helper'
 
 describe GameModesController do
 
+  describe 'show' do
+    it 'must get show' do
+      game_mode = FactoryGirl.create :game_mode
+      get :show, :id => game_mode.friendly_id
+      assigns[:game_mode].wont_be_nil
+      response.status.must_equal 200
+    end
+  end
+
   describe 'as admin' do
     it 'must get new' do
       as_logged_in_admin do
