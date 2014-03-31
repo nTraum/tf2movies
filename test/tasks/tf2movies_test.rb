@@ -29,14 +29,18 @@ describe 'tf2movies' do
     subject {Rake::Task['tf2movies:check']}
     it 'outputs no when environment variables are missing' do
       subject.reenable
+      old_env = ENV
       ENV = Hash.new
       proc { subject.invoke }.must_output /Running(.*no){5}.*Finished/m
+      ENV = old_env
     end
 
     it 'outputs yes when environment variables are set' do
       subject.reenable
+      old_env = ENV
       ENV = Hash.new('foo')
       proc { subject.invoke }.must_output /Running(.*yes){5}.*Finished/m
+      ENV = old_env
     end
   end
 end
