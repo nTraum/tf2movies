@@ -28,7 +28,7 @@ class DownloadChecker
       status_code = response.response_code
       filesize = response.downloaded_content_length.to_i
     rescue => e
-      Rails.logger.info "Error while checking URL '#{url}': #{e.class}, #{e.message}."
+      Rails.logger.warn "Error while checking URL '#{url}': #{e.class}, #{e.message}."
       status_code = 500
       filesize = nil
     end
