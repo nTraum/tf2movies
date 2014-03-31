@@ -46,4 +46,11 @@ describe Movie do
       end
     end
   end
+
+  it 'must update featured_at when movie is featured' do
+    subject.featured.must_equal false
+    subject.featured = true
+    subject.save!
+    subject.featured_at.must_be_within_delta(Time.current, 3)
+  end
 end
