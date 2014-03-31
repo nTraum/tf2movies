@@ -1,6 +1,7 @@
 class DownloadChecker
 
   def self.check_status!(download)
+    Rails.logger.info "Checking download ##{download.id}: #{download.url}."
     response = http_response(download.url)
 
     if response[:status_code] == 200
@@ -26,7 +27,8 @@ class DownloadChecker
       end
       status_code = response.response_code
       filesize = response.downloaded_content_length.to_i
-    rescue
+    rescue => e
+      Rails.logger.info "Error while checking URL '#{url}': #{e.class}, #{e.message}."
       status_code = 500
       filesize = nil
     end
