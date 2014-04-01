@@ -21,6 +21,9 @@ Tf2movies::Application.routes.draw do
   resources :users,   :only => [:show, :index]
 
   resources :movies,  :only => [:show, :create, :index, :edit, :update] do
+    member do
+      post 'love'
+    end
     collection do
       get 'submit'
       get 'manage'

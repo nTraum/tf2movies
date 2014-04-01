@@ -4,6 +4,18 @@ class MoviesController < ApplicationController
   def submit
   end
 
+  def love
+    @movie = Movie.find(params[:id])
+    authorize @movie
+    if @movie.users.exists?(current_user.id)
+      @movie.users.destroy(current_user)
+      render :json => {:status => 'success'} and return
+    else
+      @movie.users << current_user
+      render :json => {:status => 'success'} and return
+    end
+  end
+
   def manage
     @pending_movies = Movie.where(:status_cd => Movie.pending)
     authorize @pending_movies

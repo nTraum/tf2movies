@@ -6,6 +6,10 @@ MoviePolicy = Struct.new(:user, :movie) do
     manage?
   end
 
+  def love?
+    submit?
+  end
+
   def update?
     edit?
   end

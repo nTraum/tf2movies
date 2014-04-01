@@ -1,6 +1,28 @@
 require 'test_helper'
 
 describe MoviesController do
+
+  describe 'love' do
+    it 'must add a movie to a users love list' do
+      as_logged_in_user do
+        movie = FactoryGirl.create :movie
+        post :love, :id => movie.id
+        movie.users.size.must_equal 1
+        response.status.must_equal 200
+      end
+    end
+
+    it 'must remove a movie from a users love list when the association already exists' do
+      as_logged_in_user do
+        movie = FactoryGirl.create :movie
+        post :love, :id => movie.id
+        movie.users.size.must_equal 1
+        post :love, :id => movie.id
+        movie.users(true).size.must_equal 0
+        response.status.must_equal 200
+      end
+    end
+  end
   it 'must get submit' do
     get :submit
     response.status.must_equal 200
