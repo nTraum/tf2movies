@@ -7,4 +7,4 @@
         | Minimal HTML formatting allowed.
       - else
         == "#{fa_icon('exclamation-triangle')} #{link_to('Login', login_path)} to comment."
-  .form-group = f.submit('Save', :class => 'btn btn-primary', :disabled=> !policy(comment).new?)
+  .form-group = f.submit('Submit', :data => { :disable_with => 'Submitting...' }, :class => 'btn btn-primary', :disabled=> !policy(comment).new?)
