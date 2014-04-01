@@ -16,10 +16,10 @@ describe MoviePolicy do
     it 'does not allow to create' do
       subject.create?.must_equal false
     end
-    it 'does no allow to edit' do
+    it 'does not allow to edit' do
       subject.edit?.must_equal false
     end
-    it 'does no allow to update' do
+    it 'does not allow to update' do
       subject.update?.must_equal false
     end
   end
@@ -37,10 +37,10 @@ describe MoviePolicy do
     it 'allows to create' do
       subject.create?.must_equal true
     end
-    it 'does no allow to edit' do
+    it 'does not allow to edit' do
       subject.edit?.must_equal false
     end
-    it 'does no allow to update' do
+    it 'does not allow to update' do
       subject.update?.must_equal false
     end
   end
@@ -52,16 +52,16 @@ describe MoviePolicy do
     it 'does not allow to manage' do
       subject.manage?.must_equal false
     end
-    it 'does no allow to submit' do
+    it 'does not allow to submit' do
       subject.submit?.must_equal false
     end
-    it 'does no allow to create' do
+    it 'does not allow to create' do
       subject.create?.must_equal false
     end
-    it 'does no allow to edit' do
+    it 'does not allow to edit' do
       subject.edit?.must_equal false
     end
-    it 'does no allow to update' do
+    it 'does not allow to update' do
       subject.update?.must_equal false
     end
   end

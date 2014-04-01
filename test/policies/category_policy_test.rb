@@ -13,16 +13,16 @@ describe CategoryPolicy do
     it 'does not allow to edit' do
       subject.edit?.must_equal false
     end
-    it 'does no allow to upate' do
+    it 'does not allow to upate' do
       subject.update?.must_equal false
     end
-    it 'does no allow to destroy' do
+    it 'does not allow to destroy' do
       subject.destroy?.must_equal false
     end
-    it 'does no allow to create' do
+    it 'does not allow to create' do
       subject.create?.must_equal false
     end
-    it 'does no allow to new' do
+    it 'does not allow to new' do
       subject.new?.must_equal false
     end
   end
@@ -37,16 +37,40 @@ describe CategoryPolicy do
     it 'does not allow to edit' do
       subject.edit?.must_equal false
     end
-    it 'does no allow to upate' do
+    it 'does not allow to upate' do
       subject.update?.must_equal false
     end
-    it 'does no allow to destroy' do
+    it 'does not allow to destroy' do
       subject.destroy?.must_equal false
     end
-    it 'does no allow to create' do
+    it 'does not allow to create' do
       subject.create?.must_equal false
     end
-    it 'does no allow to new' do
+    it 'does not allow to new' do
+      subject.new?.must_equal false
+    end
+  end
+
+  describe 'as a banned user' do
+    let(:user)  { FactoryGirl.build :banned }
+    subject     { CategoryPolicy.new(user, category) }
+
+    it 'does not allow to manage' do
+      subject.manage?.must_equal false
+    end
+    it 'does not allow to edit' do
+      subject.edit?.must_equal false
+    end
+    it 'does not allow to upate' do
+      subject.update?.must_equal false
+    end
+    it 'does not allow to destroy' do
+      subject.destroy?.must_equal false
+    end
+    it 'does not allow to create' do
+      subject.create?.must_equal false
+    end
+    it 'does not allow to new' do
       subject.new?.must_equal false
     end
   end
@@ -61,16 +85,16 @@ describe CategoryPolicy do
     it 'does not allow to edit' do
       subject.edit?.must_equal false
     end
-    it 'does no allow to upate' do
+    it 'does not allow to upate' do
       subject.update?.must_equal false
     end
-    it 'does no allow to destroy' do
+    it 'does not allow to destroy' do
       subject.destroy?.must_equal false
     end
-    it 'does no allow to create' do
+    it 'does not allow to create' do
       subject.create?.must_equal false
     end
-    it 'does no allow to new' do
+    it 'does not allow to new' do
       subject.new?.must_equal false
     end
   end
@@ -85,16 +109,16 @@ describe CategoryPolicy do
     it 'does not allow to edit' do
       subject.edit?.must_equal true
     end
-    it 'does no allow to upate' do
+    it 'does not allow to upate' do
       subject.update?.must_equal true
     end
-    it 'does no allow to destroy' do
+    it 'does not allow to destroy' do
       subject.destroy?.must_equal true
     end
-    it 'does no allow to create' do
+    it 'does not allow to create' do
       subject.create?.must_equal true
     end
-    it 'does no allow to new' do
+    it 'does not allow to new' do
       subject.new?.must_equal true
     end
   end
