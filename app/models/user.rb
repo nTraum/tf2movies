@@ -14,15 +14,16 @@
 #
 
 class User < ActiveRecord::Base
-  as_enum   :role,              :banned => 0, :user => 1, :moderator => 2, :admin => 3
-  has_many  :suggestions,       :class_name => 'Movie'
-  has_many  :comments
-  validates :steam_id,          :presence => true,
-                                :uniqueness => true
-  validates :nickname,          :presence => true
-  validates :steam_profile_url, :presence => true,
-                                :uniqueness => true
-  validates :role,              :as_enum => true
+  as_enum                 :role,              :banned => 0, :user => 1, :moderator => 2, :admin => 3
+  has_many                :suggestions,       :class_name => 'Movie'
+  has_many                :comments
+  has_and_belongs_to_many :movies
+  validates               :steam_id,          :presence => true,
+                                              :uniqueness => true
+  validates               :nickname,          :presence => true
+  validates               :steam_profile_url, :presence => true,
+                                              :uniqueness => true
+  validates               :role,              :as_enum => true
 
   def self.create_with_omniauth(auth)
     create! do |user|

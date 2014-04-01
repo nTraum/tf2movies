@@ -32,16 +32,17 @@
 #
 
 class Movie < ActiveRecord::Base
-  as_enum           :status,                    { :pending => 0, :rejected => 1, :published => 2 }, :dirty => true
-  belongs_to        :proposer,                  :class_name => 'User', :foreign_key => 'user_id',
-                                                :touch      => true
-  belongs_to        :author,                    :touch      => true
-  has_many          :downloads,                 :dependent  => :destroy
-  has_many          :songs,                     :dependent  => :destroy
-  has_many          :comments
-  belongs_to        :game_mode
-  belongs_to        :tf2_class
-  belongs_to        :region
+  as_enum                 :status,                    { :pending => 0, :rejected => 1, :published => 2 }, :dirty => true
+  belongs_to              :proposer,                  :class_name => 'User', :foreign_key => 'user_id',
+                                                      :touch      => true
+  belongs_to              :author,                    :touch      => true
+  has_many                :downloads,                 :dependent  => :destroy
+  has_many                :songs,                     :dependent  => :destroy
+  has_many                :comments
+  belongs_to              :game_mode
+  belongs_to              :tf2_class
+  belongs_to              :region
+  has_and_belongs_to_many :users
 
   accepts_nested_attributes_for                 :songs, :downloads, :reject_if => :all_blank, :allow_destroy => true
 

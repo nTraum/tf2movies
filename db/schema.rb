@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331201052) do
+ActiveRecord::Schema.define(version: 20140401132718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,13 @@ ActiveRecord::Schema.define(version: 20140331201052) do
   add_index "movies", ["region_id"], name: "index_movies_on_region_id", using: :btree
   add_index "movies", ["tf2_class_id"], name: "index_movies_on_tf2_class_id", using: :btree
   add_index "movies", ["user_id"], name: "index_movies_on_user_id", using: :btree
+
+  create_table "movies_users", id: false, force: true do |t|
+    t.integer "movie_id", null: false
+    t.integer "user_id",  null: false
+  end
+
+  add_index "movies_users", ["movie_id", "user_id"], name: "index_movies_users_on_movie_id_and_user_id", unique: true, using: :btree
 
   create_table "regions", force: true do |t|
     t.string   "name"
