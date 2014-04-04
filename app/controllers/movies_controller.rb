@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.includes(:author, :downloads, :songs, :comments).joins(:users).friendly.find(params[:id])
+    @movie = Movie.includes(:author, :downloads, :songs, :comments).friendly.find(params[:id])
     @comment = Comment.new
     @loved_from_user = !!(current_user && @movie.users.exists?(current_user.id))
   end
