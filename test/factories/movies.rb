@@ -21,12 +21,14 @@
 #  region_id           :integer
 #  status_cd           :integer
 #  status_changed_at   :datetime
+#  slug                :string(255)
 #
 # Indexes
 #
 #  index_movies_on_author_id     (author_id)
 #  index_movies_on_game_mode_id  (game_mode_id)
 #  index_movies_on_region_id     (region_id)
+#  index_movies_on_slug          (slug) UNIQUE
 #  index_movies_on_tf2_class_id  (tf2_class_id)
 #  index_movies_on_user_id       (user_id)
 #

@@ -21,17 +21,22 @@
 #  region_id           :integer
 #  status_cd           :integer
 #  status_changed_at   :datetime
+#  slug                :string(255)
 #
 # Indexes
 #
 #  index_movies_on_author_id     (author_id)
 #  index_movies_on_game_mode_id  (game_mode_id)
 #  index_movies_on_region_id     (region_id)
+#  index_movies_on_slug          (slug) UNIQUE
 #  index_movies_on_tf2_class_id  (tf2_class_id)
 #  index_movies_on_user_id       (user_id)
 #
 
 class Movie < ActiveRecord::Base
+  extend FriendlyId
+
+  friendly_id             :slug_canditates,           :use => [:slugged, :history]
   as_enum                 :status,                    { :pending => 0, :rejected => 1, :published => 2 }, :dirty => true
   belongs_to              :proposer,                  :class_name => 'User', :foreign_key => 'user_id',
                                                       :touch      => true
@@ -74,6 +79,14 @@ class Movie < ActiveRecord::Base
       movie.pending!
       YoutubeInfoProvider.update_movie(movie, url)
     end
+  end
+
+  def slug_canditates
+    [:title, [:title, :youtube_id]]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || slug.nil?
   end
 
   def thumbnail(quality = :tiny)
