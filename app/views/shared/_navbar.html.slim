@@ -50,7 +50,7 @@ nav.navbar.navbar-default role='navigation'
               = fa_icon('inbox fw', :text => 'Review')
               span.badge< = pending_movies_count
         li class=('active' if (params[:controller] == 'movies' and params[:action] == 'submit'))
-            = link_to(fa_icon('share fw', :text => 'Submit'), submit_movies_path)
+            = link_to(fa_icon('share fw', :text => 'Submit movie'), submit_movies_path)
         - if current_user
           li.dropdown
             a.dropdown-toggle href='#' data-toggle='dropdown'
