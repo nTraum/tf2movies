@@ -1,57 +1,55 @@
-- cache @movie do
+- content_for :title, @movie.title
+- breadcrumb :movie, @movie
+h1
+  = @movie.title
+  - if @movie.featured?
+    span.label.label-info< Featured
+p.lead
+  = link_to(image_tag(@movie.author.avatar_url, :size => '35', :class => 'img-thumbnail img-responsive'), @movie.author)
+  =< link_to @movie.author.nickname, @movie.author
+.row
+  .col-md-6
+    h2 Tags
+    ul.list-inline
+      li
+        => fa_icon 'tags'
+      - if @movie.region
+        li
+          a href=region_path(@movie.region)
+            span.badge =< @movie.region.name
+      - if @movie.game_mode
+        li
+          a href=game_mode_path(@movie.game_mode)
+            span.badge =< @movie.game_mode.name
+      - if @movie.tf2_class
+        li
+          a href=tf2_class_path(@movie.tf2_class)
+            span.badge =< @movie.tf2_class.name
 
-  - content_for :title, @movie.title
-  - breadcrumb :movie, @movie
-  h1
-    = @movie.title
-    - if @movie.featured?
-      span.label.label-info< Featured
-  p.lead
-    = link_to(image_tag(@movie.author.avatar_url, :size => '35', :class => 'img-thumbnail img-responsive'), @movie.author)
-    =< link_to @movie.author.nickname, @movie.author
-  .row
-    .col-md-6
-      h2 Tags
-      ul.list-inline
-        li
-          => fa_icon 'tags'
-        - if @movie.region
-          li
-            a href=region_path(@movie.region)
-              span.badge =< @movie.region.name
-        - if @movie.game_mode
-          li
-            a href=game_mode_path(@movie.game_mode)
-              span.badge =< @movie.game_mode.name
-        - if @movie.tf2_class
-          li
-            a href=tf2_class_path(@movie.tf2_class)
-              span.badge =< @movie.tf2_class.name
+    ul.list-inline.hidden-xs
+      li
+        = fa_icon 'heart', :text => pluralize(@movie.users.size, 'love')
+      li
+        = fa_icon 'youtube-play', :text => "#{number_with_delimiter @movie.views} views"
+      li
+        = fa_icon 'calendar'
+        ==< "Added #{timeago_tag @movie.created_at}"
+      li
+        = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
+  .col-md-6
+    h2 Love
+    - if policy(@movie).love?
+      p
+        = button_to([:love, @movie], {:class => 'btn btn-danger'} ) do
+            - if @loved_from_user
+              = fa_icon 'heart', :text => 'Loving it'
+            - else
+              = fa_icon 'heart-o', :text => 'Love it'
 
-      ul.list-inline.hidden-xs
-        li
-          = fa_icon 'heart', :text => pluralize(@movie.users.size, 'love')
-        li
-          = fa_icon 'youtube-play', :text => "#{number_with_delimiter @movie.views} views"
-        li
-          = fa_icon 'calendar'
-          ==< "Added #{timeago_tag @movie.created_at}"
-        li
-          = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @movie.duration} long"
-    .col-md-6
-      h2 Love
-      - cache [@movie, current_user, @loved_from_user] do
-        - if policy(@movie).love?
-          p
-            = button_to([:love, @movie], {:class => 'btn btn-danger'} ) do
-                - if @loved_from_user
-                  = fa_icon 'heart', :text => 'Loving it'
-                - else
-                  = fa_icon 'heart-o', :text => 'Love it'
-  .row
-    .col-md-12
-      == render :partial => 'shared/embedded_html5', :locals => {:movie => @movie}
-
+- cache ['bottom', @movie] do
+.row
+  .col-md-12
+    == render :partial => 'shared/embedded_html5', :locals => {:movie => @movie}
   .row
     .col-md-12
       h2 Info
