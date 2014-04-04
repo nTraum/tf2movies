@@ -8,7 +8,8 @@ describe MoviesController do
         movie = FactoryGirl.create :movie
         post :love, :id => movie.id
         movie.users.size.must_equal 1
-        response.status.must_equal 200
+        response.status.must_equal 302
+        flash[:notice].wont_be_nil
       end
     end
 
@@ -19,7 +20,8 @@ describe MoviesController do
         movie.users.size.must_equal 1
         post :love, :id => movie.id
         movie.users(true).size.must_equal 0
-        response.status.must_equal 200
+        response.status.must_equal 302
+        flash[:notice].wont_be_nil
       end
     end
   end

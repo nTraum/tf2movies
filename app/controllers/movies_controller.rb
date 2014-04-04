@@ -9,10 +9,10 @@ class MoviesController < ApplicationController
     authorize @movie
     if @movie.users.exists?(current_user.id)
       @movie.users.destroy(current_user)
-      render :json => {:status => 'success'} and return
+      redirect_to movie_path(@movie), :notice => 'Movie unloved.'
     else
       @movie.users << current_user
-      render :json => {:status => 'success'} and return
+      redirect_to movie_path(@movie), :notice => 'Movie loved.'
     end
   end
 
@@ -24,6 +24,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.includes(:author, :downloads, :songs, :comments).find(params[:id])
     @comment = Comment.new
+    @loved_from_user = !!(current_user && @movie.users.exists?(current_user.id))
   end
 
   def edit
