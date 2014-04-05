@@ -6,7 +6,7 @@ describe MoviesController do
     it 'must add a movie to a users love list' do
       as_logged_in_user do
         movie = FactoryGirl.create :movie
-        post :love, :id => movie.id
+        post :love, :id => movie.friendly_id
         movie.users.size.must_equal 1
         response.status.must_equal 302
         flash[:notice].wont_be_nil
@@ -16,9 +16,9 @@ describe MoviesController do
     it 'must remove a movie from a users love list when the association already exists' do
       as_logged_in_user do
         movie = FactoryGirl.create :movie
-        post :love, :id => movie.id
+        post :love, :id => movie.friendly_id
         movie.users.size.must_equal 1
-        post :love, :id => movie.id
+        post :love, :id => movie.friendly_id
         movie.users(true).size.must_equal 0
         response.status.must_equal 302
         flash[:notice].wont_be_nil
@@ -32,7 +32,7 @@ describe MoviesController do
 
   it 'must get show' do
     movie = FactoryGirl.create :movie
-    get :show, :id => movie.id
+    get :show, :id => movie.friendly_id
     response.status.must_equal 200
     assigns(:movie).must_equal movie
   end
@@ -49,7 +49,7 @@ describe MoviesController do
   it 'must get edit' do
     movie = FactoryGirl.create :movie
     as_logged_in_moderator do
-      get :edit, :id => movie.id
+      get :edit, :id => movie.friendly_id
       response.status.must_equal 200
       assigns(:movie).must_equal movie
     end
@@ -58,7 +58,7 @@ describe MoviesController do
   it 'must update' do
     movie = FactoryGirl.create :movie
     as_logged_in_moderator do
-      post :update, :id => movie.id, :movie => FactoryGirl.attributes_for(:movie)
+      post :update, :id => movie.friendly_id, :movie => FactoryGirl.attributes_for(:movie)
       response.status.must_equal 302
       flash[:notice].wont_be_nil
     end

@@ -41,7 +41,7 @@ describe Tf2ClassesController do
     it 'must get edit' do
       as_logged_in_admin do
         tf2_class = FactoryGirl.create :tf2_class
-        get :edit, 'id' => tf2_class.id
+        get :edit, 'id' => tf2_class.friendly_id
         assigns(:tf2_class).must_equal tf2_class
         response.status.must_equal 200
       end
@@ -50,7 +50,7 @@ describe Tf2ClassesController do
     it 'must update a tf2 class' do
       as_logged_in_admin do
         tf2_class = FactoryGirl.create :tf2_class
-        post :update, :id => tf2_class.id, :tf2_class => FactoryGirl.attributes_for(:tf2_class)
+        post :update, :id => tf2_class.friendly_id, :tf2_class => FactoryGirl.attributes_for(:tf2_class)
         flash[:notice].wont_be_nil
         response.status.must_equal 302
       end
@@ -59,7 +59,7 @@ describe Tf2ClassesController do
     it 'must not update invalid tf2 classes' do
       as_logged_in_admin do
         tf2_class = FactoryGirl.create :tf2_class
-        post :update, :id => tf2_class.id, :tf2_class => FactoryGirl.attributes_for(:tf2_class, :name => '')
+        post :update, :id => tf2_class.friendly_id, :tf2_class => FactoryGirl.attributes_for(:tf2_class, :name => '')
         flash[:alert].wont_be_nil
         response.status.must_equal 302
       end
@@ -69,7 +69,7 @@ describe Tf2ClassesController do
       as_logged_in_admin do
         tf2_class = FactoryGirl.create :tf2_class
         Tf2Class.count.must_equal 1
-        delete :destroy, :id => tf2_class.id
+        delete :destroy, :id => tf2_class.friendly_id
         flash[:notice].wont_be_nil
         response.status.must_equal 302
         Tf2Class.count.must_equal 0
