@@ -39,12 +39,11 @@ p.lead
   - if policy(@movie).love?
     .col-md-6
       h2 Love
-        p
-          = button_to([:love, @movie], {:class => 'btn btn-danger'} ) do
-              - if @loved_from_user
-                = fa_icon 'heart', :text => 'Loving it'
-              - else
-                = fa_icon 'heart-o', :text => 'Love it'
+      = button_to([:love, @movie], {:class => 'btn btn-danger'} ) do
+          - if @loved_from_user
+            = fa_icon 'heart', :text => 'Loving it'
+          - else
+            = fa_icon 'heart-o', :text => 'Love it'
 
 .row
   .col-md-12
