@@ -16,15 +16,15 @@ p.lead
       - if @movie.region
         li
           a href=region_path(@movie.region)
-            span.badge =< @movie.region.name
+            span.badge =< fa_icon('globe', :text => @movie.region.name)
       - if @movie.game_mode
         li
           a href=game_mode_path(@movie.game_mode)
-            span.badge =< @movie.game_mode.name
+            span.badge =< fa_icon('users',:text => @movie.game_mode.name)
       - if @movie.tf2_class
         li
           a href=tf2_class_path(@movie.tf2_class)
-            span.badge =< @movie.tf2_class.name
+            span.badge =< fa_icon('crosshairs', :text => @movie.tf2_class.name)
 
     ul.list-inline.hidden-xs
       li
