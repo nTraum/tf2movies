@@ -1,6 +1,7 @@
-- content_for :title, 'Page not found 404'
-h1
-  | Page not found
-  small< #404
+- cache '400' do
+  - content_for :title, 'Page not found 404'
+  h1
+    | Page not found
+    small< #404
 
-h3 = link_to('Start over?', root_path)
+  h3 = link_to('Start over?', root_path)

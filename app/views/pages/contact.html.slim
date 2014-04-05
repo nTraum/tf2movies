@@ -1,11 +1,12 @@
-- content_for :title, 'Contact'
-- breadcrumb :contact
-h1 Contact
+- cache 'contact' do
+  - content_for :title, 'Contact'
+  - breadcrumb :contact
+  h1 Contact
 
-p TF2Movies does not have stand alone community forums (yet).
-  Instead you can leave your feedback here:
-ul
-  li = link_to(fa_icon('external-link fw', :text => 'ETF2L thread'), '#', :target => '_blank')
-  li = link_to(fa_icon('external-link fw', :text => 'teamfortress.tv thread'), '#', :target => '_blank')
-  li = link_to(fa_icon('twitter fw', :text => '@tf2movies'), 'http://twitter.com/tf2movies', :target => '_blank')
-  li = mail_to('philipp.press+tf2movies@googlemail.com', fa_icon('envelope fw', :text => 'E-Mail'))
+  p TF2Movies does not have stand alone community forums (yet).
+    Instead you can leave your feedback here:
+  ul
+    li = link_to(fa_icon('external-link fw', :text => 'ETF2L thread'), '#', :target => '_blank')
+    li = link_to(fa_icon('external-link fw', :text => 'teamfortress.tv thread'), '#', :target => '_blank')
+    li = link_to(fa_icon('twitter fw', :text => '@tf2movies'), 'http://twitter.com/tf2movies', :target => '_blank')
+    li = mail_to('philipp.press+tf2movies@googlemail.com', fa_icon('envelope fw', :text => 'E-Mail'))

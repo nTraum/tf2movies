@@ -1,7 +1,8 @@
-- content_for :title, 'Internal Error 500'
-h1
-  | Error
-  small< #500
+- cache '500' do
+  - content_for :title, 'Internal Error 500'
+  h1
+    | Error
+    small< #500
 
-h3 We've expierenced an error and will be notified. Sorry :(
-h3 = link_to('Start over?', root_path)
+  h3 We've expierenced an error and will be notified. Sorry :(
+  h3 = link_to('Start over?', root_path)
