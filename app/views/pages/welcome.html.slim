@@ -2,19 +2,16 @@
   .col-md-6
     == render :partial => 'carousel', :locals => {:movies => @featured_movies}
   .col-md-6.hidden-xs
-    h1 TF2's Finest
+    h1 TF2Movies - TF2's finest
     h2
       => @movies_count
       small Movies
     h2
-      => @authors_count
-      small Authors
-    h2
-      => @downloads_count
-      small Downloads
-    h2
       => distance_of_time_in_words(@total_duration)
       small of video footage
+    hr
+    p TF2Movies is a collaborative online catalogue for competetive Team Fortress 2 movies, thoroughly categorized and researched. Wether you're looking for downloads or a specific song from a frag movie, we've got you covered.
+    p Do we miss a movie you love? - Please #{link_to('tell us', submit_movies_path)} so we can add it.
 hr
 
 .row
