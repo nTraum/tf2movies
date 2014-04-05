@@ -46,57 +46,56 @@ p.lead
             - else
               = fa_icon 'heart-o', :text => 'Love it'
 
-- cache ['bottom', @movie] do
-  .row
-    .col-md-12
-      == render :partial => 'shared/embedded_html5', :locals => {:movie => @movie}
-    .row
-      .col-md-12
-        h2 Info
+.row
+  .col-md-12
+    == render :partial => 'shared/embedded_html5', :locals => {:movie => @movie}
+.row
+  .col-md-12
+    h2 Info
 
-        ul.nav.nav-tabs
-          li.active
-            a href='#description' data-toggle='tab' = fa_icon('info', :text => "Description")
-          li
-            a href= '#music' data-toggle='tab' = fa_icon('music', :text => "Music (#{@movie.songs.size})")
-          li
-            a href= '#downloads' data-toggle='tab' = fa_icon('download', :text => "Downloads (#{@movie.downloads.size})")
-          li
-            a href= '#comments' data-toggle='tab' = fa_icon('comments', :text => "Comments (#{@movie.comments.size})")
+    ul.nav.nav-tabs
+      li.active
+        a href='#description' data-toggle='tab' = fa_icon('info', :text => "Description")
+      li
+        a href= '#music' data-toggle='tab' = fa_icon('music', :text => "Music (#{@movie.songs.size})")
+      li
+        a href= '#downloads' data-toggle='tab' = fa_icon('download', :text => "Downloads (#{@movie.downloads.size})")
+      li
+        a href= '#comments' data-toggle='tab' = fa_icon('comments', :text => "Comments (#{@movie.comments.size})")
 
-        .tab-content
-          .tab-pane.fade.in.active id='description'
-            p = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
-          .tab-pane.fade id='music'
-            table.table.table-hover
-              thead
-                tr
-                  th.hidden-xs #
-                  th Artist
-                  th Title
-                  th.text-right G
-                  th.text-right YT
-                  th.text-right SC
-              tbody
-                == render @movie.songs
-          .tab-pane.fade id='downloads'
-            table.table.table-hover
-              thead
-                tr
-                  th.hidden-xs #
-                  th Status
-                  th Hoster
-                  th Size
-                  th
-              tbody
-                == render @movie.downloads
-          .tab-pane.fade id='comments'
-            p
-              ul.media-list
-                == render @movie.comments
-                hr
-                li.media
-                  span.pull-left = fa_icon('quote-left fw 2x')
-                  .media-body
-                    h4.media-heading Leave a comment
-                    == render :template => 'comments/_form.html.slim', :locals =>  {:movie => @movie, :comment => @comment}
+    .tab-content
+      .tab-pane.fade.in.active id='description'
+        p = auto_link(simple_format(@movie.description), :html => { :target => '_blank' })
+      .tab-pane.fade id='music'
+        table.table.table-hover
+          thead
+            tr
+              th.hidden-xs #
+              th Artist
+              th Title
+              th.text-right G
+              th.text-right YT
+              th.text-right SC
+          tbody
+            == render @movie.songs
+      .tab-pane.fade id='downloads'
+        table.table.table-hover
+          thead
+            tr
+              th.hidden-xs #
+              th Status
+              th Hoster
+              th Size
+              th
+          tbody
+            == render @movie.downloads
+      .tab-pane.fade id='comments'
+        p
+          ul.media-list
+            == render @movie.comments
+            hr
+            li.media
+              span.pull-left = fa_icon('quote-left fw 2x')
+              .media-body
+                h4.media-heading Leave a comment
+                == render :template => 'comments/_form.html.slim', :locals =>  {:movie => @movie, :comment => @comment}
