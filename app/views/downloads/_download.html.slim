@@ -12,4 +12,4 @@
     td.text-right
       - if download.filesize? and (download.filesize > 10 * 10240)
         = number_to_human_size(download.filesize)
-    td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), download.url, :class => 'btn btn-primary btn-xs', :target => '_blank', :role => 'button ')
+    td.text-right = link_to(fa_icon('floppy-o', :text => 'Download'), download.url, :class => 'btn btn-primary btn-sm', :target => '_blank', :role => 'button', :style => 'text-decoration: none')
