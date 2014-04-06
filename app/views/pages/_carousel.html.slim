@@ -1,18 +1,9 @@
-.carousel.slide#carousel-featured data-ride='carousel'
-  ol.carousel-indicators
-    - movies.size.times do |i|
-      li data-target='#carousel-featured' data-slide-to=i class=('active' if 0==i)
-
-  .carousel-inner
-    - movies.each_with_index do |movie, i|
-      div class=(['item', ('active' if 0==i)].compact.join(' '))
-        - cache(['carousel', movie]) do
-          = link_to(movie) do
-            = image_tag(movie.thumbnail(:high), :class => 'img-responsive', :alt => "Thumbnail #{movie.title}")
-          .carousel-caption
-            h4 = movie.title.upcase
-            span.label.label-info Featured
-  a.carousel-control.left href='#carousel-featured' data-slide='prev'
-    span.icon-prev
-  a.carousel-control.right href='#carousel-featured' data-slide='next'
-    span.icon-next
+.slick
+  - movies.each do |movie|
+    - cache ['slide', movie] do
+      .slide
+        = link_to(movie) do
+          = image_tag(movie.thumbnail(:max), :class => 'img-responsive', :alt => "Thumbnail #{movie.title}")
+        .carousel-caption
+          h4 = movie.title.upcase
+          span.label.label-info Featured

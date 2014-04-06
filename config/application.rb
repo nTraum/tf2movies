@@ -29,6 +29,8 @@ module Tf2movies
       g.test_framework :mini_test,  :spec => true, :fixture => false,
                                     :fixture_replacement => :factory_girl
     config.exceptions_app = self.routes
+
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     end
   end
 end

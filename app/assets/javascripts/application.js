@@ -17,6 +17,7 @@
 //= require fitvid
 //= require mixitup_lib
 //= require mixitup
+//= require slick_lib
 //= require_tree .
 //= require bootstrap
 //= require cocoon
