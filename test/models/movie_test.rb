@@ -53,4 +53,9 @@ describe Movie do
     subject.save!
     subject.featured_at.must_be_within_delta(Time.current, 3)
   end
+
+  it 'must be searchable' do
+    subject.save!
+    Movie.search('foo').size.must_equal 1
+  end
 end

@@ -34,7 +34,10 @@
 #
 
 class Movie < ActiveRecord::Base
+  include PgSearch
   extend FriendlyId
+  pg_search_scope         :search,                    :against => { :title => 'A', :description => 'B' },
+                                                      :using => { :tsearch => {:prefix => true} }
 
   friendly_id             :slug_canditates,           :use => [:slugged, :history]
   as_enum                 :status,                    { :pending => 0, :rejected => 1, :published => 2 }, :dirty => true

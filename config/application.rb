@@ -28,8 +28,11 @@ module Tf2movies
     config.generators do |g|
       g.test_framework :mini_test,  :spec => true, :fixture => false,
                                     :fixture_replacement => :factory_girl
+
+    # Catching exceptions on our own
     config.exceptions_app = self.routes
 
+    # Slicks' fonts
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     end
   end

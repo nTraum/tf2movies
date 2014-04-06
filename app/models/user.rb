@@ -14,6 +14,11 @@
 #
 
 class User < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope         :search,            :against => { :nickname => 'A', :steam_id => 'C', :steam_profile_url => 'D' },
+                                              :using => { :tsearch => {:prefix => true} }
+
   as_enum                 :role,              :banned => 0, :user => 1, :moderator => 2, :admin => 3
   has_many                :suggestions,       :class_name => 'Movie'
   has_many                :comments

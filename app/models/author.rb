@@ -17,14 +17,19 @@
 #
 
 class Author < ActiveRecord::Base
+  include PgSearch
   extend FriendlyId
-  friendly_id :nickname,    :use => [:slugged]
-  has_many    :movies
 
-  validates   :nickname,    :presence => true
-  validates   :profile_url, :presence => true
-  validates   :avatar_url,  :presence => true
-  validates   :youtube_id,  :presence => true
+  pg_search_scope :search,      :against => :nickname,
+                                :using => { :tsearch => {:prefix => true} }
+
+  friendly_id     :nickname,    :use => [:slugged]
+  has_many        :movies
+
+  validates       :nickname,    :presence => true
+  validates       :profile_url, :presence => true
+  validates       :avatar_url,  :presence => true
+  validates       :youtube_id,  :presence => true
 
   def should_generate_new_friendly_id?
     nickname_changed? || slug.nil?

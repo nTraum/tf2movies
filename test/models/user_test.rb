@@ -83,4 +83,9 @@ describe User do
       FactoryGirl.build(:user).staff?.must_equal false
     end
   end
+
+  it 'must be searchable' do
+    FactoryGirl.create :user
+    User.search('bob').size.must_equal 1
+  end
 end

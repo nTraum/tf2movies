@@ -35,6 +35,7 @@ gem 'whenever',                     require: false
 gem 'sanitize'
 gem 'rails-timeago'
 gem 'rack-google-analytics'
+gem 'pg_search'
 
 group :production do
   gem 'dalli'
