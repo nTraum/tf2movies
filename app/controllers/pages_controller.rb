@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   end
 
   def popular
-    @most_viewed_movies = Movie.where(:status_cd => Movie.published).order(:created_at => :desc).limit(5)
+    @most_viewed_movies = Movie.where(:status_cd => Movie.published).order(:views => :desc).limit(5)
   end
 
   def stats
