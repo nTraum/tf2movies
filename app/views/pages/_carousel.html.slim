@@ -3,7 +3,7 @@
     - cache ['slide', movie] do
       .slide
         = link_to(movie) do
-          = image_tag(movie.thumbnail(:max), :class => 'img-responsive', :alt => "Thumbnail #{movie.title}")
+          = image_tag(movie.thumbnail(:max), :class => 'img-responsive img-thumbnail', :alt => "Thumbnail #{movie.title}")
         .carousel-caption
           h4 = movie.title.upcase
           span.label.label-info Featured
