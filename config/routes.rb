@@ -1,17 +1,17 @@
 Tf2movies::Application.routes.draw do
   root 'pages#welcome'
 
-  get '/404', :to => 'pages#not_found'
-  get '/500', :to => 'pages#internal_error'
+  get   '/404',     :to       => 'pages#not_found'
+  get   '/500',     :to       => 'pages#internal_error'
 
-  get '/about',   :to => 'pages#about', :as => :about
-  get '/contact', :to => 'pages#contact', :as => :contact
+  get   '/about',   :to       => 'pages#about',           :as => :about
+  get   '/contact', :to       => 'pages#contact',         :as => :contact
 
-  get '/feed',    :to => 'news_feed#feed', :as => :feed, :defaults => { :format => 'atom' }
+  get   '/feed',    :to       => 'news_feed#feed',        :as => :feed, :defaults => { :format => 'atom' }
 
-  get '/login', :to => redirect('/auth/steam'), :as => :login
-  post 'auth/steam/callback' => 'sessions#create'
-  post '/logout' => 'sessions#destroy', :as => :logout
+  get   '/login',   :to       => redirect('/auth/steam'), :as => :login
+  match 'auth/steam/callback' => 'sessions#create',       :via => [:get, :post]
+  post  '/logout',  :to       => 'sessions#destroy',      :as => :logout
 
   resources :regions, :game_modes, :tf2_classes do
     get 'manage', :on => :collection

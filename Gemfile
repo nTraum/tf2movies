@@ -53,7 +53,6 @@ group :development do
   gem 'pry-nav'
   gem 'quiet_assets'
   gem 'rails-footnotes'
-  gem 'spring'
 
   # deployment
   gem 'capistrano-rails',           require: false
@@ -67,5 +66,7 @@ group :test do
   gem 'database_cleaner',           require: false
   gem 'vcr',                        require: false
   gem 'webmock',                    require: false
-  gem 'minitest-rails-capybara',    require: false
+  gem 'capybara',                   require: false
+  gem 'capybara_minitest_spec',     require: false
+  gem 'poltergeist',                require: false
 end

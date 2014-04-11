@@ -12,35 +12,44 @@ end
 
 SimpleCov.start('rails') do
   add_group 'Policies', 'app/policies'
+  add_group 'Services', 'app/services'
 end
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/rails'
 require 'minitest/pride'
-require 'minitest/rails/capybara'
+require 'capybara/rails'
+require 'capybara_minitest_spec'
+require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'webmock/minitest'
 require 'vcr'
 
-# To add Capybara feature tests add `gem "minitest-rails-capybara"`
-# to the test group in the Gemfile and uncomment the following:
-# require "minitest/rails/capybara"
-
-# class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  # fixtures :all
-
-  # Add more helper methods to be used by all tests here...
-# end
-
+# VCR configuration
 VCR.configure do |c|
   c.cassette_library_dir = 'test/cassettes'
   c.hook_into :webmock
-  c.ignore_hosts 'codeclimate.com'
+  c.ignore_hosts 'codeclimate.com' # whitelisted for coverage report
 end
 
-DatabaseCleaner.strategy = :transaction
+# Omniauth mock
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:steam] = OmniAuth::AuthHash.new(
+  :provider => 'steam',
+  :info => {
+    :nickname => 'Bob',
+    :urls => { :Profile => 'http://steamcommunity.com/12345' }
+    },
+  :uid => '12345'
+)
+
+
+# requires PhantomJS to be installed
+Capybara.javascript_driver = :poltergeist
+
+# Database is cleaned between tests
+DatabaseCleaner.strategy = :deletion
 
 class MiniTest::Spec
   before :each do
@@ -49,6 +58,40 @@ class MiniTest::Spec
 
   after :each do
     DatabaseCleaner.clean
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include Capybara::DSL # Capybara DSL in integration Tests
+
+  teardown do
+    DatabaseCleaner.clean # Clean database
+    Capybara.reset_sessions! # Reset sessions
+  end
+end
+
+module SharedIntegrationSteps
+  def login
+    # Omniauth mock
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:steam] = OmniAuth::AuthHash.new(
+      :provider => 'steam',
+      :info => {
+        :nickname => 'Bob',
+        :urls => { :Profile => 'http://steamcommunity.com/12345' }
+        },
+      :uid => '12345'
+    )
+
+    visit(root_path)
+    find('a[@href=\'/login\']').click
+    find('.alert.alert-success')
+  end
+
+  def logout
+    visit(root_path)
+    click_on('Sign out')
+    find('.alert.alert-success')
   end
 end
 
