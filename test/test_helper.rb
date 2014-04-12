@@ -33,18 +33,6 @@ VCR.configure do |c|
   c.ignore_hosts 'codeclimate.com' # whitelisted for coverage report
 end
 
-# Omniauth mock
-OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:steam] = OmniAuth::AuthHash.new(
-  :provider => 'steam',
-  :info => {
-    :nickname => 'Bob',
-    :urls => { :Profile => 'http://steamcommunity.com/12345' }
-    },
-  :uid => '12345'
-)
-
-
 # requires PhantomJS to be installed
 Capybara.javascript_driver = :poltergeist
 
