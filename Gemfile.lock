@@ -354,12 +354,12 @@ DEPENDENCIES
   pundit
   quiet_assets
   rack-google-analytics
-  rails (~> 4.0.0)
+  rails (~> 4.0)
   rails-footnotes
   rails-timeago
   rails_autolink
   sanitize
-  sass-rails (~> 4.0.2)
+  sass-rails (~> 4.0.0, >= 4.0.2)
   sdoc
   sentry-raven
   simple_enum
