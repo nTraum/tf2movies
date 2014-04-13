@@ -14,8 +14,8 @@ describe 'UserFlows Integration Test' do
     login
   end
 
-  #it 'must be able to logout', :js => true do
-  #  login
-  #  logout
-  #end
+  it 'must be able to logout', :js => true do
+    login
+    logout
+  end
 end
