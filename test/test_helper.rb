@@ -19,6 +19,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/rails'
 require 'minitest/pride'
+require 'minitest/metadata'
 require 'capybara/rails'
 require 'capybara_minitest_spec'
 require 'capybara/poltergeist'
@@ -30,6 +31,7 @@ require 'vcr'
 VCR.configure do |c|
   c.cassette_library_dir = 'test/cassettes'
   c.hook_into :webmock
+  c.ignore_localhost = true
   c.ignore_hosts 'codeclimate.com' # whitelisted for coverage report
 end
 
@@ -51,10 +53,18 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL # Capybara DSL in integration Tests
+  include MiniTest::Metadata
+
+  setup do
+    if metadata[:js] == true
+      Capybara.current_driver = Capybara.javascript_driver
+    end
+  end
 
   teardown do
     DatabaseCleaner.clean # Clean database
     Capybara.reset_sessions! # Reset sessions
+    Capybara.current_driver = Capybara.default_driver
   end
 end
 
@@ -72,13 +82,14 @@ module SharedIntegrationSteps
     )
 
     visit(root_path)
-    find('a[@href=\'/login\']').click
+    click_link('login')
     find('.alert.alert-success')
   end
 
   def logout
     visit(root_path)
-    click_on('Sign out')
+    find('#user').click
+    find('#logout').click
     find('.alert.alert-success')
   end
 end

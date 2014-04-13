@@ -69,4 +69,5 @@ group :test do
   gem 'capybara',                   require: false
   gem 'capybara_minitest_spec',     require: false
   gem 'poltergeist',                require: false
+  gem 'minitest-metadata',          require: false
 end
