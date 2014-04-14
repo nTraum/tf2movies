@@ -13,13 +13,26 @@ module SharedIntegrationSteps
 
     visit(root_path)
     click_link('login')
-    find('.alert.alert-success')
+    find_flash(:notice)
   end
 
   def logout
     visit(root_path)
     find('#user').click
     find('#logout').click
-    find('.alert.alert-success')
+    find_flash(:notice)
+  end
+
+  def find_flash(type)
+    raise ArgumentError unless [:notice, :warning, :alert].include?(type)
+    within('main') do
+      if type == :notice
+        find('.alert.alert-success.alert-dismissable')
+      elsif type == :warning
+        find('.alert.alert-warning.alert-dismissable')
+      elsif type == :alert
+        find('.alert.alert-danger.alert-dismissable')
+      end
+    end
   end
 end

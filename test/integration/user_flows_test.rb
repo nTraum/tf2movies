@@ -5,7 +5,6 @@ describe 'UserFlows Integration Test' do
   include SharedIntegrationSteps
   it 'must be able to login for the first time', :js => true do
     login
-    find('.alert.alert-success')
   end
 
   it 'must be able to logout', :js => true do
