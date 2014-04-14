@@ -1,7 +1,7 @@
 - cache ['most_recent', movie] do
   .media
     = link_to movie, :class => 'pull-left'
-      = image_tag(movie.thumbnail(:small), :class => 'media-object', :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail')
+      = image_tag(movie.thumbnail(:small), :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
     .media-body
       h4.media-heading = link_to(movie.title, movie)
       p by #{link_to(movie.author.nickname, movie.author)}
