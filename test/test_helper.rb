@@ -23,7 +23,7 @@ require 'minitest/pride'
 require 'minitest/metadata'
 require 'capybara/rails'
 require 'capybara_minitest_spec'
-require 'capybara/poltergeist'
+require 'capybara-webkit'
 require 'database_cleaner'
 require 'webmock/minitest'
 require 'vcr'
@@ -36,11 +36,11 @@ VCR.configure do |c|
   c.ignore_hosts 'codeclimate.com' # whitelisted for coverage report
 end
 
-# requires PhantomJS to be installed
-Capybara.javascript_driver = :poltergeist
+# requires Qt libs to be installed
+Capybara.javascript_driver = :webkit
 
 # Database is cleaned between tests
-DatabaseCleaner.strategy = :deletion
+DatabaseCleaner.strategy = :transaction
 
 class MiniTest::Spec
   before :each do
@@ -58,6 +58,9 @@ class ActionDispatch::IntegrationTest
 
   setup do
     if metadata[:js] == true
+      require 'headless'
+      headless = Headless.new
+      headless.start
       Capybara.current_driver = Capybara.javascript_driver
     end
   end

@@ -8,12 +8,6 @@ describe 'UserFlows Integration Test' do
     find('.alert.alert-success')
   end
 
-  it 'must be able to login multiple times', :js => true do
-    login
-    logout
-    login
-  end
-
   it 'must be able to logout', :js => true do
     login
     logout

@@ -68,6 +68,7 @@ group :test do
   gem 'webmock',                    require: false
   gem 'capybara',                   require: false
   gem 'capybara_minitest_spec',     require: false
-  gem 'poltergeist',                require: false
+  gem 'capybara-webkit',            require: false
+  gem 'headless',                   require: false
   gem 'minitest-metadata',          require: false
 end
