@@ -1,5 +1,8 @@
 class MoviesController < ApplicationController
-  after_action :verify_authorized, :except => [:submit, :show]
+  after_action :verify_authorized, :except => [:submit, :show, :index]
+
+  def index
+  end
 
   def submit
   end
