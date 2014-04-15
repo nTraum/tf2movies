@@ -1,21 +1,2 @@
-- content_for :title, 'Manage users'
-h1 Manage users
-table.table.table-hover.table-striped.table-responsive.table-condensed
-  thead
-    th #
-    th.text-right Nickname
-    th.text-right Steam ID
-    th.text-right Role
-    th.text-right Last login
-    th.text-right Registered at
-
-  tbody
-    - @users.each do |u|
-      - cache(u) do
-        tr
-          td.text-right = u.id
-          td.text-right = u.nickname
-          td.text-right = u.steam_id
-          td.text-right = u.role
-          td.text-right = u.last_login.strftime('%D')
-          td.text-right = u.created_at.strftime('%D')
+- content_for :title, 'Users'
+h1 Not finished yet :)
