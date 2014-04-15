@@ -1,1 +1,5 @@
-h1 Test
+h1 Pending movies
+
+ul
+  - @pending_movies.each do |movie|
+    li = link_to(movie.title, edit_movie_path(movie))
