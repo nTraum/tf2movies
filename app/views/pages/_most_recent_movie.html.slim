@@ -3,7 +3,7 @@
     = link_to movie, :class => 'pull-left'
       = image_tag(movie.thumbnail(:small), :size => '120x90', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
     .media-body
-      h4.media-heading = link_to(movie.title, movie)
+      h4.media-heading.text-ellipsis = link_to(movie.title, movie)
       p by #{link_to(movie.author.nickname, movie.author)}
       p.pull-right.text-muted == timeago_tag(movie.created_at)
       ul.list-inline
