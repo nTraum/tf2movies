@@ -5,7 +5,7 @@
     .media-body
       h4.media-heading.text-ellipsis = link_to(movie.title, movie)
       p by #{link_to(movie.author.nickname, movie.author)}
-      p.pull-right.text-muted == timeago_tag(movie.created_at)
+      p.pull-right.text-muted == timeago_tag(movie.status_changed_at)
       ul.list-inline
         li = fa_icon('tags')
         - if movie.region
