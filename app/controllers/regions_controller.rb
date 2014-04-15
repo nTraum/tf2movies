@@ -26,6 +26,7 @@ class RegionsController < ApplicationController
 
   def show
     @region = Region.friendly.find(params[:id])
+    @movies = @region.movies.where(:status_cd => Movie.published)
   end
 
   def edit

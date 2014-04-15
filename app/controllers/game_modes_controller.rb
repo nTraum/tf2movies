@@ -26,6 +26,7 @@ class GameModesController < ApplicationController
 
   def show
     @game_mode = GameMode.friendly.find(params[:id])
+    @movies = @game_mode.movies.where(:status_cd => Movie.published)
   end
 
   def edit

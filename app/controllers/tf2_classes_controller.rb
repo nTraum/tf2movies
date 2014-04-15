@@ -26,6 +26,7 @@ class Tf2ClassesController < ApplicationController
 
   def show
     @tf2_class = Tf2Class.friendly.find(params[:id])
+    @movies = @tf2_class.movies.where(:status_cd => Movie.published)
   end
 
   def edit
