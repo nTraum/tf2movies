@@ -2,6 +2,15 @@ require 'test_helper'
 
 describe Tf2ClassesController do
 
+  describe 'show' do
+    it 'must get show' do
+      tf2_class = FactoryGirl.create :tf2_class
+      get :show, :id => tf2_class.friendly_id
+      assigns[:tf2_class].wont_be_nil
+      response.status.must_equal 200
+    end
+  end
+
   describe 'as admin' do
     it 'must get new' do
       as_logged_in_admin do

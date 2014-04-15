@@ -25,6 +25,7 @@ class RegionsController < ApplicationController
   end
 
   def show
+    @region = Region.friendly.find(params[:id])
   end
 
   def edit

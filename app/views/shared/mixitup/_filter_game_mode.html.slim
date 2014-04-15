@@ -1,0 +1,12 @@
+- cache ['filter_game_mode', GameMode.order(:updated_at).last] do
+  .btn-group
+        button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
+          = fa_icon('users', :text => 'Game mode')
+          =< fa_icon('caret-down')
+        ul.dropdown-menu role='menu'
+          - GameMode.all.each do |game_mode|
+            li
+              a.filter data-filter=".game_mode-#{game_mode.name}" = game_mode.name
+          li.divider
+          li
+            a.filter data-filter='all' All

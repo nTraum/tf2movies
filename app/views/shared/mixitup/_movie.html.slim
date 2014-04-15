@@ -1,0 +1,15 @@
+div class=(['mix media col-md-6', ("game_mode-#{movie.game_mode.name}" if movie.game_mode), ("tf2_class-#{movie.tf2_class.name}" if movie.tf2_class), ("region-#{movie.region.name}" if movie.region)].compact.join(' ')) data-views=("%09d" % movie.views) data-loves=("%09d" % movie.users.size) data-date=movie.created_at data-title=movie.title
+  a.pull-left href=url_for(movie)
+    = image_tag(movie.thumbnail(:small), :size => '240x180', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
+  .media-body
+    h4.media-heading.text-ellipsis = link_to(movie.title, movie)
+    p by #{link_to(movie.author.nickname, movie.author)}
+    p.text-muted
+      = fa_icon('youtube-play fw')
+      =< "#{number_with_delimiter(movie.views)} views"
+      br
+      = fa_icon('calendar fw')
+      ==< "Added #{timeago_tag(movie.created_at)}"
+      br
+      = fa_icon('heart fw')
+      ==< pluralize(movie.users.size, 'love')

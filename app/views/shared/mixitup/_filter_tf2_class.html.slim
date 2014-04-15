@@ -1,0 +1,12 @@
+- cache ['filter_tf2_class', Tf2Class.order(:updated_at).last] do
+  .btn-group
+        button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
+          = fa_icon('crosshairs', :text => 'Class')
+          =< fa_icon('caret-down')
+        ul.dropdown-menu role='menu'
+          - Tf2Class.all.each do |tf2_class|
+            li
+              a.filter data-filter=".tf2_class-#{tf2_class.name}" = tf2_class.name
+          li.divider
+          li
+            a.filter data-filter='all' All

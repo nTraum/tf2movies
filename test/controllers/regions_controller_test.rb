@@ -2,6 +2,15 @@ require 'test_helper'
 
 describe RegionsController do
 
+  describe 'show' do
+    it 'must get show' do
+      region = FactoryGirl.create :region
+      get :show, :id => region.friendly_id
+      assigns[:region].wont_be_nil
+      response.status.must_equal 200
+    end
+  end
+
   describe 'as admin' do
     it 'must get new' do
       as_logged_in_admin do

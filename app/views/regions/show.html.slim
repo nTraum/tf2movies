@@ -1,3 +1,18 @@
-- content_for :title, Region
-h1 GameModes#show
-p Find me in app/views/game_modes/show.html.slim
+- content_for :title, @region.name
+- breadcrumb :region, @region
+
+h1 = @region.name
+
+.row
+  .col-md-6
+    h3 = fa_icon('filter', :text => 'Filter')
+    == render :partial => 'shared/mixitup/filter_tf2_class'
+    == render :partial => 'shared/mixitup/filter_game_mode'
+
+  .col-md-6
+    h3 = fa_icon('sort', :text => 'Sort')
+    == render :partial => 'shared/mixitup/sort'
+
+.row#movie-grid
+  - @region.movies.each do |movie|
+    == render :partial => 'shared/mixitup/movie', :locals => {:movie => movie}

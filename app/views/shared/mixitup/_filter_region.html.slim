@@ -1,0 +1,12 @@
+- cache ['filter_region', Region.order(:updated_at).last] do
+  .btn-group
+        button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
+          = fa_icon('globe', :text => 'Region')
+          =< fa_icon('caret-down')
+        ul.dropdown-menu role='menu'
+          - Region.all.each do |region|
+            li
+              a.filter data-filter=".region-#{region.name}" = region.name
+          li.divider
+          li
+            a.filter data-filter='all' All

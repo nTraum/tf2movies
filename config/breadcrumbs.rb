@@ -2,7 +2,7 @@ crumb :root do
   link fa_icon('home'), root_path
 end
 
-# GameModes
+# Game modes
 crumb :game_modes do
   link 'Game Modes', game_modes_path
 end
@@ -11,6 +11,27 @@ crumb :game_mode do |game_mode|
   link game_mode.name, game_mode
   parent :game_modes
 end
+
+# Regions
+crumb :regions do
+  link 'Regions', regions_path
+end
+
+crumb :region do |region|
+  link region.name, region
+  parent :regions
+end
+# TF2 classes
+crumb :tf2_classes do
+  link 'Classes', tf2_classes_path
+end
+
+crumb :tf2_class do |tf2_class|
+  link tf2_class.name, tf2_class
+  parent :tf2_classes
+end
+
+
 
 # Movies
 crumb :movies do

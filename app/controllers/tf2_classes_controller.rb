@@ -25,6 +25,7 @@ class Tf2ClassesController < ApplicationController
   end
 
   def show
+    @tf2_class = Tf2Class.friendly.find(params[:id])
   end
 
   def edit
