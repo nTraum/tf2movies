@@ -28,6 +28,12 @@ iframe {
   overflow: hidden;
 }
 
+.text-ellipsis {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
 .flex-video.widescreen { padding-bottom: 57.25%; }
 .flex-video.vimeo { padding-top: 0; }
 
