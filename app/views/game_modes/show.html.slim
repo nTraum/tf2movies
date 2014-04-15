@@ -8,22 +8,35 @@ h1 = @game_mode.name
     h3 = fa_icon('filter', :text => 'Filter')
     .btn-group
       button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
-        = fa_icon('globe', :text => 'Region')
-        =< fa_icon('caret-down')
-      ul.dropdown-menu role='menu'
-        - Region.all.each do |region|
-          li
-            a.filter data-filter=".region-#{region.name}" = region.name
-        li
-          a.filter data-filter='all' All
-    .btn-group
-      button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
         = fa_icon('crosshairs', :text => 'Class')
         =< fa_icon('caret-down')
       ul.dropdown-menu role='menu'
         - Tf2Class.all.each do |tf2_class|
           li
             a.filter data-filter=".tf2_class-#{tf2_class.name}" = tf2_class.name
+        li.divider
+        li
+          a.filter data-filter='all' All
+    .btn-group
+      button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
+        = fa_icon('users', :text => 'Game mode')
+        =< fa_icon('caret-down')
+      ul.dropdown-menu role='menu'
+        - GameMode.all.each do |game_mode|
+          li
+            a.filter data-filter=".game_mode-#{game_mode.name}" = game_mode.name
+        li.divider
+        li
+          a.filter data-filter='all' All
+    .btn-group
+      button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
+        = fa_icon('globe', :text => 'Region')
+        =< fa_icon('caret-down')
+      ul.dropdown-menu role='menu'
+        - Region.all.each do |region|
+          li
+            a.filter data-filter=".region-#{region.name}" = region.name
+        li.divider
         li
           a.filter data-filter='all' All
 
@@ -37,7 +50,7 @@ h1 = @game_mode.name
 
 .row#movie-grid
   - @game_mode.movies.each do |m|
-      div class=(['mix media col-md-6', ("tf2_class-#{m.tf2_class.name}" if m.tf2_class), ("region-#{m.region.name}" if m.region)].compact.join(' ')) data-views=("%09d" % m.views) data-loves=("%09d" % m.users.size) data-date=m.created_at data-title=m.title
+      div class=(['mix media col-md-6', ("game_mode-#{m.game_mode.name}" if m.game_mode), ("tf2_class-#{m.tf2_class.name}" if m.tf2_class), ("region-#{m.region.name}" if m.region)].compact.join(' ')) data-views=("%09d" % m.views) data-loves=("%09d" % m.users.size) data-date=m.created_at data-title=m.title
         a.pull-left href=url_for(m)
           = image_tag(m.thumbnail(:small), :size => '240x180', :alt => "#{m.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
         .media-body
