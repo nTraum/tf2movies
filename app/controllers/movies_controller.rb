@@ -18,6 +18,8 @@ class MoviesController < ApplicationController
 
   def manage
     @pending_movies = Movie.where(:status_cd => Movie.pending)
+    @published_movies = Movie.where(:status_cd => Movie.published)
+    @rejected_movies = Movie.where(:status_cd => Movie.rejected)
     authorize @pending_movies
   end
 

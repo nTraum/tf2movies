@@ -1,5 +1,16 @@
-h1 Pending movies
+h1 Manage movies
 
+h2 Pending
 ul
   - @pending_movies.each do |movie|
+    li = link_to(movie.title, edit_movie_path(movie))
+
+h2 Published
+ul
+  - @published_movies.each do |movie|
+    li = link_to(movie.title, edit_movie_path(movie))
+
+h2 Rejected
+ul
+  - @rejected_movies.each do |movie|
     li = link_to(movie.title, edit_movie_path(movie))
