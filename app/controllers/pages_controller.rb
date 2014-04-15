@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   private
 
   def featured
-    @featured_movies = Movie.where(:status_cd => Movie.published).featured.limit(5)
+    @featured_movies = Movie.where(:status_cd => Movie.published).featured.order(:featured_at => :desc).limit(5)
   end
 
   def recent
