@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def recent
-    @most_recent_movies = Movie.where(:status_cd => Movie.published).order(:created_at => :desc).limit(5)
+    @most_recent_movies = Movie.where(:status_cd => Movie.published).order(:status_changed_at => :desc).limit(5)
   end
 
   def popular
