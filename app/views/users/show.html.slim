@@ -1,17 +1,44 @@
 - cache(@user) do
   - content_for :title, @user.nickname
-  .well
-    h1 = @user.nickname
-    p.lead = @user.role.capitalize
+  - breadcrumb :user, @user
+  h1
+    => @user.nickname
+    small = @user.role.capitalize
 
-  .well
-    ul.list-inline
-      li
-        - if @user.online?
-          span.label.label-success online
-        - else
-          span.label.label-danger offline
-      li
-        = fa_icon 'calendar', :text => "Joined #{distance_of_time_in_words_to_now @user.created_at} ago"
-      li
-        = link_to(fa_icon('external-link', :text => 'Steam Profile'), @user.steam_profile_url, :target => '_blank')
+  ul.list-inline
+    li
+      - if @user.online?
+        span.label.label-success online
+      - else
+        span.label.label-danger offline
+    li
+      = fa_icon 'calendar', :text => "Joined #{distance_of_time_in_words_to_now @user.created_at} ago"
+    li
+      = link_to(fa_icon('external-link', :text => 'Steam Profile'), @user.steam_profile_url, :target => '_blank')
+
+  hr
+
+h2 = fa_icon('heart', :text =>'Loves')
+- @movies.each do |movie|
+  .media
+    a.pull-left href=url_for(movie)
+      = image_tag(movie.thumbnail(:small), :size => '240x180', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
+    .media-body
+      h4.media-heading.text-ellipsis = link_to(movie.title, movie)
+      p.text-muted
+        = fa_icon('youtube-play fw')
+        =< "#{number_with_delimiter(movie.views)} views"
+        br
+        = fa_icon('calendar fw')
+        ==< "Added #{timeago_tag(movie.created_at)}"
+        br
+        = fa_icon('heart fw')
+        ==< pluralize(movie.users.size, 'love')
+      ul.list-inline
+        li = fa_icon('tags')
+        - if movie.region
+          li = link_to(movie.region.name, movie.region, :class => 'text-muted')
+        - if movie.game_mode
+          li = li = link_to(movie.game_mode.name, movie.game_mode, :class => 'text-muted')
+        - if movie.tf2_class
+          li = li = link_to(movie.tf2_class.name, movie.tf2_class, :class => 'text-muted')
