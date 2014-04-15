@@ -1,20 +1,45 @@
-- content_for :title, @author.nickname
-.well
-  .media
-    = image_tag @author.avatar_url, :class => 'img-thumbnail img-responsive media-object pull-left'
-    .media-body
-      h1.media-heading = @author.nickname
-      p.lead Author
+- cache(@author) do
+  - content_for :title, @author.nickname
+  - breadcrumb :author, @author
+.row
+  .col-md-12
+      h1
+        => @author.nickname
+        small Author
+      ul.list-inline
+        li
+          = fa_icon 'film fw', :text => pluralize(@author.movies.size, 'movie')
+        li
+          = fa_icon 'clock-o fw', :text => "#{distance_of_time_in_words @author.movies.sum(:duration)} of movie footage"
+        li
+          = fa_icon 'youtube-play fw', :text => "#{number_with_delimiter(@author.movies.sum(:views))} views in total"
+        li
+          = link_to(fa_icon('external-link fw', :text => 'YouTube Profile'), @author.profile_url, :target => '_blank')
 
-.well
-  ul.list-inline
-    li
-      = fa_icon 'film', :text => pluralize(@author.movies.size, 'movie')
-    li
-      = fa_icon 'clock-o', :text => "#{distance_of_time_in_words @author.movies.sum(:duration)} of movie footage"
-    li
-      = fa_icon 'youtube-play', :text => "#{number_with_delimiter(@author.movies.sum(:views))} views in total"
-    li
-      = link_to(fa_icon('external-link', :text => 'YouTube Profile'), @author.profile_url, :target => '_blank')
-
-h2 Movies
+      hr
+.row
+  .col-md-12
+    h2 Movies
+    - @movies.each do |movie|
+      .media
+        a.pull-left href=url_for(movie)
+          = image_tag(movie.thumbnail(:small), :size => '240x180', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
+        .media-body
+          h4.media-heading.text-ellipsis = link_to(movie.title, movie)
+          p.text-muted
+            = fa_icon('youtube-play fw')
+            =< "#{number_with_delimiter(movie.views)} views"
+            br
+            = fa_icon('calendar fw')
+            ==< "Added #{timeago_tag(movie.created_at)}"
+            br
+            = fa_icon('heart fw')
+            ==< pluralize(movie.users.size, 'love')
+          ul.list-inline
+            li = fa_icon('tags')
+            - if movie.region
+              li = link_to(movie.region.name, movie.region, :class => 'text-muted')
+            - if movie.game_mode
+              li = li = link_to(movie.game_mode.name, movie.game_mode, :class => 'text-muted')
+            - if movie.tf2_class
+              li = li = link_to(movie.tf2_class.name, movie.tf2_class, :class => 'text-muted')
