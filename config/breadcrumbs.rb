@@ -1,3 +1,4 @@
+# Root
 crumb :root do
   link fa_icon('home'), root_path
 end
@@ -21,6 +22,7 @@ crumb :region do |region|
   link region.name, region
   parent :regions
 end
+
 # TF2 classes
 crumb :tf2_classes do
   link 'Classes', tf2_classes_path
@@ -31,7 +33,15 @@ crumb :tf2_class do |tf2_class|
   parent :tf2_classes
 end
 
+# Authors
+crumb :authors do
+  link 'Authors', authors_path
+end
 
+crumb :author do |author|
+  link author.nickname, author
+  parent :authors
+end
 
 # Movies
 crumb :movies do
@@ -58,6 +68,7 @@ crumb :edit_movie do |movie|
   parent :manage_movies
 end
 
+# Users
 crumb :users do
   link 'Users', users_path
 end
@@ -67,6 +78,7 @@ crumb :user do |user|
   parent :users
 end
 
+# Pages
 crumb :about do
   link 'About'
 end
