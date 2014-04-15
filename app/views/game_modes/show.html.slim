@@ -4,28 +4,51 @@
 h1 = @game_mode.name
 
 .row
-  .col-md-12
-    h4 Filter Regions
-    .btn-group.btn-group-sm
-      - Region.all.each do |region|
-        button.btn.btn-default.filter type='button' data-filter=".region-#{region.name}" = region.name
-      button.btn.btn-default.filter type='button' data-filter='all' All
-    h4 Filter TF2 classes
-    .btn-group.btn-group-sm
-      - Tf2Class.all.each do |tf2_class|
-        button.btn.btn-default.filter type='button' data-filter=".tf2_class-#{tf2_class.name}" = tf2_class.name
-      button.btn.btn-default.filter type='button' data-filter='all' All
+  .col-md-6
+    h3 = fa_icon('filter', :text => 'Filter')
+    .btn-group
+      button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
+        = fa_icon('globe', :text => 'Region')
+        =< fa_icon('caret-down')
+      ul.dropdown-menu role='menu'
+        - Region.all.each do |region|
+          li
+            a.filter data-filter=".region-#{region.name}" = region.name
+        li
+          a.filter data-filter='all' All
+    .btn-group
+      button.btn.btn-default.dropdown-toggle data-toggle='dropdown' type='button'
+        = fa_icon('crosshairs', :text => 'Class')
+        =< fa_icon('caret-down')
+      ul.dropdown-menu role='menu'
+        - Tf2Class.all.each do |tf2_class|
+          li
+            a.filter data-filter=".tf2_class-#{tf2_class.name}" = tf2_class.name
+        li
+          a.filter data-filter='all' All
 
-    h4 Sort
-    .btn-group.btn-group-sm
-      button.btn.btn-default.sort type='button' data-sort='views:desc' Views
-      button.btn.btn-default.sort type='button' data-sort='date:desc' Date
-      button.btn.btn-default.sort type='button' data-sort='title' Title
+  .col-md-6
+    h3 = fa_icon('sort', :text => 'Sort')
+    .btn-group
+      button.btn.btn-default.sort type='button' data-sort='views:desc' = fa_icon('youtube-play', :text => 'Views')
+      button.btn.btn-default.sort type='button' data-sort='date:desc' = fa_icon('calendar', :text => 'Date')
+      button.btn.btn-default.sort type='button' data-sort='title' = fa_icon('sort-alpha-asc', :text => 'Title')
+      button.btn.btn-default.sort type='button' data-sort='loves:desc' = fa_icon('heart', :text => 'Loves')
 
 .row#movie-grid
-  - @game_mode.movies.each_slice(3) do |movies|
-    - movies.each do |m|
-      div class=(['col-md-4', 'mix', ("tf2_class-#{m.tf2_class.name}" if m.tf2_class), ("region-#{m.region.name}" if m.region)].compact.join(' ')) data-views=("%09d" % m.views) data-date=m.created_at data-title=m.title
-        img.img-responsive alt="#{m.title} thumbnail" src=m.thumbnail(:tiny)
-        p = m.title
-    .row
+  - @game_mode.movies.each do |m|
+      div class=(['mix media col-md-6', ("tf2_class-#{m.tf2_class.name}" if m.tf2_class), ("region-#{m.region.name}" if m.region)].compact.join(' ')) data-views=("%09d" % m.views) data-loves=("%09d" % m.users.size) data-date=m.created_at data-title=m.title
+        a.pull-left href=url_for(m)
+          = image_tag(m.thumbnail(:small), :size => '240x180', :alt => "#{m.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
+        .media-body
+          h4.media-heading.text-ellipsis = link_to(m.title, m)
+          p by #{link_to(m.author.nickname, m.author)}
+          p.text-muted
+            = fa_icon('youtube-play fw')
+            =< "#{number_with_delimiter(m.views)} views"
+            br
+            = fa_icon('calendar fw')
+            ==< "Added #{timeago_tag(m.created_at)}"
+            br
+            = fa_icon('heart fw')
+            ==< pluralize(m.users.size, 'love')
