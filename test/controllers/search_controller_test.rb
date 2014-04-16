@@ -4,7 +4,7 @@ describe SearchController do
 
   describe 'search' do
     it 'must find movies by their title' do
-      movie = FactoryGirl.create :movie
+      movie = FactoryGirl.create(:movie, :status_cd => Movie.published)
       get :search, :q => movie.title
       response.status.must_equal 200
       assigns(:movies).size.wont_equal 0
