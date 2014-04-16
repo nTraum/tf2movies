@@ -36,6 +36,7 @@ gem 'sanitize'
 gem 'rails-timeago'
 gem 'rack-google-analytics'
 gem 'pg_search'
+gem 'pry-rails'
 
 group :production do
   gem 'dalli'
@@ -49,7 +50,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
-  gem 'pry-rails'
   gem 'pry-nav'
   gem 'quiet_assets'
   gem 'rails-footnotes'
