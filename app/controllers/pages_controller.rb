@@ -26,10 +26,8 @@ class PagesController < ApplicationController
   end
 
   def stats
-    @movies_count     = Movie.where(:status_cd => Movie.published).size
-    @downloads_count  = Download.joins(:movie).where(:movies => { :status_cd => Movie.published }).size
-    @authors_count    = Author.joins(:movies).where(:movies => {:status_cd => Movie.published}).uniq.size
-    @total_duration   = Movie.where(:status_cd => Movie.published).sum(:duration)
+    @movies_count           = Movie.where(:status_cd => Movie.published).size
+    @total_duration_in_hrs  = Movie.where(:status_cd => Movie.published).sum(:duration) / 60 / 60
   end
 
   def staff_members

@@ -7,7 +7,7 @@
       => @movies_count
       small Movies
     h2
-      => distance_of_time_in_words(@total_duration)
+      => pluralize(@total_duration_in_hrs, 'hour')
       small of video footage
     hr
     p TF2Movies is a collaborative online catalogue for competitive Team Fortress 2 movies, thoroughly categorized and researched. Wether you're looking for downloads or a specific song from a frag movie, we've got you covered.
