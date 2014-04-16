@@ -4,9 +4,9 @@ ul.nav.nav-tabs
   li.active
     a href='#pending' data-toggle='tab' = fa_icon('square-o', :text => "Pending (#{@pending_movies.size})")
   li
-    a href= '#published' data-toggle='tab' = fa_icon('check-square', :text => "Published (#{@published_movies.size})")
+    a href='#published' data-toggle='tab' = fa_icon('check-square', :text => "Published (#{@published_movies.size})")
   li
-    a href= '#rejected' data-toggle='tab' = fa_icon('minus-square', :text => "Rejected (#{@rejected_movies.size})")
+    a href='#rejected' data-toggle='tab' = fa_icon('minus-square', :text => "Rejected (#{@rejected_movies.size})")
 
 .tab-content
   .tab-pane.fade.in.active id='pending'
