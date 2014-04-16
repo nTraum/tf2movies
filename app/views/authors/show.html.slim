@@ -6,11 +6,11 @@
     small Author
   ul.list-inline
     li
-      = fa_icon 'film fw', :text => pluralize(@author.movies.size, 'movie')
+      = fa_icon 'film fw', :text => pluralize(@movies.size, 'movie')
     li
-      = fa_icon 'clock-o fw', :text => "#{distance_of_time_in_words @author.movies.sum(:duration)} of movie footage"
+      = fa_icon 'clock-o fw', :text => "#{distance_of_time_in_words(@movies.sum(:duration))} of movie footage"
     li
-      = fa_icon 'youtube-play fw', :text => "#{number_with_delimiter(@author.movies.sum(:views))} views in total"
+      = fa_icon 'youtube-play fw', :text => "#{number_with_delimiter(@movies.sum(:views))} views in total"
     li
       = link_to(fa_icon('external-link fw', :text => 'YouTube Profile'), @author.profile_url, :target => '_blank')
 
