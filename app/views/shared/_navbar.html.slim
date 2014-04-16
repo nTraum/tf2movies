@@ -54,7 +54,7 @@ nav.navbar.navbar-default role='navigation'
         - if current_user
           li.dropdown#user
             a.dropdown-toggle href='#' data-toggle='dropdown'
-              = fa_icon('male fw', :text => current_user.nickname)
+              = fa_icon('male fw')
               = fa_icon('caret-down fw')
             ul.dropdown-menu
               li = link_to(fa_icon('picture-o fw', :text => 'Your profile'), current_user)
