@@ -23,6 +23,7 @@ class MoviesController < ApplicationController
     @pending_movies = Movie.where(:status_cd => Movie.pending)
     @published_movies = Movie.where(:status_cd => Movie.published)
     @rejected_movies = Movie.where(:status_cd => Movie.rejected)
+    @incompletely_tagged_movies = @published_movies.where(["region_id IS ? OR game_mode_id IS ? OR tf2_class_id IS ?", nil, nil, nil])
     authorize @pending_movies
   end
 
