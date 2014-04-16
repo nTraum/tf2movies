@@ -13,12 +13,14 @@ Tf2movies::Application.routes.draw do
   match 'auth/steam/callback' => 'sessions#create',       :via => [:get, :post]
   post  '/logout',  :to       => 'sessions#destroy',      :as => :logout
 
-  resources :regions, :game_modes, :tf2_classes do
-    get 'manage', :on => :collection
-  end
+  get '/search',    :to       => 'search#search',         :as => :search
 
   resources :authors, :only => [:show, :index]
   resources :users,   :only => [:show, :index]
+
+  resources :regions, :game_modes, :tf2_classes do
+    get 'manage', :on => :collection
+  end
 
   resources :movies,  :only => [:show, :create, :index, :edit, :update] do
     member do

@@ -1,0 +1,40 @@
+h1 = fa_icon('search', :text => 'Search')
+
+ul.nav.nav-tabs
+  li.active
+    a href='#movies' data-toggle='tab' = fa_icon('film', :text => "Movies (#{@movies.size})")
+  li
+    a href='#authors' data-toggle='tab' = fa_icon('video-camera', :text => "Authors (#{@authors.size})")
+  li
+    a href='#users' data-toggle='tab' = fa_icon('user', :text => "Users (#{@users.size})")
+
+.tab-content
+  .tab-pane.fade.in.active id='movies'
+    - @movies.each do |movie|
+      .media
+        a.pull-left href=url_for(movie)
+          = image_tag(movie.thumbnail(:small), :size => '240x180', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')
+        .media-body
+          h4.media-heading.text-ellipsis = link_to(movie.title, movie)
+          p.text-muted
+            = fa_icon('youtube-play fw')
+            =< "#{number_with_delimiter(movie.views)} views"
+            br
+            = fa_icon('calendar fw')
+            ==< "Added #{timeago_tag(movie.created_at)}"
+            br
+            = fa_icon('heart fw')
+            ==< pluralize(movie.users.size, 'love')
+  .tab-pane.fade id='authors'
+    - @authors.each do |author|
+      .media
+        a.pull-left href=url_for(author)
+          = image_tag(author.avatar_url, :size => '50', :alt => "#{author.nickname} avatar", :class => 'img-responsive img-thumbnail media-object')
+        .media-body
+        h4.media-heading = link_to(author.nickname, author)
+        p.text-muted = pluralize(author.movies.size, 'movie')
+
+  .tab-pane.fade id='users'
+    ul
+      - @users.each do |user|
+        li = link_to(user.nickname, user)

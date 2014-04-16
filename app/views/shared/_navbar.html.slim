@@ -38,10 +38,10 @@ nav.navbar.navbar-default role='navigation'
             - if policy(regions).manage?
               li.divider
               li = link_to(fa_icon('wrench fw', :text => 'Manage'), manage_regions_path)
-      /= form_tag('/search', :class => 'navbar-form navbar-left') do
-      /  .form-group
-      /    = label_tag('search', nil, :class => 'sr-only')
-      /    = text_field_tag(:query, nil, :size => 9, :placeholder => 'Search', :class => 'form-control typeahead', :id => 'search')
+      = form_tag('/search', :class => 'navbar-form navbar-left', :method => :get) do
+        .form-group
+          = label_tag('search', nil, :class => 'sr-only')
+          = search_field_tag(:q, nil, :size => 15, :placeholder => 'Search', :class => 'form-control', :id => 'search')
 
       ul.nav.navbar-nav.navbar-right
         - if policy(Movie).manage?
