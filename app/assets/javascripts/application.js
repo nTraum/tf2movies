@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require typeahead_lib
-//= require typeahead
 //= require rails-timeago
 //= require fitvid_lib
 //= require fitvid
