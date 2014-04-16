@@ -1,16 +1,24 @@
 h1 Manage movies
 
-h2 Pending
-ul
-  - @pending_movies.each do |movie|
-    li = link_to(movie.title, edit_movie_path(movie))
+ul.nav.nav-tabs
+  li.active
+    a href='#pending' data-toggle='tab' = fa_icon('square-o', :text => "Pending (#{@pending_movies.size})")
+  li
+    a href= '#published' data-toggle='tab' = fa_icon('check-square', :text => "Published (#{@published_movies.size})")
+  li
+    a href= '#rejected' data-toggle='tab' = fa_icon('minus-square', :text => "Rejected (#{@rejected_movies.size})")
 
-h2 Published
-ul
-  - @published_movies.each do |movie|
-    li = link_to(movie.title, edit_movie_path(movie))
+.tab-content
+  .tab-pane.fade.in.active id='pending'
+    ul
+      - @pending_movies.each do |movie|
+        li = link_to(movie.title, edit_movie_path(movie))
+  .tab-pane.fade id='published'
+    ul
+      - @published_movies.each do |movie|
+        li = link_to(movie.title, edit_movie_path(movie))
 
-h2 Rejected
-ul
-  - @rejected_movies.each do |movie|
-    li = link_to(movie.title, edit_movie_path(movie))
+  .tab-pane.fade id='rejected'
+    ul
+    - @rejected_movies.each do |movie|
+        li = link_to(movie.title, edit_movie_path(movie))
