@@ -43,6 +43,11 @@ crumb :author do |author|
   parent :authors
 end
 
+# Search
+crumb :search do
+  link 'Search', search_path
+end
+
 # Movies
 crumb :movies do
   link 'Movies', movies_path
