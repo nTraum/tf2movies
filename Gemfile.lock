@@ -142,7 +142,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_request (0.2.9)
+    meta_request (0.3.0)
       callsite
       rack-contrib
       railties
@@ -233,7 +233,7 @@ GEM
       activesupport (= 4.0.4)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.2.2)
+    rake (10.3.0)
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
