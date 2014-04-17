@@ -31,9 +31,6 @@ module Tf2movies
 
     # Catching exceptions on our own
     config.exceptions_app = self.routes
-
-    # Slicks' fonts
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     end
   end
 end
