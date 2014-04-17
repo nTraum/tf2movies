@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user.refresh_last_login
     user.refresh_user_info(auth)
     session[:user_id] = user.id
-    redirect_to request.env['omniauth.origin'], :notice => signin_message(user.nickname)
+    redirect_to((request.env['omniauth.origin'] || root_path), :notice => signin_message(user.nickname))
   end
 
   def destroy
