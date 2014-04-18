@@ -7,7 +7,7 @@
   meta name='twitter:card' content=content_for(:tw_card)
 
 - if content_for(:tw_title)
-  meta name='twitter:title' content=truncate(h(content_for(:tw_title)), :length => 80)
+  meta name='twitter:title' content=truncate(h(content_for(:tw_title)), :length => 70)
 
 - if content_for(:tw_description)
   meta name='twitter:description' content=truncate(h(content_for(:tw_description).squish), :length => 200)
