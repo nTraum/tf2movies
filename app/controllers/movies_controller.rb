@@ -20,10 +20,10 @@ class MoviesController < ApplicationController
   end
 
   def manage
-    @pending_movies = Movie.where(:status_cd => Movie.pending)
-    @published_movies = Movie.where(:status_cd => Movie.published)
-    @rejected_movies = Movie.where(:status_cd => Movie.rejected)
-    @incompletely_tagged_movies = @published_movies.where(["region_id IS ? OR game_mode_id IS ? OR tf2_class_id IS ?", nil, nil, nil])
+    @pending_movies = Movie.where(:status_cd => Movie.pending).order(:created_at)
+    @published_movies = Movie.where(:status_cd => Movie.published).order(:created_at)
+    @rejected_movies = Movie.where(:status_cd => Movie.rejected).order(:created_at)
+    @incompletely_tagged_movies = @published_movies.where(["region_id IS ? OR game_mode_id IS ? OR tf2_class_id IS ?", nil, nil, nil]).order(:created_at)
     authorize @pending_movies
   end
 

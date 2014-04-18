@@ -12,18 +12,14 @@ ul.nav.nav-tabs
 
 .tab-content
   .tab-pane.fade.in.active id='pending'
-    ul
-      - @pending_movies.each do |movie|
-        li = link_to(movie.title, edit_movie_path(movie))
+    - @pending_movies.each do |movie|
+      == render :partial => 'movie_preview', :locals => { :movie => movie }
   .tab-pane.fade id='published'
-    ul
-      - @published_movies.each do |movie|
-        li = link_to(movie.title, edit_movie_path(movie))
+    - @published_movies.each do |movie|
+      == render :partial => 'movie_preview', :locals => { :movie => movie }
   .tab-pane.fade id='incomplete'
-    ul
-      - @incompletely_tagged_movies.each do |movie|
-        li = link_to(movie.title, edit_movie_path(movie))
+    - @incompletely_tagged_movies.each do |movie|
+      == render :partial => 'movie_preview', :locals => { :movie => movie }
   .tab-pane.fade id='rejected'
-    ul
     - @rejected_movies.each do |movie|
-        li = link_to(movie.title, edit_movie_path(movie))
+      == render :partial => 'movie_preview', :locals => { :movie => movie }
