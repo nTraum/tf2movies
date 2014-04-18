@@ -4,6 +4,6 @@
       .slide
         = link_to(movie) do
           = image_tag(movie.thumbnail(:max), :class => 'img-responsive img-thumbnail', :alt => "Thumbnail #{movie.title}")
-          .carousel-caption
+          .carousel-caption-shadowed
             h4 = movie.title.upcase
             span.label.label-info Featured
