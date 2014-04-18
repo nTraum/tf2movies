@@ -1,4 +1,4 @@
-- content_for :og_image, @movie.thumbnail(:max)
+= render :partial => 'social_meta_tags', :locals => { :movie => @movie }
 - content_for :title, @movie.title
 - breadcrumb :movie, @movie
 h1

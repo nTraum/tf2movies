@@ -1,0 +1,16 @@
+/ Facebook
+- if content_for?(:og_image)
+  meta property='og:image' content=content_for(:og_image)
+
+/ Twitter
+- if content_for(:tw_card)
+  meta name='twitter:card' content=content_for(:tw_card)
+
+- if content_for(:tw_title)
+  meta name='twitter:title' content=truncate(h(content_for(:tw_title)), :length => 80)
+
+- if content_for(:tw_description)
+  meta name='twitter:description' content=truncate(h(content_for(:tw_description).squish), :length => 200)
+
+- if content_for(:tw_image)
+  meta name='twitter:image:src' content=content_for(:tw_image)

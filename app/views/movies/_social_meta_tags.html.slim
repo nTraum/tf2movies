@@ -1,0 +1,9 @@
+- cache(movie) do
+  / Facebook
+  - content_for :og_image, movie.thumbnail(:max)
+
+  / Twitter
+  - content_for :tw_card,         'summary_large_image'
+  - content_for :tw_title,        movie.title
+  - content_for :tw_description,  movie.description
+  - content_for :tw_image,        movie.thumbnail(:max)
