@@ -70,5 +70,4 @@ group :test do
   gem 'capybara_minitest_spec',     require: false
   gem 'capybara-webkit',            require: false
   gem 'headless',                   require: false
-  gem 'minitest-metadata',          require: false
 end

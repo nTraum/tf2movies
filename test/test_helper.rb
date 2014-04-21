@@ -20,7 +20,6 @@ require 'support/shared_integration_steps'
 require 'rails/test_help'
 require 'minitest/rails'
 require 'minitest/pride'
-require 'minitest/metadata'
 require 'capybara/rails'
 require 'capybara_minitest_spec'
 require 'capybara-webkit'
@@ -54,21 +53,17 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL # Capybara DSL in integration Tests
-  include MiniTest::Metadata
 
   setup do
-    if metadata[:js] == true
-      require 'headless'
-      headless = Headless.new
-      headless.start
-      Capybara.current_driver = Capybara.javascript_driver
-    end
+    require 'headless'
+    headless = Headless.new
+    headless.start
+    Capybara.current_driver = Capybara.javascript_driver
   end
 
   teardown do
     DatabaseCleaner.clean # Clean database
     Capybara.reset_sessions! # Reset sessions
-    Capybara.current_driver = Capybara.default_driver
   end
 end
 
