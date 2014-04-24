@@ -14,12 +14,12 @@ group :doc do
 end
 
 gem 'dotenv-rails'
-gem 'minitest-rails'
+gem 'minitest-rails',         '~> 1.0'
 gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'omniauth-steam'
 gem 'font-awesome-rails'
-gem 'youtube_it', :github => 'kylejginavan/youtube_it'
+gem 'youtube_it', :github =>  'kylejginavan/youtube_it'
 gem 'factory_girl_rails'
 gem 'gretel'
 gem 'rails_autolink'
@@ -31,7 +31,7 @@ gem 'puma'
 gem 'colored'
 gem 'friendly_id'
 gem 'simple_enum'
-gem 'whenever',                     require: false
+gem 'whenever',               require: false
 gem 'sanitize'
 gem 'rails-timeago'
 gem 'rack-google-analytics'
