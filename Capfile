@@ -10,7 +10,7 @@ require 'capistrano/puma'
 require 'whenever/capistrano'
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.1.1'
+set :rbenv_ruby, '2.1.2'
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 # set :puma_threads, [0, 8]
