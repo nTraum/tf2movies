@@ -44,7 +44,8 @@ test:
   encoding: unicode
   database: tf2movies_test
   pool: 5
-  username: postgres
+  username: tf2movies
+  password: tf2movies
   host: localhost
 
 production:
