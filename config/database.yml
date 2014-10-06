@@ -19,9 +19,7 @@ development:
   encoding: unicode
   database: tf2movies_development
   pool: 5
-  username: tf2movies
-  password: tf2movies
-  host: localhost
+  username: postgres
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
@@ -44,9 +42,7 @@ test:
   encoding: unicode
   database: tf2movies_test
   pool: 5
-  username: tf2movies
-  password: tf2movies
-  host: localhost
+  username: postgres
 
 production:
   adapter: postgresql

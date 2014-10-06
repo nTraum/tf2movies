@@ -1,16 +1,12 @@
 language: ruby
 rvm:
-- 2.2.1
-- ruby-head
+  - 2.0
+  - 2.1
+  - 2.2
+  - ruby-head
 matrix:
   allow_failures:
   - rvm: ruby-head
-bundler_args: "--deployment --without production development"
-before_script:
-- psql -c 'create database tf2movies_test;' -U postgres
-- export RAILS_ENV=test
-- bundle exec rake db:test:prepare
-script: time bundle exec rake minitest:all:quick
 env:
   global:
     secure: e2uoS842V/Uaaq311L3TxyPaJodmiDB6NsueZ2v9CSBhCavB1NCyDbJ3TLhSXrn0zlv4QQMLRM7hQAKzWnfIQzQrzUK1qCMOscJPbGvKr/RZRMxsIsAqJ+pDBqEkJOasfih4iaC6hkt0AvrLYn+WL4V7gyw0r0JJ77Okl/Jg5QU=

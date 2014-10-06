@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0'
+gem 'rails', '~> 4.0.0'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.0', '>= 4.0.2'
 gem 'uglifier'
@@ -14,13 +14,11 @@ group :doc do
 end
 
 gem 'dotenv-rails'
-gem 'minitest-rails',         '~> 1.0'
 gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'omniauth-steam'
 gem 'font-awesome-rails'
 gem 'youtube_it', :github =>  'kylejginavan/youtube_it'
-gem 'factory_girl_rails'
 gem 'gretel'
 gem 'rails_autolink'
 gem 'cocoon'
@@ -44,6 +42,12 @@ group :production do
   gem 'sentry-raven'
 end
 
+group :development, :test do
+  gem 'coveralls', require: false
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.0.0'
+end
+
 group :development do
   gem 'lol_dba'
   gem 'annotate'
@@ -61,13 +65,4 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov',                  require: false
-  gem 'codeclimate-test-reporter',  require: false
-  gem 'database_cleaner',           require: false
-  gem 'vcr',                        require: false
-  gem 'webmock',                    require: false
-  gem 'capybara',                   require: false
-  gem 'capybara_minitest_spec',     require: false
-  gem 'capybara-webkit',            require: false
-  gem 'headless',                   require: false
 end

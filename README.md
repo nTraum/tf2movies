@@ -1,7 +1,7 @@
 # tf2movies
 
 [![Build Status](https://travis-ci.org/nTraum/tf2movies.svg?branch=master)](https://travis-ci.org/nTraum/tf2movies)
-[![Coverage Status](https://codeclimate.com/github/nTraum/tf2movies/coverage.png)](https://codeclimate.com/github/nTraum/tf2movies)
+[![Coverage Status](https://img.shields.io/coveralls/nTraum/tf2movies.svg)](https://coveralls.io/r/nTraum/tf2movies)
 [![Code Climate](https://codeclimate.com/github/nTraum/tf2movies.png)](https://codeclimate.com/github/nTraum/tf2movies)
 [![Dependency Status](https://gemnasium.com/nTraum/tf2movies.svg)](https://gemnasium.com/nTraum/tf2movies)
 
@@ -9,7 +9,7 @@
 
 * PostgreSQL
 * Memcached
-* Ruby (>= 1.9.3)
+* Ruby 2 or later
 * curl / curl dev libs
 
 ## Installation
