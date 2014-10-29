@@ -1,2 +1,1 @@
-class GameModePolicy < CategoryPolicy
-end
+GameModePolicy = Class.new(CategoryPolicy)

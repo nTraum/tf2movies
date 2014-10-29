@@ -1,2 +1,1 @@
-class RegionPolicy < CategoryPolicy
-end
+RegionPolicy = Class.new(CategoryPolicy)
