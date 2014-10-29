@@ -14,27 +14,27 @@ RSpec.describe Download, type: :model do
       specify { expect(subject.host).to eq "example.com" }
     end
 
-    context "with a 'HTTP://'' prefix in the URL" do
+    context "when the URL has a 'HTTP://'' prefix" do
       before { subject.url = "http://example.com/movie.mp4" }
       it_behaves_like "a download whose host is example.com"
     end
 
-    context "with a 'HTTPS://'' prefix in the URL" do
+    context "when the URL has a 'HTTPS://'' prefix" do
       before { subject.url = "https://example.com/movie.mp4" }
       it_behaves_like "a download whose host is example.com"
     end
 
-    context "without a protocol in the URL" do
+    context "when there is no protocol in the URL" do
       before { subject.url = "example.com/movie.mp4" }
       it_behaves_like "a download whose host is example.com"
     end
 
-    context "with a subdomain in the URL" do
+    context "when the URL has a subdomain" do
       before { subject.url = "http://subdomain.example.com/movie.mp4" }
       it_behaves_like "a download whose host is example.com"
     end
 
-    context "with an 'HTTP://www' prefix URL" do
+    context "when the URL has a 'HTTP://www' prefix" do
       before { subject.url = "http://www.example.com/movie.mp4" }
       it_behaves_like "a download whose host is example.com"
     end
