@@ -1,5 +1,5 @@
-# config valid only for Capistrano 3.2.1
-lock '3.2.1'
+# config valid only for Capistrano 3.4.0
+lock '3.4.0'
 
 set :application, 'tf2movies'
 set :repo_url, 'https://github.com/nTraum/tf2movies.git'
@@ -34,6 +34,8 @@ set :linked_dirs, %w{tmp/pids tmp/sockets log}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+
+set :puma_init_active_record, true
 
 namespace :deploy do
   desc 'Restart application'
