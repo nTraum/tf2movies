@@ -48,6 +48,7 @@ group :development, :test do
   gem "did_you_mean"
   gem "factory_girl_rails"
   gem "rspec-rails", "~> 3.0"
+  gem "webmock"
 end
 
 group :development do
