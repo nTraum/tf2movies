@@ -10,6 +10,6 @@ FactoryGirl.define do
     uploaded_on_youtube { 1.day.ago }
     info_refreshed_at { 1.day.ago }
     featured false
-    status_cd Movie.statuses.pending
+    status :pending
   end
 end

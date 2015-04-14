@@ -113,19 +113,19 @@ RSpec.describe User, type: :model do
 
   describe "#staff?" do
     context "when the user is an admin" do
-      specify { expect(build(:user, role: User.roles.admin)).to be_staff }
+      specify { expect(build(:user, role: :admin)).to be_staff }
     end
 
     context "when the user is a mderator" do
-      specify { expect(build(:user, role: User.roles.moderator)).to be_staff }
+      specify { expect(build(:user, role: :moderator)).to be_staff }
     end
 
     context "when the user is a normal user" do
-      specify { expect(build(:user, role: User.roles.user)).to_not be_staff }
+      specify { expect(build(:user, role: :user)).to_not be_staff }
     end
 
     context "when the user is banned" do
-      specify { expect(build(:user, role: User.roles.banned)).to_not be_staff }
+      specify { expect(build(:user, role: :banned)).to_not be_staff }
     end
   end
 end

@@ -40,7 +40,7 @@ class Movie < ActiveRecord::Base
                                                       :using => { :tsearch => {:prefix => true} }
 
   friendly_id             :slug_canditates,           :use => [:slugged, :history]
-  as_enum                 :status,                    { :pending => 0, :rejected => 1, :published => 2 }, :dirty => true
+  as_enum                 :status,                    { :pending => 0, :rejected => 1, :published => 2 }
   belongs_to              :proposer,                  :class_name => 'User', :foreign_key => 'user_id',
                                                       :touch      => true
   belongs_to              :author,                    :touch      => true
@@ -54,7 +54,7 @@ class Movie < ActiveRecord::Base
 
   accepts_nested_attributes_for                 :songs, :downloads, :reject_if => :all_blank, :allow_destroy => true
 
-  validates         :status,                    :as_enum      => true
+  validates         :status,                    :presence     => true
   validates         :youtube_id,                :presence     => { :message => 'No movie found.' },
                                                 :uniqueness   => { :message => 'Movie has already been submitted.' }
   validates         :title,                     :presence     => true

@@ -17,17 +17,17 @@ describe CommentPolicy do
     end
 
     context "when the current user is banned" do
-      let(:user) { build(:user, role_cd: User.roles.banned) }
+      let(:user) { build(:user, role: :banned) }
       specify { expect(subject.public_send(action)).to be(false) }
     end
 
     context "when the current user is a moderator" do
-      let(:user) { build(:user, role_cd: User.roles.moderator) }
+      let(:user) { build(:user, role: :moderator) }
       specify { expect(subject.public_send(action)).to be(true) }
     end
 
     context "when the current user is an admin" do
-      let(:user) { build(:user, role_cd: User.roles.admin) }
+      let(:user) { build(:user, role: :admin) }
       specify { expect(subject.public_send(action)).to be(true) }
     end
   end

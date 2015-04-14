@@ -90,17 +90,17 @@ describe MoviePolicy do
   end
 
   context "when the current user is a banned" do
-    let(:user) { build(:user, role_cd: User.roles.banned) }
+    let(:user) { build(:user, role: :banned) }
     it_behaves_like "every action is disallowed"
   end
 
   context "when the current user is a moderator" do
-    let(:user) { build(:user, role_cd: User.roles.moderator) }
+    let(:user) { build(:user, role: :moderator) }
     it_behaves_like "every action is allowed"
   end
 
   context "when the current user is a an admin" do
-    let(:user) { build(:user, role_cd: User.roles.admin) }
+    let(:user) { build(:user, role: :admin) }
     it_behaves_like "every action is allowed"
   end
 end

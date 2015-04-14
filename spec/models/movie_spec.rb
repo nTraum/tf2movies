@@ -64,7 +64,7 @@ RSpec.describe Movie, type: :model do
 
       movie.update(featured: true)
 
-      expect(movie.featured_at).to be_within(2).of(Time.now)
+      expect(movie.featured_at).to be_within(2).of(Time.zone.now)
     end
   end
 end

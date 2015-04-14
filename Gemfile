@@ -46,7 +46,7 @@ group :development, :test do
   gem "coveralls", require: false
   gem "did_you_mean"
   gem "factory_girl_rails"
-  gem "rspec-rails", "~> 3.0.0"
+  gem "rspec-rails", "~> 3.0"
 end
 
 group :development do

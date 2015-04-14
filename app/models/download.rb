@@ -21,7 +21,7 @@ class Download < ActiveRecord::Base
   belongs_to  :movie,     :touch => true
   validates   :url,       :presence => true
   validates   :movie,     :presence => true
-  validates   :status,    :as_enum => true
+  validates   :status,    :presence => true
 
   before_validation :default_attributes
 
