@@ -33,7 +33,7 @@ RSpec.describe Movie, type: :model do
 
   describe ".search" do
     it "returns a movie when it matches the title" do
-      title = "7 brothers who aren't brothers"
+      title = "foobar"
       movie = create(:movie, title: title)
 
       expect(described_class.search(title)).to contain_exactly(movie)
