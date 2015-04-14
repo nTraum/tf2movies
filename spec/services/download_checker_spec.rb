@@ -5,7 +5,7 @@ describe DownloadChecker do
 
   describe ".check_status!" do
     after do
-      expect(download.status_refreshed_at).to be_within(200).of(Time.zone.now)
+      expect(download.status_refreshed_at).to be_within(2).of(Time.zone.now)
     end
 
     context "when the HTTP response is 200 and has a content length" do
