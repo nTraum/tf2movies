@@ -1,4 +1,4 @@
-require 'cgi'
+require "cgi"
 
 module Searchable
   extend ActiveSupport::Concern
