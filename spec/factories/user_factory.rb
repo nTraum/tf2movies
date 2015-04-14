@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                :integer          not null, primary key
+#  nickname          :string(255)
+#  steam_profile_url :string(255)
+#  last_login        :datetime
+#  created_at        :datetime
+#  updated_at        :datetime
+#  last_online       :datetime
+#  steam_id          :integer
+#  role_cd           :integer
+#
+
 FactoryGirl.define do
   factory :user do
     sequence(:nickname, "nTraum")

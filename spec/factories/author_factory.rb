@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: authors
+#
+#  id          :integer          not null, primary key
+#  nickname    :string(255)
+#  profile_url :string(255)
+#  avatar_url  :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  youtube_id  :string(255)
+#  slug        :string(255)
+#
+# Indexes
+#
+#  index_authors_on_slug  (slug) UNIQUE
+#
+
 FactoryGirl.define do
   factory :author do
     nickname "nTraum"
