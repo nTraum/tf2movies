@@ -36,8 +36,8 @@ class User < ActiveRecord::Base
       user.steam_id = auth['uid'].to_i
       user.steam_profile_url = auth['info']['urls']['Profile']
       user.user!
-      user.last_login = DateTime.current
-      user.last_online = DateTime.current
+      user.last_login = Time.zone.now
+      user.last_online = Time.zone.now
     end
   end
 
@@ -52,11 +52,11 @@ class User < ActiveRecord::Base
   end
 
   def refresh_last_online
-    update :last_online => DateTime.current
+    update :last_online => Time.zone.now
   end
 
   def online?
-    (Time.current - last_online) < 10.minutes
+    (Time.zone.now - last_online) < 10.minutes
   end
 
   def staff?
@@ -64,6 +64,6 @@ class User < ActiveRecord::Base
   end
 
   def refresh_last_login
-    update :last_login => DateTime.current
+    update :last_login => Time.zone.now
   end
 end

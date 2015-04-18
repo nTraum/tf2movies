@@ -74,11 +74,11 @@ RSpec.describe User, type: :model do
     end
 
     it "sets the last login to now" do
-      expect(subject.last_login).to be_within(2).of(Time.now)
+      expect(subject.last_login).to be_within(2).of(Time.zone.now)
     end
 
     it "sets the last online to now" do
-      expect(subject.last_online).to be_within(2).of(Time.now)
+      expect(subject.last_online).to be_within(2).of(Time.zone.now)
     end
 
     it "persists the user" do
@@ -93,7 +93,7 @@ RSpec.describe User, type: :model do
 
       user.refresh_last_online
 
-      expect(user.last_online).to be_within(2).of(Time.now)
+      expect(user.last_online).to be_within(2).of(Time.zone.now)
     end
   end
 
