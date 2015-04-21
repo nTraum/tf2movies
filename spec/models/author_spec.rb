@@ -1,19 +1,15 @@
 require "rails_helper"
 
 RSpec.describe Author, type: :model do
+  subject { create(:author) }
   describe ".search" do
     it "returns an author when it matches the nickname" do
-      nickname = "Bob"
-      author = create(:author, nickname: nickname)
-
-      expect(described_class.search(nickname)).to contain_exactly(author)
+      expect(described_class.search(subject.nickname)).to include(subject)
     end
   end
 
   it "generates a new friendly ID when the nickname has changed" do
-    author = create(:author)
-    new_nickname = "foo"
-
-    expect{ author.update(nickname: new_nickname) }.to change { author.friendly_id }
+    expect{ subject.update(nickname: "whatever") }
+      .to change { subject.friendly_id }
   end
 end
