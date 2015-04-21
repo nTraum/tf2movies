@@ -63,12 +63,4 @@ describe CommentPolicy do
   describe "#new?" do
     it_behaves_like "an action allowed for registered users and staff", :new?
   end
-
-  describe "#edit?" do
-    it_behaves_like "an action allowed when the user is registered and is the author"
-  end
-
-  describe "#update?" do
-    it_behaves_like "an action allowed when the user is registered and is the author"
-  end
 end
