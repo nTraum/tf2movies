@@ -73,7 +73,7 @@ class Movie < ActiveRecord::Base
   before_validation :update_featured_at,        :if           => Proc.new { |m| m.featured_changed? && m.featured? }
   before_validation :update_status_changed_at,  :if           => :status_changed?
 
-  scope             :featured,                  -> { where(:featured => true).where(:status_cd => Movie.published) }
+  scope             :featured,                  -> { where(:featured => true) }
 
   def self.new_with_url(url, proposer)
     new do |movie|
