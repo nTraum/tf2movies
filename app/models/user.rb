@@ -55,15 +55,15 @@ class User < ActiveRecord::Base
     update :last_online => Time.zone.now
   end
 
+  def refresh_last_login
+    update :last_login => Time.zone.now
+  end
+
   def online?
     (Time.zone.now - last_online) < 10.minutes
   end
 
   def staff?
     admin? || moderator?
-  end
-
-  def refresh_last_login
-    update :last_login => Time.zone.now
   end
 end

@@ -88,12 +88,18 @@ RSpec.describe User, type: :model do
 
 
   describe "#refresh_last_online" do
+    subject { create(:user) }
     it "sets the last_online date to now" do
-      user = create(:user)
+      subject.refresh_last_online
+      expect(subject.last_online).to be_within(2).of(Time.zone.now)
+    end
+  end
 
-      user.refresh_last_online
-
-      expect(user.last_online).to be_within(2).of(Time.zone.now)
+  describe "#refresh_last_login" do
+    subject { create(:user) }
+    it "sets the last_login date to now" do
+      subject.refresh_last_login
+      expect(subject.last_login).to be_within(2).of(Time.zone.now)
     end
   end
 
