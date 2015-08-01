@@ -20,7 +20,7 @@ class YoutubeInfoProvider
         )
     end
 
-    movie.info_refreshed_at = DateTime.now
+    movie.info_refreshed_at = Time.zone.now
   rescue OpenURI::HTTPError
     movie.errors.add(:base, "No YouTube movie found")
   end

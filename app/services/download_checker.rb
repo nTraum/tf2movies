@@ -12,7 +12,7 @@ class DownloadChecker
     end
 
     download.filesize = response[:filesize]
-    download.status_refreshed_at = DateTime.now
+    download.status_refreshed_at = Time.zone.now
     download.save!
   end
 

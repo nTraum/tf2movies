@@ -108,10 +108,10 @@ class Movie < ActiveRecord::Base
   private
 
   def update_featured_at
-    self.featured_at = DateTime.now
+    self.featured_at = Time.zone.now
   end
 
   def update_status_changed_at
-    self.status_changed_at = DateTime.now
+    self.status_changed_at = Time.zone.now
   end
 end
