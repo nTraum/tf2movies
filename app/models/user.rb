@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   def refresh_last_online
-    update(last_online: Time.zone.now) if (last_online < ONLINE_REFRESH_INTERVAL.ago)
+    update(last_online: Time.zone.now) if last_online < ONLINE_REFRESH_INTERVAL.ago
   end
 
   def refresh_last_login

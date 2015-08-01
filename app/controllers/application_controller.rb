@@ -35,8 +35,6 @@ class ApplicationController < ActionController::Base
   end
 
   def pending_movies_count_navbar
-    if policy(Movie).manage?
-      @pending_movies_count_navbar = Movie.where(status_cd: Movie.pending).size
-    end
+    @pending_movies_count_navbar = Movie.where(status_cd: Movie.pending).size if policy(Movie).manage?
   end
 end

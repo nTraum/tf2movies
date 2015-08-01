@@ -62,6 +62,9 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:game_mode_id, :tf2_class_id, :region_id, :featured, :status, songs_attributes: [:id, :artist, :title, :_destroy], downloads_attributes: [:id, :url, :_destroy])
+    params.require(:movie)
+      .permit(:game_mode_id, :tf2_class_id, :region_id, :featured, :status,
+              songs_attributes: [:id, :artist, :title, :_destroy],
+              downloads_attributes: [:id, :url, :_destroy])
   end
 end

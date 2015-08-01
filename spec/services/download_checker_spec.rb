@@ -7,7 +7,7 @@ describe DownloadChecker do
     after { expect(download.status_refreshed_at).to be_within(2).of(Time.zone.now) }
 
     context "when the HTTP response is 200 and has a content length" do
-      let (:status) { 200 }
+      let(:status) { 200 }
 
       before { stub_request(:head, download.url).to_return(status: status) }
 
