@@ -16,9 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_refresh_last_online
-    if current_user && (Time.zone.now - current_user.last_online > 5.minutes)
-      current_user.refresh_last_online
-    end
+    current_user.refresh_last_online if current_user
   end
 
   def current_user

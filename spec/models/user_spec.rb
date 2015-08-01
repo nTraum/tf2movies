@@ -87,10 +87,17 @@ RSpec.describe User, type: :model do
   end
 
   describe "#refresh_last_online" do
-    subject { create(:user) }
-    it "sets the last_online date to now" do
-      subject.refresh_last_online
-      expect(subject.last_online).to be_within(2).of(Time.zone.now)
+    context "when the last_online timestamp is older than 5 minutes"
+      subject { create(:user, last_online: 6.minutes.ago) }
+      it "updates the last_online timestamp to to now" do
+        subject.refresh_last_online
+        expect(subject.last_online).to be_within(2).of(Time.zone.now)
+      end
+    context "when the last_online timestamp is younger than 5 minutes" do
+      subject { create(:user, last_online: 1.minute.ago) }
+      it "does not update the last_online timestamp" do
+        expect{ subject.refresh_last_online }.not_to change { subject.last_online }
+      end
     end
   end
 

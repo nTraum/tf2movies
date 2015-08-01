@@ -16,6 +16,9 @@
 class User < ActiveRecord::Base
   include PgSearch
 
+  TIMESPAN_UNTIL_OFFLINE  = 10.minutes
+  ONLINE_REFRESH_INTERVAL = 5.minutes
+
   pg_search_scope :search,            against: { nickname: "A", steam_id: "C", steam_profile_url: "D" },
                                       using: { tsearch: { prefix: true } }
 
@@ -52,15 +55,15 @@ class User < ActiveRecord::Base
   end
 
   def refresh_last_online
-    update last_online: Time.zone.now
+    update(last_online: Time.zone.now) if (last_online < ONLINE_REFRESH_INTERVAL.ago)
   end
 
   def refresh_last_login
-    update last_login: Time.zone.now
+    update(last_login: Time.zone.now)
   end
 
   def online?
-    (Time.zone.now - last_online) < 10.minutes
+    (Time.zone.now - last_online) < TIMESPAN_UNTIL_OFFLINE
   end
 
   def staff?
