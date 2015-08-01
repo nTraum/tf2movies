@@ -7,6 +7,6 @@ RSpec.describe Region, type: :model do
 
     region = described_class.create(name: original_name)
 
-    expect{ region.update(name: new_name) }.to change{ region.friendly_id }.from(original_name).to(new_name)
+    expect { region.update(name: new_name) }.to change { region.friendly_id }.from(original_name).to(new_name)
   end
 end

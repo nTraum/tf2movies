@@ -1,6 +1,6 @@
 class NewsFeedController < ApplicationController
   def feed
-    @title = 'TF2Movies'
+    @title = "TF2Movies"
     @movies = Movie.publisheds.includes(:author).order(created_at: :desc)
     @updated = @movies.first.created_at if @movies.any?
 

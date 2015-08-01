@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   include Pundit
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -17,22 +16,20 @@ class ApplicationController < ActionController::Base
   end
 
   def user_refresh_last_online
-    if current_user and (Time.now - current_user.last_online > 5.minutes)
+    if current_user && (Time.now - current_user.last_online > 5.minutes)
       current_user.refresh_last_online
     end
   end
 
   def current_user
-    begin
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue ActiveRecord::RecordNotFound
-      session.delete :user_id
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  rescue ActiveRecord::RecordNotFound
+    session.delete :user_id
   end
 
   def user_not_authorized
-    flash[:alert] = 'You are not authorized to perform this action.'
-    if request.env['HTTP_REFERER']
+    flash[:alert] = "You are not authorized to perform this action."
+    if request.env["HTTP_REFERER"]
       redirect_to :back
     else
       redirect_to root_path
@@ -41,7 +38,7 @@ class ApplicationController < ActionController::Base
 
   def pending_movies_count_navbar
     if policy(Movie).manage?
-      @pending_movies_count_navbar = Movie.where(:status_cd => Movie.pending).size
+      @pending_movies_count_navbar = Movie.where(status_cd: Movie.pending).size
     end
   end
 end

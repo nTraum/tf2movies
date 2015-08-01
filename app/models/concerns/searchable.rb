@@ -18,6 +18,6 @@ module Searchable
   private
 
   def escaped_search_pattern
-    CGI::escape(search_pattern)
+    CGI.escape(search_pattern)
   end
 end

@@ -19,9 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
-job_type :rake_rbenv, 'cd :path && (RBENV_ROOT=~/.rbenv :environment_variable=:environment ~/.rbenv/bin/rbenv exec bundle exec rake :task --silent :output)'
+job_type :rake_rbenv, "cd :path && (RBENV_ROOT=~/.rbenv :environment_variable=:environment ~/.rbenv/bin/rbenv exec bundle exec rake :task --silent :output)"
 
 every 10.minutes do
-  rake_rbenv 'tf2movies:refresh_downloads'
-  rake_rbenv 'tf2movies:refresh_movies'
+  rake_rbenv "tf2movies:refresh_downloads"
+  rake_rbenv "tf2movies:refresh_movies"
 end

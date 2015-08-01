@@ -36,44 +36,44 @@
 class Movie < ActiveRecord::Base
   include PgSearch
   extend FriendlyId
-  pg_search_scope         :search,                    :against => { :title => 'A', :description => 'B' },
-                                                      :using => { :tsearch => {:prefix => true} }
+  pg_search_scope :search,                    against: { title: "A", description: "B" },
+                                              using: { tsearch: { prefix: true } }
 
-  friendly_id             :slug_canditates,           :use => [:slugged, :history]
-  as_enum                 :status,                    { :pending => 0, :rejected => 1, :published => 2 }
-  belongs_to              :proposer,                  :class_name => 'User', :foreign_key => 'user_id',
-                                                      :touch      => true
-  belongs_to              :author,                    :touch      => true
-  has_many                :downloads,                 :dependent  => :destroy
-  has_many                :songs,                     :dependent  => :destroy
-  has_many                :comments
-  belongs_to              :game_mode
-  belongs_to              :tf2_class
-  belongs_to              :region
+  friendly_id :slug_canditates,           use: [:slugged, :history]
+  as_enum :status,                    pending: 0, rejected: 1, published: 2
+  belongs_to :proposer,                  class_name: "User", foreign_key: "user_id",
+                                         touch: true
+  belongs_to :author,                    touch: true
+  has_many :downloads,                 dependent: :destroy
+  has_many :songs,                     dependent: :destroy
+  has_many :comments
+  belongs_to :game_mode
+  belongs_to :tf2_class
+  belongs_to :region
   has_and_belongs_to_many :users
 
-  accepts_nested_attributes_for                 :songs, :downloads, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :songs, :downloads, reject_if: :all_blank, allow_destroy: true
 
-  validates         :status,                    :presence     => true
-  validates         :youtube_id,                :presence     => { :message => 'No movie found.' },
-                                                :uniqueness   => { :message => 'Movie has already been submitted.' }
-  validates         :title,                     :presence     => true
-  validates         :views,                     :numericality => { :greater_than_or_equal_to => 0 },
-                                                :presence     => true
-  validates         :duration,                  :numericality => { :greater_than_or_equal_to => 0 },
-                                                :presence     => true
-  validates         :uploaded_on_youtube,       :presence     => true
-  validates         :proposer,                  :presence     => true
-  validates         :author,                    :presence     => true
-  validates         :featured,                  :inclusion    => [true, false]
-  validates         :featured_at,               :presence     => true, :if => :featured?
-  validates         :info_refreshed_at,         :presence     => true
-  validates         :status_changed_at,         :presence     => true
+  validates :status,                    presence: true
+  validates :youtube_id,                presence: { message: "No movie found." },
+                                        uniqueness: { message: "Movie has already been submitted." }
+  validates :title,                     presence: true
+  validates :views,                     numericality: { greater_than_or_equal_to: 0 },
+                                        presence: true
+  validates :duration,                  numericality: { greater_than_or_equal_to: 0 },
+                                        presence: true
+  validates :uploaded_on_youtube,       presence: true
+  validates :proposer,                  presence: true
+  validates :author,                    presence: true
+  validates :featured,                  inclusion: [true, false]
+  validates :featured_at,               presence: true, if: :featured?
+  validates :info_refreshed_at,         presence: true
+  validates :status_changed_at,         presence: true
 
-  before_validation :update_featured_at,        :if           => Proc.new { |m| m.featured_changed? && m.featured? }
-  before_validation :update_status_changed_at,  :if           => :status_changed?
+  before_validation :update_featured_at,        if: proc { |m| m.featured_changed? && m.featured? }
+  before_validation :update_status_changed_at,  if: :status_changed?
 
-  scope             :featured,                  -> { where(:featured => true) }
+  scope :featured,                  -> { where(featured: true) }
 
   def self.new_with_url(url, proposer)
     new do |movie|
@@ -94,17 +94,15 @@ class Movie < ActiveRecord::Base
 
   def thumbnail(quality = :tiny)
     sizes = {
-        :max    => 'maxresdefault', # 1280x720
-        :high   => 'sddefault',     # 640x480
-        :medium => 'hqdefault',     # 480x360
-        :small  => 'mqdefault',     # 320x180
-        :tiny   => 'default'        # 120x90
-      }
+      max: "maxresdefault", # 1280x720
+      high: "sddefault",     # 640x480
+      medium: "hqdefault",     # 480x360
+      small: "mqdefault",     # 320x180
+      tiny: "default"        # 120x90
+    }
 
-      unless sizes[quality]
-        raise ArgumentError, "unknown quality '#{quality}'"
-      end
-      "http://img.youtube.com/vi/#{youtube_id}/#{sizes[quality]}.jpg"
+    fail ArgumentError, "unknown quality '#{quality}'" unless sizes[quality]
+    "http://img.youtube.com/vi/#{youtube_id}/#{sizes[quality]}.jpg"
   end
 
   private

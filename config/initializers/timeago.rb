@@ -1,1 +1,1 @@
-Rails::Timeago.default_options :force => true
+Rails::Timeago.default_options force: true

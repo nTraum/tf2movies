@@ -5,7 +5,7 @@ gem "pg"
 gem "sass-rails", "~> 4.0.0", ">= 4.0.2"
 gem "uglifier"
 gem "coffee-rails"
-gem "therubyracer", :require => "v8"
+gem "therubyracer", require: "v8"
 gem "jquery-rails"
 
 group :doc do
@@ -48,6 +48,8 @@ group :development, :test do
   gem "did_you_mean"
   gem "factory_girl_rails"
   gem "rspec-rails", "~> 3.0"
+  gem "rubocop"
+  gem "rubocop-rspec"
   gem "webmock"
 end
 

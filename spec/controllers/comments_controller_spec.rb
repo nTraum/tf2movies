@@ -9,7 +9,7 @@ RSpec.describe CommentsController, type: :controller do
 
       it "adds the comment to the movie" do
         expect { post(:create, movie_id: movie.friendly_id, comment: { text: text }) }
-          .to change{ movie.comments.count }.by(1)
+          .to change { movie.comments.count }.by(1)
       end
 
       it "redirects to the movie" do

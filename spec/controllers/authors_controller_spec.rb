@@ -1,7 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe AuthorsController, type: :controller do
-
   describe "GET #show" do
     let(:author) { create(:author) }
     before { get(:show, id: author.friendly_id) }
@@ -26,5 +25,4 @@ RSpec.describe AuthorsController, type: :controller do
       expect(response).to render_template(:index)
     end
   end
-
 end

@@ -26,7 +26,7 @@ RSpec.describe Movie, type: :model do
 
     context "when specifying an unknown quality" do
       it "throws an ArgumentError" do
-        expect{ subject.thumbnail(:foo) }.to raise_error(ArgumentError)
+        expect { subject.thumbnail(:foo) }.to raise_error(ArgumentError)
       end
     end
   end

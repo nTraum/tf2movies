@@ -1,5 +1,4 @@
 class DownloadChecker
-
   def self.check_status!(download)
     Rails.logger.info "Checking download ##{download.id}: #{download.url}."
     response = http_response(download.url)
@@ -33,6 +32,6 @@ class DownloadChecker
       filesize = nil
     end
 
-    return {:status_code => status_code, :filesize => filesize}
+    { status_code: status_code, filesize: filesize }
   end
 end

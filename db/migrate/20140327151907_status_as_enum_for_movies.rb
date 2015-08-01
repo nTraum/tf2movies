@@ -1,7 +1,7 @@
 class StatusAsEnumForMovies < ActiveRecord::Migration
   def change
     remove_column :movies, :status
-    add_column    :movies, :status_cd, :integer
+    add_column :movies, :status_cd, :integer
 
     Movie.all.each do |movie|
       movie.pending!

@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require File.expand_path("../boot", __FILE__)
 
 # Pick the frameworks you want:
 require "active_record/railtie"
@@ -19,18 +19,18 @@ module Tf2movies
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    config.time_zone = 'UTC'
+    config.time_zone = "UTC"
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
     config.generators do |g|
-      g.test_framework :mini_test,  :spec => true, :fixture => false,
-                                    :fixture_replacement => :factory_girl
+      g.test_framework :mini_test,  spec: true, fixture: false,
+                                    fixture_replacement: :factory_girl
 
-    # Catching exceptions on our own
-    config.exceptions_app = self.routes
+      # Catching exceptions on our own
+      config.exceptions_app = routes
     end
   end
 end

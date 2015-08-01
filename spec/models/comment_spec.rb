@@ -7,6 +7,6 @@ RSpec.describe Comment, type: :model do
 
     comment = described_class.new(text: unsanitized_text)
 
-    expect{ comment.save }.to change{ comment.text }.from(unsanitized_text).to(sanitized_text)
+    expect { comment.save }.to change { comment.text }.from(unsanitized_text).to(sanitized_text)
   end
 end

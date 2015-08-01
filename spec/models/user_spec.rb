@@ -15,9 +15,9 @@ RSpec.describe User, type: :model do
     let(:omniauth_hash) do
       {
         "info" => {
-                    "nickname" => subject.nickname,
-                    "urls" => { "Profile" => subject.steam_profile_url }
-                  }
+          "nickname" => subject.nickname,
+          "urls" => { "Profile" => subject.steam_profile_url }
+        }
       }
     end
 
@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
         new_nickname = "Alice"
         omniauth_hash["info"]["nickname"] = new_nickname
 
-        expect{ subject.refresh_user_info(omniauth_hash) }.to change{ subject.nickname }.to(new_nickname)
+        expect { subject.refresh_user_info(omniauth_hash) }.to change { subject.nickname }.to(new_nickname)
       end
     end
     context "when the steam profile url changed" do
@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
 
         expect do
           subject.refresh_user_info(omniauth_hash)
-        end.to change{ subject.steam_profile_url }.to(new_steam_profile_url)
+        end.to change { subject.steam_profile_url }.to(new_steam_profile_url)
       end
     end
   end
@@ -49,9 +49,9 @@ RSpec.describe User, type: :model do
     let(:omniauth_hash) do
       {
         "info" => {
-                    "nickname" => nickname,
-                    "urls" => { "Profile" => profile }
-                  },
+          "nickname" => nickname,
+          "urls" => { "Profile" => profile }
+        },
         "uid" => uid
       }
     end
@@ -85,7 +85,6 @@ RSpec.describe User, type: :model do
       expect(subject).to be_persisted
     end
   end
-
 
   describe "#refresh_last_online" do
     subject { create(:user) }
