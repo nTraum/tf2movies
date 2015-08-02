@@ -7,7 +7,9 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
 ]
-SimpleCov.start("rails")
+SimpleCov.start("rails") do
+  add_group "Policies", "app/policies"
+end
 
 require "spec_helper"
 require File.expand_path("../../config/environment", __FILE__)
