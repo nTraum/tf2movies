@@ -36,16 +36,15 @@
 class Movie < ActiveRecord::Base
   include PgSearch
   extend FriendlyId
-  pg_search_scope :search,                    against: { title: "A", description: "B" },
-                                              using: { tsearch: { prefix: true } }
+  pg_search_scope :search, against: { title: "A", description: "B" },
+                           using: { tsearch: { prefix: true } }
 
-  friendly_id :slug_canditates,           use: [:slugged, :history]
-  as_enum :status,                    pending: 0, rejected: 1, published: 2
-  belongs_to :proposer,                  class_name: "User", foreign_key: "user_id",
-                                         touch: true
-  belongs_to :author,                    touch: true
-  has_many :downloads,                 dependent: :destroy
-  has_many :songs,                     dependent: :destroy
+  friendly_id :slug_canditates, use: [:slugged, :history]
+  as_enum :status, pending: 0, rejected: 1, published: 2
+  belongs_to :proposer, class_name: "User", foreign_key: "user_id", touch: true
+  belongs_to :author,                                               touch: true
+  has_many :downloads, dependent: :destroy
+  has_many :songs, dependent: :destroy
   has_many :comments
   belongs_to :game_mode
   belongs_to :tf2_class
@@ -73,7 +72,7 @@ class Movie < ActiveRecord::Base
   before_validation :update_featured_at,        if: proc { |m| m.featured_changed? && m.featured? }
   before_validation :update_status_changed_at,  if: :status_changed?
 
-  scope :featured,                  -> { where(featured: true) }
+  scope :featured, -> { where(featured: true) }
 
   def self.new_with_url(url, proposer)
     new do |movie|
