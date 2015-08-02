@@ -74,7 +74,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colored (1.2)
-    colorize (0.7.5)
+    colorize (0.7.7)
     connection_pool (2.2.0)
     coveralls (0.8.2)
       json (~> 1.8)
@@ -89,7 +89,7 @@ GEM
     dalli (2.7.4)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
-    did_you_mean (0.9.8)
+    did_you_mean (0.9.10)
       interception
     diff-lcs (1.2.5)
     docile (1.1.5)
