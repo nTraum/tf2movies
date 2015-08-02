@@ -35,6 +35,8 @@ gem "rails-timeago"
 gem "rack-google-analytics"
 gem "pg_search"
 gem "pry-rails"
+gem "rack-mini-profiler" # must be placed below pg gem to show SQL queries
+gem "flamegraph"
 
 group :production do
   gem "dalli"

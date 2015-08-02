@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     current_user.refresh_last_online if current_user
   end
 
+  def authorize_rack_mini_profiler
+    Rack::MiniProfiler.authorize_request if current_user && current_user.admin?
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   rescue ActiveRecord::RecordNotFound
