@@ -29,6 +29,10 @@ class Download < ActiveRecord::Base
     url.match(/(^http(s)?:\/\/)?(www\.)?(\w+\.)?(?<domain>\w+\.\w+)\//i)[:domain]
   end
 
+  def check_availability
+
+  end
+
   private
 
   def default_attributes

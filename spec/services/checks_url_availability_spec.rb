@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe DownloadChecker do
+describe ChecksUrlAvailability do
   let(:download) { build(:download) }
 
   describe ".check_status!" do

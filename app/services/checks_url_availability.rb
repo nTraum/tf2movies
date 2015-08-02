@@ -1,11 +1,14 @@
-class DownloadChecker
-  def self.check_status!(download)
-    Rails.logger.info "Checking download ##{download.id}: #{download.url}."
+class ChecksUrlAvailability
+  HTTP_SUCCESS   = 200
+  HTTP_NOT_FOUND = 404
+
+  def initialize(download)
+    Rails.logger.info("Checking download ##{download.id}: #{download.url}.")
     response = http_response(download.url)
 
-    if response[:status_code] == 200
+    if response[:status_code] == HTTP_SUCCESS
       download.online!
-    elsif response[:status_code] == 404
+    elsif response[:status_code] == HTTP_NOT_FOUND
       download.offline!
     else
       download.unknown!
@@ -18,7 +21,7 @@ class DownloadChecker
 
   private
 
-  def self.http_response(url)
+  def http_response(url)
     begin
       response = Curl::Easy.http_head(url) do |c|
         c.follow_location = true
