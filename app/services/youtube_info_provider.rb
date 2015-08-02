@@ -38,6 +38,6 @@ class YoutubeInfoProvider
   end
 
   def self.youtube_client
-    @@youtube_client ||= YouTubeIt::Client.new(dev_key: ENV["YOUTUBE_API_KEY"])
+    @@youtube_client ||= YouTubeIt::Client.new(dev_key: ENV.fetch("YOUTUBE_API_KEY"))
   end
 end

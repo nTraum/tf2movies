@@ -10,8 +10,4 @@
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
 
-if ENV["SECRET_TOKEN"].empty?
-  Tf2movies::Application.config.secret_key_base = "ifyourehappyandyouknowitclapyourhands"
-else
-  Tf2movies::Application.config.secret_key_base = ENV["SECRET_TOKEN"]
-end
+Tf2movies::Application.config.secret_key_base = ENV.fetch("SECRET_TOKEN")
