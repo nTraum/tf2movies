@@ -9,7 +9,7 @@
 
 * PostgreSQL
 * Memcached
-* Ruby 2 or later
+* Ruby 2.2 or later
 * curl / curl dev libs
 
 ## Installation

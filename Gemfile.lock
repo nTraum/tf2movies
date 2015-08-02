@@ -312,6 +312,7 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    stackprof (0.2.7)
     temple (0.7.6)
     term-ansicolor (1.3.2)
       tins (~> 1.0)
@@ -397,6 +398,7 @@ DEPENDENCIES
   sentry-raven
   simple_enum
   slim-rails
+  stackprof
   therubyracer
   uglifier
   webmock
