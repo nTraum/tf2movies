@@ -18,19 +18,18 @@
 
 `git clone https://github.com/nTraum/tf2movies.git; cd tf2movies`
 
-##### Checking Ruby version
-Must be 1.9.3 or newer.
-
-`ruby -v`
 
 ##### Install bundler and app dependencies
 
 `gem install bundler; bundle`
 
 ##### Database settings
-Edit production section of `config/database.yml` to fit your needs.
+Copy `config/database.yml.example` to `config/database.yml` and edit to fit your needs.
 
-`vim config/database.yml`
+```
+cp config/database.yml.example config/database.yml
+vim config/database.yml
+```
 
 ##### App settings
 You need to configure the following environment variables to run tf2movies:
