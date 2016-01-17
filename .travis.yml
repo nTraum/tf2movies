@@ -9,5 +9,6 @@ matrix:
   - rvm: ruby-head
 env:
   global:
+    SECRET_TOKEN: 12345
     secure: e2uoS842V/Uaaq311L3TxyPaJodmiDB6NsueZ2v9CSBhCavB1NCyDbJ3TLhSXrn0zlv4QQMLRM7hQAKzWnfIQzQrzUK1qCMOscJPbGvKr/RZRMxsIsAqJ+pDBqEkJOasfih4iaC6hkt0AvrLYn+WL4V7gyw0r0JJ77Okl/Jg5QU=
 before_script: "cp config/database.yml.example config/database.yml"
