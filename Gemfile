@@ -50,7 +50,6 @@ end
 group :development, :test do
   gem "coveralls", require: false
   gem "database_cleaner"
-  gem "did_you_mean"
   gem "factory_girl_rails"
   gem "rspec-rails", "~> 3.0"
   gem "rubocop"
