@@ -6,32 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+TF2_CLASSES = %w(Scout Soldier Pyro Demoman Heavy Engineer Medic Sniper Spy Mixed)
+GAME_MODES  = %w(6v6 Highlander Jump BBall Mixed)
+REGIONS     = ["Europe", "South America", "North America", "Asia", "Africa", "Oceania", "Global"]
+
 unless Tf2Class.any?
-  puts 'Seeding TF2 classes...'
-  tf2_classes = %w[Scout Soldier Pyro Demoman Heavy Engineer Medic Sniper Spy Mixed]
-  tf2_classes.each do |tf2_class|
-    Tf2Class.create(:name => tf2_class)
-    puts "\t...#{tf2_class}"
+  Rails.logger.info("Seeding TF2 classes...")
+  TF2_CLASSES.each do |tf2_class|
+    Tf2Class.create(name: tf2_class)
+    Rails.logger.info("#{tf2_class} created.")
   end
-  puts 'Seeding of TF2 classes completed.'
 end
 
 unless GameMode.any?
-  puts 'Seeding game modes...'
-  game_modes = %w[6v6 Highlander Jump BBall Mixed]
-  game_modes.each  do |game_mode|
-    GameMode.create(:name => game_mode)
-    puts "\t...#{game_mode}"
+  Rails.logger.info("Seeding game modes...")
+  GAME_MODES.each  do |game_mode|
+    GameMode.create(name: game_mode)
+    Rails.logger.info("#{game_mode} created.")
   end
-  puts 'Seeding of game modes completed.'
+  Rails.logger.info("Seeding of game modes completed.")
 end
 
 unless Region.any?
-  puts 'Seeding regions...'
-  regions = ['Europe', 'South America', 'North America', 'Asia', 'Africa', 'Oceania', 'Global']
-  regions.each do |region|
-    Region.create(:name => region)
-    puts "\t...#{region}"
+  Rails.logger.info("Seeding regions...")
+  REGIONS.each do |region|
+    Region.create(name: region)
+    Rails.logger.info("#{region} created.")
   end
-  puts 'Seeding of regions completed.'
 end

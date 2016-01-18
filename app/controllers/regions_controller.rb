@@ -1,5 +1,5 @@
 class RegionsController < ApplicationController
-  after_action :verify_authorized, :except => [:index, :show]
+  after_action :verify_authorized, except: [:index, :show]
 
   def index
   end
@@ -18,15 +18,15 @@ class RegionsController < ApplicationController
     @region = Region.new(region_params)
     authorize @region
     if @region.save
-      redirect_to manage_regions_path, :notice => "Region '#{@region.name}' has been created successfully!"
+      redirect_to manage_regions_path, notice: "Region '#{@region.name}' has been created successfully!"
     else
-      redirect_to new_region_path, :alert => @region.errors.full_messages.join(', ')
+      redirect_to new_region_path, alert: @region.errors.full_messages.join(", ")
     end
   end
 
   def show
     @region = Region.friendly.find(params[:id])
-    @movies = @region.movies.where(:status_cd => Movie.published)
+    @movies = @region.movies.where(status_cd: Movie.published)
   end
 
   def edit
@@ -39,9 +39,9 @@ class RegionsController < ApplicationController
     authorize @region
 
     if @region.update(region_params)
-      redirect_to manage_regions_path, :notice => 'Region updated.'
+      redirect_to manage_regions_path, notice: "Region updated."
     else
-      redirect_to manage_regions_path, :alert => @region.errors.full_messages.join(', ')
+      redirect_to manage_regions_path, alert: @region.errors.full_messages.join(", ")
     end
   end
 
@@ -49,7 +49,7 @@ class RegionsController < ApplicationController
     @region = Region.friendly.find(params[:id])
     authorize @region
     @region.destroy
-    redirect_to manage_regions_path, :notice => 'Region deleted.'
+    redirect_to manage_regions_path, notice: "Region deleted."
   end
 
   private

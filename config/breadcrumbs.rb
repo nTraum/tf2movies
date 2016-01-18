@@ -1,11 +1,11 @@
 # Root
 crumb :root do
-  link fa_icon('home'), root_path
+  link fa_icon("home"), root_path
 end
 
 # Game modes
 crumb :game_modes do
-  link 'Game Modes', game_modes_path
+  link "Game Modes", game_modes_path
 end
 
 crumb :game_mode do |game_mode|
@@ -15,7 +15,7 @@ end
 
 # Regions
 crumb :regions do
-  link 'Regions', regions_path
+  link "Regions", regions_path
 end
 
 crumb :region do |region|
@@ -25,7 +25,7 @@ end
 
 # TF2 classes
 crumb :tf2_classes do
-  link 'Classes', tf2_classes_path
+  link "Classes", tf2_classes_path
 end
 
 crumb :tf2_class do |tf2_class|
@@ -35,7 +35,7 @@ end
 
 # Authors
 crumb :authors do
-  link 'Authors', authors_path
+  link "Authors", authors_path
 end
 
 crumb :author do |author|
@@ -45,16 +45,16 @@ end
 
 # Search
 crumb :search do
-  link 'Search', search_path
+  link "Search", search_path
 end
 
 # Movies
 crumb :movies do
-  link 'Movies', movies_path
+  link "Movies", movies_path
 end
 
 crumb :submit do
-  link 'Submission'
+  link "Submission"
   parent :movies
 end
 
@@ -64,18 +64,18 @@ crumb :movie do |movie|
 end
 
 crumb :manage_movies do
-  link 'Manage', manage_movies_path
+  link "Manage", manage_movies_path
   parent :movies
 end
 
-crumb :edit_movie do |movie|
-  link 'Edit'
+crumb :edit_movie do |_movie|
+  link "Edit"
   parent :manage_movies
 end
 
 # Users
 crumb :users do
-  link 'Users', users_path
+  link "Users", users_path
 end
 
 crumb :user do |user|
@@ -85,11 +85,11 @@ end
 
 # Pages
 crumb :about do
-  link 'About'
+  link "About"
 end
 
 crumb :contact do
-  link 'Contact'
+  link "Contact"
 end
 
 # crumb :projects do

@@ -1,7 +1,7 @@
 # tf2movies
 
 [![Build Status](https://travis-ci.org/nTraum/tf2movies.svg?branch=master)](https://travis-ci.org/nTraum/tf2movies)
-[![Coverage Status](https://codeclimate.com/github/nTraum/tf2movies/coverage.png)](https://codeclimate.com/github/nTraum/tf2movies)
+[![Coverage Status](https://img.shields.io/coveralls/nTraum/tf2movies.svg)](https://coveralls.io/r/nTraum/tf2movies)
 [![Code Climate](https://codeclimate.com/github/nTraum/tf2movies.png)](https://codeclimate.com/github/nTraum/tf2movies)
 [![Dependency Status](https://gemnasium.com/nTraum/tf2movies.svg)](https://gemnasium.com/nTraum/tf2movies)
 
@@ -9,7 +9,7 @@
 
 * PostgreSQL
 * Memcached
-* Ruby (>= 1.9.3)
+* Ruby 2.2 or later
 * curl / curl dev libs
 
 ## Installation
@@ -18,19 +18,18 @@
 
 `git clone https://github.com/nTraum/tf2movies.git; cd tf2movies`
 
-##### Checking Ruby version
-Must be 1.9.3 or newer.
-
-`ruby -v`
 
 ##### Install bundler and app dependencies
 
 `gem install bundler; bundle`
 
 ##### Database settings
-Edit production section of `config/database.yml` to fit your needs.
+Copy `config/database.yml.example` to `config/database.yml` and edit to fit your needs.
 
-`vim config/database.yml`
+```
+cp config/database.yml.example config/database.yml
+vim config/database.yml
+```
 
 ##### App settings
 You need to configure the following environment variables to run tf2movies:

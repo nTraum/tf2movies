@@ -2,6 +2,7 @@ MoviePolicy = Struct.new(:user, :movie) do
   def manage?
     !!(user && user.staff?)
   end
+
   def edit?
     manage?
   end

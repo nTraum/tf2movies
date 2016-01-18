@@ -1,22 +1,18 @@
-- cache(@author) do
-  - content_for :title, @author.nickname
-  - breadcrumb :author, @author
+- cache(author) do
+  - content_for(:title, author.nickname)
+  - breadcrumb(:author, author)
   h1
-    => @author.nickname
+    => author.nickname
     small Author
   ul.list-inline
-    li
-      = fa_icon 'film fw', :text => pluralize(@movies.size, 'movie')
-    li
-      = fa_icon 'clock-o fw', :text => "#{distance_of_time_in_words(@movies.sum(:duration))} of movie footage"
-    li
-      = fa_icon 'youtube-play fw', :text => "#{number_with_delimiter(@movies.sum(:views))} views in total"
-    li
-      = link_to(fa_icon('external-link fw', :text => 'YouTube Profile'), @author.profile_url, :target => '_blank')
+    li = fa_icon 'film fw', :text => pluralize(author.movies.size, 'movie')
+    li = fa_icon 'clock-o fw', :text => "#{distance_of_time_in_words(author.movies.sum(:duration))} of movie footage"
+    li = fa_icon 'youtube-play fw', :text => "#{number_with_delimiter(author.movies.sum(:views))} views in total"
+    li = link_to(fa_icon('external-link fw', :text => 'YouTube Profile'), author.profile_url, :target => '_blank')
 
   hr
   h2 = fa_icon('film', :text => 'Movies')
-  - @movies.each do |movie|
+  - author.movies.each do |movie|
     .media
       a.pull-left href=url_for(movie)
         = image_tag(movie.thumbnail(:small), :size => '240x180', :alt => "#{movie.title} thumbnail", :class => 'img-responsive img-thumbnail media-object')

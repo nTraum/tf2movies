@@ -17,18 +17,17 @@
 #
 
 class Comment < ActiveRecord::Base
-  belongs_to  :user,    :touch => true
-  belongs_to  :movie,   :touch => true
+  belongs_to :user,    touch: true
+  belongs_to :movie,   touch: true
 
-  validates   :hidden,  :inclusion => [true, false]
-  validates   :text,    :presence => true
-  validates   :movie,   :presence => true
-  validates   :user,    :presence => true
+  validates :hidden,  inclusion: [true, false]
+  validates :text,    presence: true
+  validates :movie,   presence: true
+  validates :user,    presence: true
 
   before_validation :sanitize_text
 
-
   def sanitize_text
-    self.text = Sanitize.clean(self.text, Sanitize::Config::BASIC)
+    self.text = Sanitize.clean(text, Sanitize::Config::BASIC)
   end
 end

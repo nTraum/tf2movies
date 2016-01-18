@@ -1,15 +1,15 @@
 # config valid only for Capistrano 3.4.0
-lock '3.4.0'
+lock "3.4.0"
 
-set :application, 'tf2movies'
-set :repo_url, 'https://github.com/nTraum/tf2movies.git'
+set :application, "tf2movies"
+set :repo_url, "https://github.com/nTraum/tf2movies.git"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-set :branch, 'master'
+set :branch, "master"
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/var/www/tf2movies'
+set :deploy_to, "/var/www/tf2movies"
 
 # Default value for :scm is :gi
 # set :scm, :git
@@ -24,10 +24,10 @@ set :deploy_to, '/var/www/tf2movies'
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml .env}
+set :linked_files, %w(config/database.yml .env)
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{tmp/pids tmp/sockets log}
+set :linked_dirs, %w(tmp/pids tmp/sockets log)
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -38,7 +38,7 @@ set :linked_dirs, %w{tmp/pids tmp/sockets log}
 set :puma_init_active_record, true
 
 namespace :deploy do
-  desc 'Restart application'
+  desc "Restart application"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
@@ -56,5 +56,4 @@ namespace :deploy do
       # end
     end
   end
-
 end

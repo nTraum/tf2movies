@@ -1,5 +1,5 @@
 class GameModesController < ApplicationController
-  after_action :verify_authorized, :except => [:index, :show]
+  after_action :verify_authorized, except: [:index, :show]
 
   def index
   end
@@ -18,15 +18,15 @@ class GameModesController < ApplicationController
     @game_mode = GameMode.new(game_mode_params)
     authorize @game_mode
     if @game_mode.save
-      redirect_to manage_game_modes_path, :notice => "Game Mode '#{@game_mode.name}' has been created successfully!"
+      redirect_to manage_game_modes_path, notice: "Game Mode '#{@game_mode.name}' has been created successfully!"
     else
-      redirect_to new_game_mode_path, :alert => @game_mode.errors.full_messages.join(', ')
+      redirect_to new_game_mode_path, alert: @game_mode.errors.full_messages.join(", ")
     end
   end
 
   def show
     @game_mode = GameMode.friendly.find(params[:id])
-    @movies = @game_mode.movies.where(:status_cd => Movie.published)
+    @movies = @game_mode.movies.where(status_cd: Movie.published)
   end
 
   def edit
@@ -39,9 +39,9 @@ class GameModesController < ApplicationController
     authorize @game_mode
 
     if @game_mode.update(game_mode_params)
-      redirect_to manage_game_modes_path, :notice => 'Game Mode updated.'
+      redirect_to manage_game_modes_path, notice: "Game Mode updated."
     else
-      redirect_to manage_game_modes_path, :alert => @game_mode.errors.full_messages.join(', ')
+      redirect_to manage_game_modes_path, alert: @game_mode.errors.full_messages.join(", ")
     end
   end
 
@@ -49,7 +49,7 @@ class GameModesController < ApplicationController
     @game_mode = GameMode.friendly.find(params[:id])
     authorize @game_mode
     @game_mode.destroy
-    redirect_to manage_game_modes_path, :notice => 'Game Mode deleted.'
+    redirect_to manage_game_modes_path, notice: "Game Mode deleted."
   end
 
   private

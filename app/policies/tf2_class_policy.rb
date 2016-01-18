@@ -1,2 +1,1 @@
-class Tf2ClassPolicy < CategoryPolicy
-end
+Tf2ClassPolicy = Class.new(CategoryPolicy)

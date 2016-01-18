@@ -17,11 +17,11 @@
 #
 
 class Download < ActiveRecord::Base
-  as_enum     :status,    :unknown => 0, :online => 1, :offline => 2
-  belongs_to  :movie,     :touch => true
-  validates   :url,       :presence => true
-  validates   :movie,     :presence => true
-  validates   :status,    :as_enum => true
+  as_enum :status,    unknown: 0, online: 1, offline: 2
+  belongs_to :movie,     touch: true
+  validates :url,       presence: true
+  validates :movie,     presence: true
+  validates :status,    presence: true
 
   before_validation :default_attributes
 
@@ -29,11 +29,13 @@ class Download < ActiveRecord::Base
     url.match(/(^http(s)?:\/\/)?(www\.)?(\w+\.)?(?<domain>\w+\.\w+)\//i)[:domain]
   end
 
+  def check_availability
+
+  end
+
   private
 
   def default_attributes
-    unless self.status
-      self.unknown!
-    end
+    self.unknown! unless status
   end
 end

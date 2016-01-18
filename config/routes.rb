@@ -1,38 +1,37 @@
 Tf2movies::Application.routes.draw do
-  root 'pages#welcome'
+  root "pages#welcome"
 
-  get   '/404',     :to       => 'pages#not_found'
-  get   '/500',     :to       => 'pages#internal_error'
+  get "/404",     to: "pages#not_found"
+  get "/500",     to: "pages#internal_error"
 
-  get   '/about',   :to       => 'pages#about',           :as => :about
-  get   '/contact', :to       => 'pages#contact',         :as => :contact
+  get "/about",   to: "pages#about",           as: :about
+  get "/contact", to: "pages#contact",         as: :contact
 
-  get   '/feed',    :to       => 'news_feed#feed',        :as => :feed, :defaults => { :format => 'atom' }
+  get "/feed",    to: "news_feed#feed",        as: :feed, defaults: { format: "atom" }
 
-  get   '/login',   :to       => redirect('/auth/steam'), :as => :login
-  match 'auth/steam/callback' => 'sessions#create',       :via => [:get, :post]
-  post  '/logout',  :to       => 'sessions#destroy',      :as => :logout
+  get "/login",   to: redirect("/auth/steam"), as: :login
+  match "auth/steam/callback" => "sessions#create",       :via => [:get, :post]
+  post "/logout",  to: "sessions#destroy",      as: :logout
 
-  get '/search',    :to       => 'search#search',         :as => :search
+  get "/search",    to: "search#search",         as: :search
 
-  resources :authors, :only => [:show, :index]
-  resources :users,   :only => [:show, :index]
+  resources :authors, only: [:show, :index]
+  resources :users,   only: [:show, :index]
 
   resources :regions, :game_modes, :tf2_classes do
-    get 'manage', :on => :collection
+    get "manage", on: :collection
   end
 
-  resources :movies,  :only => [:show, :create, :index, :edit, :update] do
+  resources :movies,  only: [:show, :create, :index, :edit, :update] do
     member do
-      post 'love'
+      post "love"
     end
     collection do
-      get 'submit'
-      get 'manage'
+      get "submit"
+      get "manage"
     end
-    resources :comments, :only => [:edit, :update, :create]
+    resources :comments, only: [:edit, :update, :create]
   end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

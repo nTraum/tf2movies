@@ -17,10 +17,10 @@
 class Song < ActiveRecord::Base
   include Searchable
 
-  belongs_to  :movie,   :touch => true
-  validates   :artist,  :presence => true
-  validates   :title,   :presence => true
-  validates   :movie,   :presence => true
+  belongs_to :movie,   touch: true
+  validates :artist,  presence: true
+  validates :title,   presence: true
+  validates :movie,   presence: true
 
   def search_pattern
     "#{artist} - #{title}"

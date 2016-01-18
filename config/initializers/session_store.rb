@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Tf2movies::Application.config.session_store :cookie_store, key: '_tf2movies_session'
+Tf2movies::Application.config.session_store :cookie_store, key: "_tf2movies_session"
